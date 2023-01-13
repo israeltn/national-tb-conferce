@@ -1,8 +1,8 @@
 <template>
      <div class="py-10 bg-white justify-center items-center max-w-screen-xl mx-auto">
-    <div class="container m-auto px-6 space-y-8 md:px-12 lg:px-56">
-        <div class="m-auto text-center lg:w-7/12">
-            <h2 class="text-2xl text-gray-700 font-bold md:text-4xl">Conference Registration</h2>
+    <div class="container m-auto px-6 space-y-8 md:px-12 lg:px-56">     
+        <div class="py-2 px-4 mx-auto max-w-screen-xl text-center lg:pt-12 lg:px-6">
+            <h2 class="text-2xl dark:bg-gray-900 font-bold md:text-4xl">Conference Registration</h2>
         </div>
                <!-- Content -->
                <div class="container justify-center items-center max-w-screen-xl mx-auto">

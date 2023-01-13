@@ -30,9 +30,7 @@
         <li class="hover:text-white hover:bg-red-700 py-2 px-2 pointer  transition-transform duration-300 ease-out rounded-sm ">
           <RouterLink to="/sponsors">Sponsors & Partners</RouterLink>
           </li>
-        <li class="hover:text-white hover:bg-red-700 py-2 px-2 pointer  transition-transform duration-300 ease-out rounded-sm ">
-          <a  href="http://stoptbnigeria.org/">Past Conferences</a>
-        </li>
+          <li class="hover:text-white hover:bg-red-700 py-2 px-2 pointer  transition-transform duration-300 ease-out rounded-sm "><RouterLink to="/conferences">Past Conferences</RouterLink></li>
       </ul>
      
      
@@ -52,10 +50,10 @@
           <RouterLink to="/registration">Registration</RouterLink>
         </li>
         <li class="hover:text-white hover:bg-red-700 py-1 px-2 pointer  transition-transform duration-300 ease-out rounded-sm ">Abstract Submission</li>
-        <li class="hover:text-white hover:bg-red-700 py-1 px-2 pointer  transition-transform duration-300 ease-out rounded-sm ">Sponsors & Partners</li>
-        <li class="hover:text-white hover:bg-red-700 py-1 px-2 pointer  transition-transform duration-300 ease-out rounded-sm ">
-          <a  href="http://stoptbnigeria.org/">Past Conferences</a>
+        <li class="hover:text-white hover:bg-red-700 py-2 px-2 pointer  transition-transform duration-300 ease-out rounded-sm ">
+          <RouterLink to="/sponsors">Sponsors & Partners</RouterLink>
         </li>
+        <li class="hover:text-white hover:bg-red-700 py-2 px-2 pointer  transition-transform duration-300 ease-out rounded-sm "><RouterLink to="/conferences">Past Conferences</RouterLink></li>
       </ul>
       <button v-show="isVisible" class="sm:hidden"  @click="toggle">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 stroke-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">

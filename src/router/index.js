@@ -4,6 +4,7 @@ import Sponsors from '../views/Sponsors.vue'
 import Registration from '../views/Registration.vue'
 import Delegates from '../views/Delegates.vue'
 import Speakers from '../views/Speakers.vue'
+import PastConferences from '../views/PastConferences.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -40,6 +41,11 @@ const router = createRouter({
       path: '/speakers',
       name: 'speakers',
       component: Speakers
+    },
+    {
+      path: '/conferences',
+      name: 'conferences',
+      component: PastConferences
     },
   ]
 })
