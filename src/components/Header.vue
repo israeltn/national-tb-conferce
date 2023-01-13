@@ -18,12 +18,13 @@
     <div class="md:flex md:h-12 hidden pt-1 px-2 md:max-w-screen-xl mx-auto  relative  md:justify-center md:items-center bg-red-800">
       <nav class="flex absolute items-center justify-end pb-2 text-gray-50 ">
       
-      <ul class="md:flex items-center md:space-x-12 text-sm font-bold">
+      <ul class="md:flex items-center md:space-x-10 text-sm font-bold">
         <li class="hover:text-white hover:shadow-md  hover:bg-red-700 py-2 px-2 pointer  transition-transform duration-300 ease-out rounded-sm "><RouterLink to="/">Home</RouterLink></li>
         <li class="hover:text-white hover:bg-red-700 py-2 px-2 pointer  transition-transform duration-300 ease-out rounded-sm "><RouterLink to="/about">About</RouterLink></li>
-        <li class="hover:text-white hover:bg-red-700 py-2 px-2 pointer  transition-transform duration-300 ease-out rounded-sm ">Speakers</li>
-        <li class="hover:text-white hover:bg-red-700 py-2 px-2 pointer  transition-transform duration-300 ease-out rounded-sm ">
-          <a  href="https://www.eventbrite.com/e/stop-tb-summit-tickets-512742636027">Registration</a>
+        <li class="hover:text-white hover:bg-red-700 py-2 px-2 pointer  transition-transform duration-300 ease-out rounded-sm "><RouterLink to="/speakers">Speakers</RouterLink></li>
+        <li class="hover:text-white hover:bg-red-700 py-2 px-2 pointer  transition-transform duration-300 ease-out rounded-sm "><RouterLink to="/delegates">Delegates</RouterLink></li>
+        <li class="hover:text-white hover:bg-red-700 py-1 px-2 pointer  transition-transform duration-300 ease-out rounded-sm ">
+          <RouterLink to="/registration">Registration</RouterLink>
         </li>
         <li class="hover:text-white hover:bg-red-700 py-2 px-2 pointer  transition-transform duration-300 ease-out rounded-sm ">Abstract Submission</li>
         <li class="hover:text-white hover:bg-red-700 py-2 px-2 pointer  transition-transform duration-300 ease-out rounded-sm ">
@@ -45,9 +46,10 @@
           <ul class="py-2 text-sm font-bold" >
         <li class="hover:text-white hover:shadow-md  hover:bg-red-700 py-1 px-2 pointer  transition-transform duration-300 ease-out rounded-sm "><RouterLink to="/">Home</RouterLink></li>
         <li class="hover:text-white hover:bg-red-700 py-1 px-2 pointer  transition-transform duration-300 ease-out rounded-sm "><RouterLink to="/about">About</RouterLink></li>
-        <li class="hover:text-white hover:bg-red-700 py-1 px-2 pointer  transition-transform duration-300 ease-out rounded-sm ">Speakers</li>
+        <li class="hover:text-white hover:bg-red-700 py-2 px-2 pointer  transition-transform duration-300 ease-out rounded-sm "><RouterLink to="/speakers">Speakers</RouterLink></li>
+        <li class="hover:text-white hover:bg-red-700 py-2 px-2 pointer  transition-transform duration-300 ease-out rounded-sm "><RouterLink to="/delegates">Delegates</RouterLink></li>
         <li class="hover:text-white hover:bg-red-700 py-1 px-2 pointer  transition-transform duration-300 ease-out rounded-sm ">
-          <a  href="https://www.eventbrite.com/e/stop-tb-summit-tickets-512742636027">Registration</a>
+          <RouterLink to="/registration">Registration</RouterLink>
         </li>
         <li class="hover:text-white hover:bg-red-700 py-1 px-2 pointer  transition-transform duration-300 ease-out rounded-sm ">Abstract Submission</li>
         <li class="hover:text-white hover:bg-red-700 py-1 px-2 pointer  transition-transform duration-300 ease-out rounded-sm ">Sponsors & Partners</li>

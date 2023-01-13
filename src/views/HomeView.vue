@@ -42,30 +42,30 @@
     <!-- Counter -->
 <div class="min-w-screen min-h-[20%] bg-gradient-to-tr from-red-800 via-red-800 to-red-800 shadow-md flex items-center justify-center px-4 py-2" x-data="beer()" x-init="start()">
   <div class="text-white">
-      <h1 class="text-xl font-sans font-bold text-center mb-2 ">COUNT DOWN:</h1>
+      <h1 class="md:text-xl text-base font-sans font-bold text-center mb-2 ">COUNT DOWN:</h1>
       <div class="text-4xl text-center flex w-full items-center justify-center">
           
           <div class="px-4">
-            <div class="mx-1 w-24 p-1 bg-white text-red-700 rounded-lg">
+            <div class="mx-1 md:w-24 w-16 p-1 bg-white text-red-700 rounded-lg">
               <div class="font-mono leading-none" x-text="days">{{ displayDays }}</div>
               <div class="font-mono uppercase text-sm leading-none">Days</div>
           </div>
           </div>
           <div class="px-4">
-            <div class="w-20 mx-1 p-1 bg-white text-red-700 rounded-lg">
+            <div class="md:w-20 w-14 mx-1 p-1 bg-white text-red-700 rounded-lg">
               <div class="font-mono leading-none" x-text="hours">{{ displayHours }}</div>
               <div class="font-mono uppercase text-sm leading-none">Hours</div>
           </div>
           </div>
           <div class="px-4">
-            <div class="w-20 mx-1 p-1 bg-white text-red-700 rounded-lg">
+            <div class="md:w-20 w-14 mx-1 p-1 bg-white text-red-700 rounded-lg">
               <div class="font-mono leading-none" x-text="minutes">{{ displayMinutes }}</div>
               <div class="font-mono uppercase text-sm leading-none">Minutes</div>
           </div>
           </div>
           
           <div class="px-4">
-          <div class="w-20 mx-1 pb-2 bg-white text-red-700 rounded-lg">
+          <div class="md:w-20 w-14 mx-1 pb-2 bg-white text-red-700 rounded-lg">
               <div class="font-mono leading-none" x-text="seconds">{{ displaySeconds }}</div>
               <div class="font-mono uppercase text-sm leading-none">Seconds</div>
           </div>
