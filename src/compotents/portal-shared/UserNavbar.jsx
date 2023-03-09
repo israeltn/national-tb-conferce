@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React from 'react'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import swal from 'sweetalert';
 import { useNavigate } from 'react-router-dom';
 import { Link, NavLink } from 'react-router-dom';
@@ -8,6 +8,22 @@ import { Link, NavLink } from 'react-router-dom';
 export const UserNavbar = () => {
      const navigate  = useNavigate();
      const [navbar, setNavbar] = useState(false);
+     const [userdata, setUserdata] = useState([]);
+   
+   useEffect(() => {
+      axios.get('/sanctum/csrf-cookie').then(response => {
+          axios.get(`/api/user-profile`).then(res=>{
+            if(res.status === 200) 
+            {
+                     console.log(res.data.user);
+                     setUserdata(res.data.user);
+               
+            }
+          });
+      }); 
+     
+     },[]);
+
   
      const logoutSubmit = (e) => {
         e.preventDefault();
@@ -92,11 +108,11 @@ export const UserNavbar = () => {
                     </div>
                  </div> */}
                  <Link to="#" className="hidden no-underline sm:inline-flex ml-5 text-black  focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center items-center mr-3">
-                   
+                     <span className="px-2">Welcome {userdata.firstname} </span>
                     <div className="flex-shrink-0 p-1 hover:bg-red-700 rounded-full">
-                           <img className="h-10 w-10 rounded-full" src="https://demo.themesberg.com/windster/images/users/neil-sims.png" alt="Neilimage"/>
-                      </div>
-                     <span> {localStorage.getItem('auth_name')}</span>
+                           <img className="h-10 w-10 rounded-full" src={`https://api.nationaltbconference.org/${userdata.avatar}`} alt={userdata.firstname}/>
+                     </div>
+                     
                  </Link>
                  <div className="bg-red-700 rounded-sm hover:bg-red-600 cursor-pointer">
                     <button type="button" onClick={logoutSubmit} className=" py-0.5 px-2 text-white text-center font-medium text-sm">Logout</button>
@@ -144,6 +160,15 @@ export const UserNavbar = () => {
                      </NavLink>
                   </li>
                   
+                  <li>
+                     <Link to="authorAbstracts" className="text-base no-underline text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group ">
+                     <svg className="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-red-600 transition duration-75"  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" >
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                  </svg>
+                        <span className="ml-3 flex-1 whitespace-nowrap">Abstracts</span>
+                        <span className="bg-gray-200 text-gray-800 ml-3 text-sm font-medium inline-flex items-center justify-center px-2 rounded-full"></span>
+                     </Link>
+                  </li> 
                   <li>
                      <Link to="submitabstract" className="text-base no-underline text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group ">
                         <svg className="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-red-600 transition duration-75" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">

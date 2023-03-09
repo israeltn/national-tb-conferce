@@ -77,13 +77,23 @@ const handleInput = (e) => {
      // Login...
      axios.post(`/api/store-abstract`, formData, config).then(res =>{ 
         console.log(res.data);
-        if(res.data.status === 200) {
+        if(res.data.status === 201) {
             setLoading(false); 
             setIsSubmitting(false);
            swal("Success",res.data.message, "success"); 
            navigate("/userdashboard");
            setError([]);
         }
+        
+        // else if(res.data.status === 409)
+        // {
+        //     swal("Error", res.data.message, "error");            
+        // }
+        
+        else if(res.data.status === 401)
+        {
+            swal("Error", res.data.message, "error");            
+        }        
         else if(res.data.status === 422)
         {
             swal("All Fields are mandetory", "", "error");
@@ -92,10 +102,10 @@ const handleInput = (e) => {
         else{
             setAbstract({...abstractInput, error_list: res.data.validation_errors});
         }
-       
+        setLoading(false); 
+        setIsSubmitting(false);
       });
-      setLoading(false); 
-      setIsSubmitting(false);
+      
     });
 
     }
@@ -165,14 +175,14 @@ if(loading)
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                             Surname
                         </label>
-                        <input type="text" name="surname"  onChange={handleInput} value={abstractInput.surname} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name"  placeholder="Surname"/>
+                        <input type="text" name="surname"  onChange={handleInput} value={abstractInput.surname} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name"  />
                         <span className="pb-2 mb-2 text-sm text-red-600">{errorlist.surname}</span>
                         </div>
                         <div className="w-full md:w-1/2 px-3">
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                             First Name
                         </label>
-                        <input type="text" name="firstname" onChange={handleInput} value={abstractInput.firstname} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name"  placeholder="First Name"/>
+                        <input type="text" name="firstname" onChange={handleInput} value={abstractInput.firstname} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name"  />
                         <span className="pb-2 mb-2 text-sm text-red-600">{errorlist.firstname}</span>
                         </div>
                     </div>
@@ -196,7 +206,7 @@ if(loading)
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-phone">
                             Phone
                         </label>
-                        <input type="tel" name="phone" onChange={handleInput} value={abstractInput.phone} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-phone"  placeholder="Tel"/>
+                        <input type="tel" name="phone" onChange={handleInput} value={abstractInput.phone} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-phone"  />
                         <span className="pb-2 mb-2 text-sm text-red-600">{errorlist.phone}</span>
                         </div>
                     </div>
@@ -205,7 +215,7 @@ if(loading)
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
                             Email
                         </label>
-                        <input type="email" name="email" onChange={handleInput} value={abstractInput.email} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password"   placeholder="Email"/>
+                        <input type="email" name="email" onChange={handleInput} value={abstractInput.email} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" />
                         <p className="text-gray-600 text-xs italic">Organization email or Personal email</p>
                         <span className="pb-2 mb-2 text-sm text-red-600">{errorlist.email}</span>
                         </div>
@@ -215,14 +225,14 @@ if(loading)
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                             Job Title
                         </label>
-                        <input type="text" name="jobtitle" onChange={handleInput} value={abstractInput.jobtitle} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name"   placeholder="Job Discription"/>
+                        <input type="text" name="jobtitle" onChange={handleInput} value={abstractInput.jobtitle} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name"  />
                          <span className="pb-2 mb-2 text-sm text-red-600">{errorlist.jobtitle}</span>
                         </div>
                         <div className="w-full md:w-1/2 px-3">
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-orgnization">
                             Organization/Institution/Company
                         </label>
-                        <input type="text" name="orgnization" onChange={handleInput} value={abstractInput.orgnization} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-orgnization"   placeholder="Company/Orgnization"/>
+                        <input type="text" name="orgnization" onChange={handleInput} value={abstractInput.orgnization} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-orgnization" />
                             <span className="pb-2 mb-2 text-sm text-red-600">{errorlist.orgnization}</span>
                         </div>
                     </div>
@@ -231,7 +241,7 @@ if(loading)
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
                             Work Address
                         </label>
-                        <input type="text" name="address" onChange={handleInput} value={abstractInput.address} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password"   placeholder="Address"/>
+                        <input type="text" name="address" onChange={handleInput} value={abstractInput.address} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password"   />
                         <span className="pb-2 mb-2 text-sm text-red-600">{errorlist.address}</span>
                         </div>
                     </div>
@@ -240,21 +250,21 @@ if(loading)
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
                             City
                         </label>
-                        <input type="text" name="city" onChange={handleInput} value={abstractInput.city} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city"   placeholder="FCT"/>
+                        <input type="text" name="city" onChange={handleInput} value={abstractInput.city} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city"   />
                             <span className="pb-2 mb-2 text-sm text-red-600">{errorlist.city}</span>
                         </div>
                         <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
                             State
                         </label>
-                        <input type="text" name="state" onChange={handleInput} value={abstractInput.state} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city"  placeholder="Abuja"/>
+                        <input type="text" name="state" onChange={handleInput} value={abstractInput.state} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city"  />
                         <span className="pb-2 mb-2 text-sm text-red-600">{errorlist.state}</span>
                         </div>
                         <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-zip">
                             Country
                         </label>
-                        <input type="text" name="country" onChange={handleInput} value={abstractInput.country} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-zip"   placeholder="Country"/>
+                        <input type="text" name="country" onChange={handleInput} value={abstractInput.country} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-zip"   />
                         <span className="pb-2 mb-2 text-sm text-red-600">{errorlist.country}</span>
                         </div>
                         <div className="flex flex-wrap -mx-3 mb-6 justify-center items-center">
@@ -275,7 +285,7 @@ if(loading)
                             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                                 Abstract Title
                             </label>
-                            <input type="text" name="abstract_title" onChange={handleInput} value={abstractInput.abstract_title} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name"   placeholder="Abstract Title"/>
+                            <input type="text" name="abstract_title" onChange={handleInput} value={abstractInput.abstract_title} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name"   />
                             <span className="pb-2 mb-2 text-sm text-red-600">{errorlist.abstract_title}</span>
                         </div>
                     </div>

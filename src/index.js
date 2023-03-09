@@ -7,6 +7,7 @@ import App from './App';
 
 import axios from 'axios';
 axios.defaults.baseURL = "http://localhost:9999";
+// axios.defaults.baseURL = "https://api.nationaltbconference.org";
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 axios.defaults.headers.post['Accept'] = 'application/json';
 
@@ -19,8 +20,7 @@ axios.interceptors.request.use(function (config){
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    
+  <React.StrictMode>    
     <App />
   </React.StrictMode>
 );

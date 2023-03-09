@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Login } from './pages/abstarct-portal/auth/Login';
 import { AdminElement } from './routes/AdminElement';
 import { UserElement } from './routes/UserElement';
+import { ReviewerElement } from './routes/ReviewerElement';
+
 import { Register } from './pages/abstarct-portal/auth/Register';
 // Landing Pages
 import { Home } from './pages/conference-pages/Home';
@@ -18,13 +20,27 @@ import { Registration } from './pages/conference-pages/Registration';
 
 // Abstarct-Portal
 import { Dashboard } from './pages/abstarct-portal/admin/dashboard/Dashboard'
-import { Users } from './pages/abstarct-portal/admin/dashboard/Users'
+import { Authors } from './pages/abstarct-portal/admin/dashboard/Authors'
+import { AssignAbstract } from './pages/abstarct-portal/admin/dashboard/AssignAbstract'
+import { AddUser } from './pages/abstarct-portal/admin/dashboard/AddUser'
 import { Abstracts } from './pages/abstarct-portal/admin/dashboard/Abstracts'
+import { ViewAbstract } from './pages/abstarct-portal/admin/dashboard/ViewAbstract'
 import { Participants } from './pages/abstarct-portal/admin/dashboard/Participants'
+import { AssignedAb } from './pages/abstarct-portal/admin/dashboard/AssignedAb'
+
+import { AbstractReviewers } from './pages/abstarct-portal/admin/dashboard/AbstractReviewers'
+
 
 import { UserDashboard } from './pages/abstarct-portal/admin/user/UserDashboard'
 import { SubmitAbstract } from './pages/abstarct-portal/admin/user/SubmitAbstract'
-// import { Abstracts } from './pages/abstarct-portal/admin/dashboard/Abstracts'
+import { AuthorAbstracts } from './pages/abstarct-portal/admin/user/AuthorAbstracts'
+
+
+import { ReviewerDashboard } from './pages/abstarct-portal/admin/reviwer/ReviewerDashboard'
+import { AsignedAbstracts } from './pages/abstarct-portal/admin/reviwer/AsignedAbstracts'
+import { EditAsignedAbstract } from './pages/abstarct-portal/admin/reviwer/EditAsignedAbstract'
+import { ApprovedAbstracts  } from './pages/abstarct-portal/admin/reviwer/ApprovedAbstracts '
+
 
 
 
@@ -87,15 +103,20 @@ function App() {
                     <Route path="/dashboard" element={
                       <AdminElement>
                            {/* <Layout /> */}
-                           <Route index element={<Dashboard />}/>                  
-                       
+                           <Route index element={<Dashboard />}/> 
                       </AdminElement>
                    
                     }> 
                     <Route index element={<Dashboard />}/>                  
-                        <Route path="users" element={<Users/>}/>
+                        <Route path="authors" element={<Authors/>}/>
                         <Route path="abstracts" element={<Abstracts/>}/>
-                        <Route path="participants" element={<Participants/>}/>
+                        <Route path='view-abstract/:id' element={<ViewAbstract />}/> 
+                        <Route path="delegates" element={<Participants/>}/>
+                        <Route path="abstractreviewers" element={<AbstractReviewers/>}/>
+                        <Route path="adduser" element={<AddUser/>}/>
+                        <Route path="assignabstract" element={<AssignAbstract/>}/>
+                        <Route path="assignedabstracts" element={<AssignedAb/>}/>
+                        
                        
                     </Route>
 
@@ -104,11 +125,23 @@ function App() {
                          <UserElement>                         
                         {/* <UserLayout /> */}
                         </UserElement>
-                        
                         }>
                         <Route index element={<UserDashboard/>}/>
+                        <Route path="authorAbstracts" element={<AuthorAbstracts />}/>
                         <Route path="submitabstract" element={<SubmitAbstract />}/>
                     </Route> 
+                    
+                            {/* Abstract Portal Routes reviwer */}
+                    <Route path="/reviewerdashboard" element={
+                         <ReviewerElement>                         
+                        {/* <UserLayout /> */}
+                        </ReviewerElement>
+                        }>
+                        <Route index element={<ReviewerDashboard/>}/>
+                        <Route path="asignedabstract" element={<AsignedAbstracts />}/>
+                        <Route path='edit-assigned-abstract/:id' element={<EditAsignedAbstract />}/> 
+                        <Route path='approved-abstracts' element={<ApprovedAbstracts />}/>
+                    </Route>
 
                           {/* NotFound */}
                     <Route path="*" element={<NotFound />}></Route>

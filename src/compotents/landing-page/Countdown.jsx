@@ -8,7 +8,7 @@ export const Countdown = ({timerDays,timerHours,timerMinutes,timerSeconds}) => {
         <img class="lg:h-[24rem] w-[38rem] lg:pt-8" src={require('../../assets/NTC.png')} alt="" />
         {/* <!-- Counter --> */}
         <div class="lg:absolute">
-          <h1 class="lg:mt-60 lg:ml-52 ml-24 pt-2 font-semibold text-md">Countdown</h1>
+          <h1 class="lg:mt-60 lg:ml-72 ml-24 pt-2 font-semibold text-md">Countdown</h1>
         </div>
         <div class="flex px-0 lg:absolute  lg:mt-80 mr-14 lg:ml-[17rem] pt-3  justify-center items-center ">
             

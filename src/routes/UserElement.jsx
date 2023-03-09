@@ -13,7 +13,7 @@ export const UserElement = () => {
            }
      });
   
-     const [isAdmin, setIsAdmin] = useState(false);
+     const [isUser, setIsAdmin] = useState(false);
      useEffect(() => {
           const storedRole = localStorage.getItem('auth_role');
           setIsAdmin(storedRole === 'user');
@@ -22,7 +22,7 @@ export const UserElement = () => {
         
     
           return(
-               isAdmin ?
+            isUser ?
                               
     <div>
     {/* NavBar  */}
@@ -38,10 +38,7 @@ export const UserElement = () => {
 
      <footer className="bg-white md:flex md:items-center md:justify-between shadow rounded-lg p-4 md:p-6 xl:p-8 my-6 mx-4">
               <ul className="flex items-center flex-wrap mb-6 md:mb-0">
-                 <li><NavLink to="#" className="text-sm no-underline font-normal text-gray-500 hover:underline mr-4 md:mr-6">Terms and conditions</NavLink></li>
-                 <li><NavLink to="#" className="text-sm no-underline font-normal text-gray-500 hover:underline mr-4 md:mr-6">Privacy Policy</NavLink></li>
-                 <li><NavLink to="#" className="text-sm no-underline font-normal text-gray-500 hover:underline mr-4 md:mr-6">Licensing</NavLink></li>
-                 <li><NavLink to="#" className="text-sm no-underline font-normal text-gray-500 hover:underline mr-4 md:mr-6">Cookie Policy</NavLink></li>
+               
                  <li><NavLink to="#" className="text-sm no-underline font-normal text-gray-500 hover:underline">Contact</NavLink></li>
               </ul>
               <div className="flex sm:justify-center space-x-6">
