@@ -10,8 +10,8 @@ export const Participants = () => {
     axios.get("/sanctum/csrf-cookie").then((response) => {
       axios.get(`/api/view-participants`).then((res) => {
         if (res.status === 200) {
-          console.log(res.data.participants);
-          setParticipants(res.data.participants);
+          // console.log(res.data.participants);
+          setParticipants(res.data.participants.data);
           setLoading(false);
         }
       });
@@ -50,9 +50,9 @@ export const Participants = () => {
           <td className="pl-6 py-4 whitespace-nowrap text-start">
             <div className="text-sm text-gray-900">{i + 1}</div>
           </td>
-          {/* <td className="px-6 py-4 whitespace-nowrap">
-                                     <div className="text-sm font-medium text-gray-900">{item.id}</div>
-                                </td> */}
+          <td className="px-6 py-4 whitespace-nowrap">
+                                     <div className="text-sm font-medium text-gray-900">00{item.id}</div>
+                                </td>
           <td className="px-6 py-4 whitespace-nowrap">
             <div className="flex items-center">
               <div className="">
@@ -123,6 +123,12 @@ export const Participants = () => {
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>
+                <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    S/N
+                  </th>
                   <th
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"

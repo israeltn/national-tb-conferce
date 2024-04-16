@@ -157,7 +157,7 @@ export const NavBar = () => {
                 <div className="flex-shrink-0 p-1 hover:bg-red-700 rounded-full">
                   <img
                     className="h-10 w-10 rounded-full"
-                    src={`https://api.nationaltbconference.org/${userdata.avatar}`}
+                    src={`https://api.nationaltbconference.org /${userdata.avatar}`}
                     alt={userdata.firstname}
                   />
                 </div>
@@ -380,31 +380,10 @@ export const NavBar = () => {
                       <span className="ml-3">Assigned Abstracts</span>
                     </Link>
                   </li>
+               
                   <li>
                     <Link
-                      to="#"
-                      className="text-base no-underline text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
-                    >
-                      <svg
-                        className="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-red-600 transition duration-75"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm-1 9v-1h5v2H5a1 1 0 01-1-1zm7 1h4a1 1 0 001-1v-1h-5v2zm0-4h5V8h-5v2zM9 8H4v2h5V8z"
-                          clip-rule="evenodd"
-                        ></path>
-                      </svg>
-                      <span className="ml-3 flex-1 whitespace-nowrap">
-                        Abstract Reviewed
-                      </span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      to="/dashboard/abstracts"
+                      to="/dashboard/approvedabstract"
                       className="text-base no-underline text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
                     >
                       <svg
@@ -423,7 +402,7 @@ export const NavBar = () => {
                     </Link>
                   </li>
                 </ul>
-                <div className="space-y- pt-2">
+                {/* <div className="space-y- pt-2">
                   <Link
                     to="#"
                     target="_blank"
@@ -443,7 +422,7 @@ export const NavBar = () => {
                     </svg>
                     <span className="ml-3">Feedback to Authors</span>
                   </Link>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

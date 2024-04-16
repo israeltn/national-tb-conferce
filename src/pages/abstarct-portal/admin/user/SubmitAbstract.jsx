@@ -130,7 +130,7 @@ if(loading)
 
   return (
      <div className="bg-white justify-center items-center mx-3 mt-12 ">
-    <div className="container m-auto px-6 space-y-8 md:px-12 lg:px-32">     
+    <div className="container m-auto px-6 py-6 space-y-8 md:px-12 lg:px-32">     
         <div className="py-2 px-4 mx-auto max-w-screen-xl text-center lg:pt-4 lg:px-6">
             <h2 className="text-2xl dark:bg-gray-900 font-bold md:text-4xl">Abstract Submission</h2>
         </div>
@@ -296,7 +296,7 @@ if(loading)
                         </label>
                         <div className="relative">
                             <select name="abstract_thematic" onChange={handleInput} value={abstractInput.abstract_thematic} className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-                            <option>Select</option>
+                            <option value="Not selected">Select</option>
                             <option  value="Track_A">Track A</option>
                             <option value="Track_B">Track B</option>
                             <option value="Track_C">Track C</option>

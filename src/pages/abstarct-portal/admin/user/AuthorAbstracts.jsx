@@ -7,21 +7,32 @@ import { Link } from 'react-router-dom';
     const [viewAbstract, setAbstracts]= useState([]);
     const [loading, setLoading]= useState(true);
 
+    const [currentPage, setCurrentPage] = useState([]);
+    const [lastPage, setLastPage] = useState([]);
+
  useEffect(() => {
   axios.get('/sanctum/csrf-cookie').then(response => {
-      axios.get(`/api/author_abstracts`).then(res=>{
+      axios.get(`/api/all_author_abstracts?page=${currentPage}`).then(res=>{
         if(res.status === 200) 
         {
-            // console.log(res.data.abstracts);
-            setAbstracts(res.data.abstracts);
+            console.log(res.data.abstracts);
+            setAbstracts(res.data.abstracts.data);
+            setLastPage(res.data.abstracts.last_page);
+            setCurrentPage(res.data.abstracts.current_page);
             setLoading(false);
         }
       });
   }); 
 
- },[]);
+ },[currentPage]);
 
+ const nextPage = () => {
+  setCurrentPage(currentPage + 1);
+};
 
+const prevPage = () => {
+  setCurrentPage(currentPage - 1);
+};
  var display_Abstractsdata ="";
  if(loading)
  {
@@ -47,38 +58,38 @@ import { Link } from 'react-router-dom';
         return (
           <tr key={i}>
             <td className="pl-6 py-4 whitespace-nowrap text-start">
-            <div className="text-sm text-gray-900">{i+1}</div>
+            <div className="text-xs text-gray-900">{i+1}</div>
             </td>
             <td className="pl-6 py-4 whitespace-nowrap text-start">
-            <div className="text-sm text-gray-900">NTBC-0{item.id}</div>
+            <div className="text-xs text-gray-900">NTBC-0{item.id}</div>
             </td>
 
                       <td className="px-4 w-1/2 py-4   text-start">
                     
                          <p className="w-1/2 text-start text-xs  text-gray-900"></p>
-                                <div className="text-start">
+                                <div className="text-start text-xs">
                                           <div className="text-xs font-medium text-start text-gray-900"></div>
-                                          {item.abstract_title}
+                                          <span>{item.abstract_title}</span>
                                 </div>
                          
                        </td>
                        <td className="px-6 py-4 whitespace-nowrap text-start ">
                           <p className="text-start">                         
-                                        <div className="text-start">
-                                          <div className="text-sm font-medium text-start text-gray-900"></div>
-                                          {item.orgnization}
+                                        <div className="text-start text-xs">
+                                          <div className=" font-medium text-start text-gray-900"></div>
+                                          <span>{item.orgnization}</span>
                                         </div>
                            </p>
                         </td>
                         
-                        <td className="px-6 py-4 whitespace-nowrap text-start text-sm text-gray-500">
+                        <td className="px-6 py-4 whitespace-nowrap text-start text-xs text-gray-500">
                            {item.abstract_thematic}
                         </td>
 
                         <td className="px-6 py-4 whitespace-nowrap text-start">
                          <div className="flex text-start">                         
                            <div className="text-start">
-                             <div className="text-sm font-medium text-start text-gray-900">{item.user.firstname} {item.user.lastname}</div>
+                             <div className="text-xs text-start text-gray-900">{item.user.firstname} {item.user.lastname}</div>
                              
                            </div>
                          </div>
@@ -94,8 +105,8 @@ import { Link } from 'react-router-dom';
                          </span>
                        </td>         
             
-            <td className="justify-center items-center text-center px-6 py-4 whitespace-nowrap text-sm font-medium">
-                         <Link to={`http://localhost:9999/${item.image}`} target="_blank" className="text-indigo-600 px-2 hover:text-indigo-900 ">
+            <td className="justify-center items-center text-center px-6 py-4 whitespace-nowrap text-xs font-medium">
+                         <Link to={`api.nationaltbconference.org ${item.image}`} target="_blank" className="text-indigo-600 px-2 hover:text-indigo-900 ">
                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className=" stroke-red-700 w-6 h-6">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
                             <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -192,6 +203,14 @@ import { Link } from 'react-router-dom';
                     {display_Abstractsdata}
                  </tbody>
                </table>
+               <div className="flex text-sm font-medium justify-center items-center space-x-4 m-2">
+              <button onClick={prevPage} disabled={currentPage === 1} className="bg-red-700 cursor-pointer disabled:bg-red-400 rounded-sm px-2 text-white">
+                Previous
+              </button>
+              <button onClick={nextPage} disabled={currentPage === lastPage} className="bg-red-700 cursor-pointer disabled:bg-red-400 rounded-sm px-2 text-white">
+                Next
+              </button>
+            </div>
              </div>
            </div>
          </div>

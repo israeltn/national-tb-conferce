@@ -2,8 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import axios from "axios";
 import swal from "sweetalert";
+import { baseURL } from "../../../../baseulr";
+
 
 export const ViewAbstract = (props) => {
+  const url= baseURL;
   const navigate = useNavigate();
  const [abstractInput, setAbstract] = useState();
   const [loading, setLoading] = useState(true);
@@ -57,7 +60,7 @@ export const ViewAbstract = (props) => {
 
   return (
     <div className="bg-white justify-center items-center mx-3 mt-12 ">
-      <div className="container m-auto px-6 space-y-4 md:px-12 lg:px-32">
+      <div className="container m-auto px-6 py-6   space-y-4 md:px-12 lg:px-32">
         <div className="py-2 px-4 mx-auto max-w-screen-xl text-center lg:pt-4 lg:px-6">
           <h2 className="text-2xl dark:bg-gray-900 font-bold md:text-xl">
             Abstract Details
@@ -72,14 +75,14 @@ export const ViewAbstract = (props) => {
               for="grid-first-name"
             >
               <Link
-                to={`http://localhost:9999/${abstractInput.image}`}
+                to={`${url}/${abstractInput.image}`}
                 target="_blank"
                 className="text-indigo-500 hover:text-green-700 "
               >
-                <span>View Uploaded File</span>
+                <span>View Submited Abstract</span>
               </Link>
               <Link
-                to={`http://localhost:9999/${abstractInput.image}`}
+                to={`${url}/${abstractInput.image}`}
                 target="_blank"
                 className="text-indigo-600 "
               >
@@ -131,7 +134,7 @@ export const ViewAbstract = (props) => {
                     Prefix
                   </label>
                   <div className="">
-                    <p className=" w-full font-medium text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <p className=" w-full text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   
                       {abstractInput.prefex}
                     </p>
@@ -145,7 +148,7 @@ export const ViewAbstract = (props) => {
                 >
                   Surname
                 </label>
-                <p className=" w-full font-medium text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <p className=" w-full  text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   
                   {abstractInput.surname}
                 </p>
@@ -157,7 +160,7 @@ export const ViewAbstract = (props) => {
                 >
                   First Name
                 </label>
-                <p className=" w-full font-medium text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <p className=" w-full text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   {" "}
                   {abstractInput.firstname}{" "}
                 </p>
@@ -174,7 +177,7 @@ export const ViewAbstract = (props) => {
                 >
                   Sex
                 </label>
-                <p className=" w-full font-medium text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <p className=" w-full text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   {" "}
                   {abstractInput.gender}{" "}
                 </p>
@@ -188,7 +191,7 @@ export const ViewAbstract = (props) => {
                 >
                   Phone
                 </label>
-                <p className=" w-full font-medium text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <p className=" w-full text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   {" "}
                   {abstractInput.phone}{" "}
                 </p>
@@ -200,7 +203,7 @@ export const ViewAbstract = (props) => {
                 >
                   Email
                 </label>
-                <p className=" w-full font-medium text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <p className=" w-full text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   {" "}
                   {abstractInput.email}{" "}
                 </p>
@@ -217,7 +220,7 @@ export const ViewAbstract = (props) => {
                 >
                   Job Title
                 </label>
-                <p className=" w-full font-medium text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <p className=" w-full text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   {" "}
                   {abstractInput.jobtitle}{" "}
                 </p>
@@ -229,7 +232,7 @@ export const ViewAbstract = (props) => {
                 >
                   Organization/Institution/Company
                 </label>
-                <p className=" w-full font-medium text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <p className=" w-full text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   {" "}
                   {abstractInput.orgnization}{" "}
                 </p>
@@ -241,7 +244,7 @@ export const ViewAbstract = (props) => {
                 >
                   Work Address
                 </label>
-                <p className=" w-full font-medium text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <p className=" w-full text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   {" "}
                   {abstractInput.address}{" "}
                 </p>
@@ -258,7 +261,7 @@ export const ViewAbstract = (props) => {
                 >
                   City
                 </label>
-                <p className=" w-full font-medium text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <p className=" w-full text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   {" "}
                   {abstractInput.city}{" "}
                 </p>
@@ -270,7 +273,7 @@ export const ViewAbstract = (props) => {
                 >
                   State
                 </label>
-                <p className=" w-full font-medium text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <p className=" w-full text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   {" "}
                   {abstractInput.state}{" "}
                 </p>
@@ -282,7 +285,7 @@ export const ViewAbstract = (props) => {
                 >
                   Country
                 </label>
-                <p className=" w-full font-medium text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <p className=" w-full text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   {" "}
                   {abstractInput.country}{" "}
                 </p>
@@ -309,7 +312,7 @@ export const ViewAbstract = (props) => {
                 >
                   Abstract Title
                 </label>
-                <p className=" w-full font-medium text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <p className=" w-full text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   {" "}
                   {abstractInput.abstract_title}{" "}
                 </p>
@@ -322,7 +325,7 @@ export const ViewAbstract = (props) => {
                 >
                   Abstract Thematic Area
                 </label>
-                <p className=" w-full font-medium text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <p className=" w-full text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   {" "}
                   {abstractInput.abstract_thematic}{" "}
                 </p>
@@ -338,7 +341,7 @@ export const ViewAbstract = (props) => {
                 >
                   Co-Author
                 </label>
-                <p className=" w-full font-medium text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <p className=" w-full text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   {" "}
                   {abstractInput.co_author}{" "}
                 </p>
@@ -351,7 +354,7 @@ export const ViewAbstract = (props) => {
                 >
                   Other Information
                 </label>
-                <p className=" w-full font-medium text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <p className=" w-full text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   {" "}
                   {abstractInput.information}{" "}
                 </p>

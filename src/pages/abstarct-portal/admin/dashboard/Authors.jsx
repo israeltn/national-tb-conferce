@@ -5,6 +5,7 @@ import axios from "axios";
 export const Authors = () => {
   const [authors, setAuthors] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchInput, setSearchInput] = useState(''); // Step 1: Add state for search input
 
   useEffect(() => {
     axios.get("/sanctum/csrf-cookie").then((response) => {
@@ -17,6 +18,12 @@ export const Authors = () => {
       });
     });
   }, []);
+
+  const filteredAuthors= authors.filter(item =>
+    Object.values(item).some(field =>
+      typeof field === "string" && field.toLowerCase().includes(searchInput.toLowerCase())
+    )
+  );
 
   var display_Authorsdata = "";
   if (loading) {
@@ -44,7 +51,7 @@ export const Authors = () => {
       </div>
     );
   } else {
-    display_Authorsdata = authors.map((item, i) => {
+    display_Authorsdata = filteredAuthors.map((item, i) => {
       return (
         <tr key={i}>
           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
@@ -55,7 +62,7 @@ export const Authors = () => {
               <div className="flex-shrink-0 w-10 h-10">
                 <img
                   className="w-full h-full rounded-full"
-                  src={`https://api.nationaltbconference.org/${item.avatar}`}
+                  src={`https://api.nationaltbconference.org /${item.avatar}`}
                   alt=""
                 />
               </div>
@@ -97,10 +104,16 @@ export const Authors = () => {
             Authors
           </h2>
         </div>
-        {/* <div class="justify-end items-end pt-2 sm:pt-4 md:pt-4 lg:pt-5 ">
-                                         <button class="justify-center items-center text-center bg-red-700 hover:bg-red-600 px-2 py-1 md:text-md text-sm rounded-md text-white md:font-semibold tracking-wide cursor-pointer">Add User</button>
-                                         
-                                    </div> */}
+        <div className=" flex  items-end pt-2 sm:pt-4 md:pt-4 lg:pt-5 ">
+          <input
+            type="text"
+            placeholder="Search Authors..."
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
+            className="border-2 border-gray-300 bg-white h-8 px-5 pr-16 rounded-lg text-sm focus:outline-none"
+          />
+        </div>
+       
       </div>
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">

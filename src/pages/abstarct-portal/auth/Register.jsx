@@ -111,7 +111,7 @@ export const Register = () => {
             alt="Windster Logo"
           />
         </Link>
-        <div className="justify-center mb-3 items-center text-gray-600 text-2xl text-center w-auto font-bold">
+        <div className="justify-center uppercase mb-3 items-center text-gray-600 text-2xl text-center w-auto font-bold">
           Abstract Portal
         </div>
 

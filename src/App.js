@@ -4,10 +4,16 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // import { UserLayout } from './compotents/userlayout/UserLayout';
 import { Login } from './pages/abstarct-portal/auth/Login';
 import { AdminElement } from './routes/AdminElement';
+import { BoardElement } from './routes/BoardElement';
 import { UserElement } from './routes/UserElement';
 import { ReviewerElement } from './routes/ReviewerElement';
 
 import { Register } from './pages/abstarct-portal/auth/Register';
+// Landing Pages
+import { Resetpassword } from './pages/abstarct-portal/auth/Resetpassword';
+import { Changepassword } from './pages/abstarct-portal/auth/Changepassword';
+
+
 // Landing Pages
 import { Home } from './pages/conference-pages/Home';
 import { About } from './pages/conference-pages/About';
@@ -27,13 +33,27 @@ import { Abstracts } from './pages/abstarct-portal/admin/dashboard/Abstracts'
 import { ViewAbstract } from './pages/abstarct-portal/admin/dashboard/ViewAbstract'
 import { Participants } from './pages/abstarct-portal/admin/dashboard/Participants'
 import { AssignedAb } from './pages/abstarct-portal/admin/dashboard/AssignedAb'
-
+import { AllApprovedAbstracts } from './pages/abstarct-portal/admin/dashboard/AllApprovedAbstracts'
+import { ViewAssignedAbstract } from './pages/abstarct-portal/admin/dashboard/ViewAssignedAbstract'
 import { AbstractReviewers } from './pages/abstarct-portal/admin/dashboard/AbstractReviewers'
+
+// Board Abstarct-Portal
+import { BoardDashboard } from './pages/abstarct-portal/board/dashboard/BoardDashboard'
+import { BoardAuthors } from './pages/abstarct-portal/board/dashboard/BoardAuthors'
+// import { BoardAssignAbstract } from './pages/abstarct-portal/board/dashboard/BoardAssignAbstract'
+import { BoardAbstracts } from './pages/abstarct-portal/board/dashboard/BoardAbstracts'
+import { BoardViewAbstract } from './pages/abstarct-portal/board/dashboard/BoardViewAbstract'
+import { BoardParticipants } from './pages/abstarct-portal/board/dashboard/BoardParticipants'
+import { BoardAllApprovedAbstracts } from './pages/abstarct-portal/board/dashboard/BoardAllApprovedAbstracts'
+import { BoardViewAssignedAbstract } from './pages/abstarct-portal/board/dashboard/BoardViewAssignedAbstract'
+import { BoardAbstractReviewers } from './pages/abstarct-portal/board/dashboard/BoardAbstractReviewers'
 
 
 import { UserDashboard } from './pages/abstarct-portal/admin/user/UserDashboard'
 import { SubmitAbstract } from './pages/abstarct-portal/admin/user/SubmitAbstract'
 import { AuthorAbstracts } from './pages/abstarct-portal/admin/user/AuthorAbstracts'
+
+
 
 
 import { ReviewerDashboard } from './pages/abstarct-portal/admin/reviwer/ReviewerDashboard'
@@ -53,7 +73,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 
 // import axios from 'axios';
-// axios.defaults.baseURL = "https://api.nationaltbconference.org/";
+// axios.defaults.baseURL = "https://api.nationaltbconference.org /";
 // axios.defaults.headers.post['Content-Type'] = 'application/json';
 // axios.defaults.headers.post['Accept'] = 'application/json';
 
@@ -79,6 +99,8 @@ function App() {
                             {/*Auth Routes */}
                       <Route path="login" element={<Login />}></Route>                     
                       <Route path="register" element={<Register />}></Route>
+                      <Route path="resetpassword" element={<Resetpassword />}></Route>
+                      <Route path="Changepassword" element={<Changepassword />}></Route>
 
                       {/* <Route path="login" element={<Login />}>
                           
@@ -115,6 +137,36 @@ function App() {
                         <Route path="abstractreviewers" element={<AbstractReviewers/>}/>
                         <Route path="adduser" element={<AddUser/>}/>
                         <Route path="assignabstract" element={<AssignAbstract/>}/>
+                        <Route path="approvedabstract" element={< AllApprovedAbstracts/>}/>
+                        <Route path='view-approved-abstract/:id' element={<ViewAssignedAbstract />}/> 
+                        
+                       
+                        <Route path="assignedabstracts" element={<AssignedAb/>}/>
+                        
+                       
+                    </Route>
+
+
+                     
+                        {/* Abstract Portal Routes Board Admin */}
+                        <Route path="/boarddashboard" element={
+                      <BoardElement>
+                           {/* <Layout /> */}
+                           <Route index element={<BoardDashboard />}/> 
+                      </BoardElement>
+                   
+                    }> 
+                    <Route index element={<BoardDashboard />}/>                  
+                        <Route path="authors" element={<BoardAuthors/>}/>
+                        <Route path="abstracts" element={<BoardAbstracts/>}/>
+                        <Route path='view-abstract/:id' element={<BoardViewAbstract />}/> 
+                        <Route path="delegates" element={<BoardParticipants/>}/>
+                        <Route path="abstractreviewers" element={<BoardAbstractReviewers/>}/>                        
+                        {/* <Route path="assignabstract" element={<BoardAssignAbstract/>}/> */}
+                        <Route path="approvedabstract" element={< BoardAllApprovedAbstracts/>}/>
+                        <Route path='view-approved-abstract/:id' element={<BoardViewAssignedAbstract />}/> 
+                        
+                       
                         <Route path="assignedabstracts" element={<AssignedAb/>}/>
                         
                        

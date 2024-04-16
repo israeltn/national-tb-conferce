@@ -17,7 +17,7 @@ export const Header = () => {
         <div className="items-center justify-center">
           <img
             className="h-auto md:w-96 w-60 "
-            src={require("../../assets/NationalTBLogo.jpg")}
+            src={require("../../assets/logo.jpg")}
             alt=""
           />
         </div>
@@ -73,13 +73,13 @@ export const Header = () => {
           ${navbar ? "block" : "hidden"}`}
       >
         <nav className="flex  absolute items-center justify-end py-2 md:py-1 text-gray-50 bg-red-800 ">
-          <ul className="md:flex w-[40rem] md:w-auto items-center lg:space-x-4 md:space-x-1.5 text-xs md:text-xs lg:text-sm font-bold">
+          <ul className="md:flex w-[40rem] md:w-auto items-center lg:space-x-4 md:space-x-1.5 text-[13px] md:text-[13px] lg:text-[20] font-bold">
             <li className="py-1.5 px-2">
               <NavLink
                 to="/"
                 className={({ isActive }) => {
                   return (
-                    "hover:text-white hover:bg-red-700 py-1.5 px-2  " +
+                    "hover:text-white  hover:bg-red-700 py-1.5 px-2  " +
                     (!isActive
                       ? "cursor-pointer  transition-transform duration-300 ease-out rounded-sm"
                       : "bg-red-700")

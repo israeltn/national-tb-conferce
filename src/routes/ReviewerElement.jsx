@@ -68,7 +68,7 @@ export const ReviewerElement = () => {
               </div>
      </footer>
            <p className="text-center text-sm text-gray-500 my-10">
-              &copy; 2023 <NavLink to="#" className="hover:underline" target="_blank">National TB Conference</NavLink>. All rights reserved.
+              &copy; 2024 <NavLink to="#" className="hover:underline" target="_blank">National TB Conference</NavLink>. All rights reserved.
            </p>
         </div>
      </div>

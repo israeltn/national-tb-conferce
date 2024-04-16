@@ -157,7 +157,7 @@ export const ReviewerNavbar = () => {
                 <div className="flex-shrink-0 p-1 hover:bg-red-700 rounded-full">
                   <img
                     className="h-10 w-10 rounded-full"
-                    src={`https://api.nationaltbconference.org/${userdata.avatar}`}
+                    src={`https://api.nationaltbconference.org /${userdata.avatar}`}
                     alt={userdata.firstname}
                   />
                 </div>

@@ -116,14 +116,14 @@ export const EditAsignedAbstract = (props) => {
               for="grid-first-name"
             >
               <Link
-                to={`http://localhost:9999/${abstractInput.abstractpost.image}`}
+                to={`api.nationaltbconference.org ${abstractInput.abstractpost.image}`}
                 target="_blank"
                 className="text-indigo-500 hover:text-green-700 "
               >
                 <span>View Uploaded File</span>
               </Link>
               <Link
-                to={`http://localhost:9999/${abstractInput.abstractpost.image}`}
+                to={`api.nationaltbconference.org ${abstractInput.abstractpost.image}`}
                 target="_blank"
                 className="text-indigo-600 "
               >

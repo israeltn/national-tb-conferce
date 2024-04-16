@@ -65,7 +65,7 @@ export const ReviewerDashboard = () => {
                 <div class="flex justify-center px-5  -mt-12">
                   <img
                     class="h-32 w-32 bg-white p-2 rounded-full"
-                    src={`https://api.nationaltbconference.org/${userdata.avatar}`}
+                    src={`https://api.nationaltbconference.org /${userdata.avatar}`}
                     alt=""
                   />
                 </div>

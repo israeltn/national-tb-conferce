@@ -5,7 +5,9 @@ import axios from 'axios';
 export const UserDashboard = () => {
 
     const [userdata, setUserdata] = useState([]);
+    const [abstractdata, setAbstracts] = useState([]);
     const [loading, setLoading]= useState(true);
+    
 
 
     useEffect(() => {
@@ -14,15 +16,31 @@ export const UserDashboard = () => {
             axios.get(`/api/user-profile`).then(res=>{
               if(res.status === 200) 
               {
-                       console.log(res.data.user);
+                      //  console.log(res.data.user);
                        setUserdata(res.data.user);
                        setLoading(false);
                  
               }
             });
         }); 
+        
        
        },[]);
+
+       useEffect(() => {
+          axios.get('/sanctum/csrf-cookie').then(response => {
+              axios.get(`/api/author_abstracts`).then(res=>{
+                if(res.status === 200) 
+                {
+                     console.log(res.data.abstracts);
+                    setAbstracts(res.data.abstracts);
+                   
+                    setLoading(false);
+                }
+              });
+          }); 
+
+        },[]);
        if(loading)
        {
          return <div className='text-center max-w-screen-xl max-h-screen-[72] mx-auto justify-center items-center '>
@@ -58,14 +76,14 @@ export const UserDashboard = () => {
                         <img src= {require('../../../../assets/dashboard.png')} className="mr-2  w-full" alt="Windster Logo"/>
                         </div>
                         <div class="flex justify-center px-5  -mt-12">
-                            <img class="h-32 w-32 bg-white p-2 rounded-full" src={`https://api.nationaltbconference.org/${userdata.avatar}`} alt="" />
+                            <img class="h-32 w-32 bg-white p-2 rounded-full" src={`https://api.nationaltbconference.org /${userdata.avatar}`} alt="" />
 
                         </div>
                         <div class=" ">
                             <div class="text-center px-14">
                                 <h2 class="text-gray-800 text-3xl font-bold">{userdata.firstname} {userdata.lastname}</h2>
-                                <p class="text-gray-400 mt-2 hover:text-blue-500">@Abstract Author</p>
-                                <p class="mt-2 text-gray-500 text-sm">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                                {/* <p class="text-gray-400 mt-2 hover:text-blue-500">@Abstract Author</p>
+                                <p class="mt-2 text-gray-500 text-sm">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p> */}
                             </div>
                             <hr class="mt-6" />
                             <div class="flex justify-center items-center  bg-gray-50 ">
@@ -80,17 +98,35 @@ export const UserDashboard = () => {
                     </div>
                   </div>
                   <div className="shadow bg-white rounded-lg p-4 sm:p-6 xl:p-8 ">
-                     <div className="block items-center justify-start space-y-4">
-                        <div className="flex-shrink-0">
-                           <span className="text-2xl sm:text-xl leading-none font-bold text-red-700">Abstract Title:</span>
-                           <p className="text-sm font-normal text-gray-600">Total Conference Participants</p>
-                        </div>
-                        <div className="flex-shrink-0">
-                           <span className="text-2xl sm:text-lg leading-none font-bold text-red-700">Abstract Thematic Area:</span>
-                           <p className=" font-normal text-sm text-gray-600">Patient Advocacy and Community Engagement in TB Control</p>
-                        </div>
-                       
-                     </div>
+                                    <div className='flex justify-around items-center '>
+                                      <span className='uppercase font-bold'>latest Abstarct</span>
+                                    </div>
+                               {abstractdata.length > 0 ? (
+                                      abstractdata.map((abstract, i) => (
+                                          <div key={i} className="block items-center justify-start space-y-1 mb-4">
+                                              <div className="flex-shrink-0 text-sm">
+                                                  <span className="text-base leading-none font-bold text-red-700"> 
+                                                  <span className='text-sm text-black'>{i + 1}.</span> 
+                                                  Title: 
+                                                  <span className='text-sm text-black font-normal'> {abstract.abstract_title}</span> </span>
+                                                  
+                                              </div>
+                                              <div className="flex-shrink-0">
+                                                  <span className="text-sm leading-none font-bold text-red-700 px-3">Thematic Area: <span className='text-sm text-black font-normal'>{abstract.abstract_thematic}</span> </span>
+                                                  
+                                              </div>
+                                              {/* Add other properties you want to display */}
+                                          </div>
+                                      ))
+                                  ) : (
+                                      <div className="flex justify-around items-center mt-12">
+                                          <p className="text-sm ">No abstracts found sumbit a new abstract.</p>
+                                      </div>
+                                  )}
+
+
+
+                 
                   </div>
                   
                </div>            

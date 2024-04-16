@@ -6,7 +6,7 @@ export const Sponsorship = () => {
          <div className="py-12 bg-white">
     <div className="container m-auto px-6 space-y-8 md:px-12 lg:px-56">
         <div className="m-auto text-center lg:w-7/12">
-            <h2 className="text-2xl text-gray-700 font-bold md:text-4xl">Sponsorship & Advert</h2>
+            <h2 className="text-2xl uppercase text-gray-700 font-bold md:text-4xl">Sponsorship & Advert</h2>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 items-center">
                 <div className="">

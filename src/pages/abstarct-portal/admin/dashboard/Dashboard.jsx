@@ -30,7 +30,7 @@ export const Dashboard = () => {
       axios.get(`/api/view-participants`).then((res) => {
         if (res.status === 200) {
           //  console.log(res.data.participants);
-          setParticipants(res.data.participants);
+          setParticipants(res.data.participants.data);
           setLoading(false);
         }
       });
@@ -70,6 +70,9 @@ export const Dashboard = () => {
             <div className="text-sm font-medium text-gray-900">{i + 1}</div>
           </td>
           <td className="px-6 py-4 whitespace-nowrap">
+                                     <div className="text-sm font-medium text-gray-900">00{item.id}</div>
+                                </td>
+          <td className="px-6 py-4 whitespace-nowrap">
             <div className="flex items-center">
               <div className="items-center">
                 <div className="text-sm font-medium text-gray-900">
@@ -106,9 +109,9 @@ export const Dashboard = () => {
   return (
     <div>
       <main>
-        <div className="pt-6 px-4 bg-gray-100">
+        <div className="pt-10 px-10 bg-gray-100">
           <div className="mt-4 w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-            <div className="shadow bg-white rounded-lg p-4 sm:p-6 xl:p-8 ">
+            <div className=" h-[90px] shadow bg-white rounded-lg p-4">
               <div className="flex justify-between space-x-4 items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -126,14 +129,14 @@ export const Dashboard = () => {
                 </svg>
 
                 <div className="flex-shrink-0">
-                  <span className="text-2xl sm:text-3xl leading-none font-bold text-black">
+                  <span className=" text-sm leading-none font-bold text-black">
                     {totalauthors}
                   </span>
-                  <h3 className="text-base font-normal text-gray-400">
+                  <h3 className="text-sm font-normal text-gray-400">
                     Total Abstract Authors{" "}
                   </h3>
                 </div>
-                <div className="ml-1 w-auto flex items-center justify-end flex-1 text-red-500 text-base font-bold">
+                <div className="ml-1 w-auto flex items-center justify-end flex-1 text-red-500 text-sm font-bold">
                   {totalauthors === 0 ? (
                     <>0% </>
                   ) : <>0%</> || totalauthors > 0 ? (
@@ -164,7 +167,7 @@ export const Dashboard = () => {
                 </div>
               </div>
             </div>
-            <div className="shadow bg-white rounded-lg p-4 sm:p-6 xl:p-8 ">
+            <div className="h-[90px] shadow bg-white rounded-lg p-4 sm:p-6 xl:p-8 ">
               <div className="flex items-center justify-between space-x-4">
                 <svg
                   class="w-14 h-14 stroke-yellow-400 text-gray-500 flex-shrink-0 group-hover:text-red-600 transition duration-75"
@@ -181,15 +184,15 @@ export const Dashboard = () => {
                   />
                 </svg>
                 <div className="flex-shrink-0">
-                  <span className="text-2xl sm:text-3xl leading-none font-bold text-black">
+                  <span className=" text-sm leading-none font-bold text-black">
                     {totalabstracts}
                   </span>
-                  <h3 className="text-base font-normal text-gray-400">
+                  <h3 className="text-sm font-normal text-gray-400">
                     {" "}
                     Total Abstract Submitted
                   </h3>
                 </div>
-                <div className="ml-5 w-0 flex items-center justify-end flex-1 text-pink-500 text-base font-bold ">
+                <div className="ml-5 w-0 flex items-center justify-end flex-1 text-pink-500 text-sm font-bold ">
                   {totalabstracts === 0 ? (
                     <>0% </>
                   ) : <>0%</> || totalabstracts > 0 ? (
@@ -221,13 +224,13 @@ export const Dashboard = () => {
                 </div>
               </div>
             </div>
-            <div className="shadow bg-white  rounded-lg p-4 sm:p-6 xl:p-8 ">
+            <div className="h-[90px] shadow bg-white  rounded-lg p-4 sm:p-6 xl:p-4 ">
               <div className="flex items-cente justify-between space-x-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
-                  stroke-width="1.5"
+                  stroke-width="1.2"
                   stroke="currentColor"
                   class="w-14 h-14 stroke-violet-600"
                 >
@@ -239,14 +242,14 @@ export const Dashboard = () => {
                 </svg>
 
                 <div className="flex-shrink-0">
-                  <span className="text-2xl sm:text-3xl leading-none font-bold text-black">
+                  <span className=" text-sm leading-none font-bold text-black">
                     {totalparticipant}
                   </span>
-                  <h3 className="text-base font-normal text-gray-400">
+                  <h3 className="text-sm font-normal text-gray-400">
                     Total Conference Delegates
                   </h3>
                 </div>
-                <div className="ml-5 w-0 flex items-center justify-end flex-1 text-green-600 text-base font-bold">
+                <div className="ml-5 w-0 flex items-center justify-end flex-1 text-green-600 text-sm font-bold">
                   {totalparticipant === 0 ? (
                     <>0% </>
                   ) : <>0%</> || totalparticipant > 0 ? (
@@ -279,7 +282,7 @@ export const Dashboard = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+          <div className="grid grid-cols-1 ">
             <div className="my-1">
               <div className="flex mx-3 flex-col">
                 <div class="md:flex items-center justify-between mx-4 mt-2">
@@ -295,6 +298,12 @@ export const Dashboard = () => {
                       <table className="min-w-full divide-y divide-gray-200">
                         <thead className="bg-gray-50">
                           <tr>
+                          <th
+                              scope="col"
+                              className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                            >
+                              S/N
+                            </th>
                             <th
                               scope="col"
                               className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
@@ -337,7 +346,10 @@ export const Dashboard = () => {
                 </div>
               </div>
             </div>
-            <div className="flex mx-3 flex-col">
+            
+          </div>
+
+            {/* <div className="flex mx-3 flex-col">
               <div class="md:flex items-center justify-between mx-4 mt-2">
                 <div className="flex md:justify-start md:items-start text-center">
                   <h2 class="text-gray-600 mt-2 my-4 md:text-xl text-sm font-semibold text-center">
@@ -500,8 +512,7 @@ export const Dashboard = () => {
                   </table>
                 </div>
               </div>
-            </div>
-          </div>
+            </div> */}
         </div>
       </main>
     </div>

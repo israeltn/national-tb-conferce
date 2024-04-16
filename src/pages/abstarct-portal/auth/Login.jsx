@@ -59,7 +59,12 @@ export const Login = () => {
             setLoading(false);
             swal("Success", res.data.message, "success");
             navigate("/dashboard");
-          } if (res.data.role === "reviewer") {
+          } 
+          if (res.data.role === "board") {
+            setLoading(false);
+            swal("Success", res.data.message, "success");
+            navigate("/boarddashboard");
+          }if (res.data.role === "reviewer") {
             setLoading(false);
             swal("Success", res.data.message, "success");
             navigate("/reviewerdashboard");
@@ -145,7 +150,7 @@ export const Login = () => {
                 alt="Windster Logo"
               />
             </NavLink>
-            <div className="justify-center mb-3 items-center text-gray-600 text-2xl text-center w-auto font-bold">
+            <div className="justify-center uppercase mb-3 items-center text-gray-600 text-2xl text-center w-auto font-bold">
               Abstract Portal
             </div>
             <div className="justify-center items-center text-center text-red-600 w-auto font-bold">
@@ -234,7 +239,7 @@ export const Login = () => {
                           d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"
                         />
                       </svg>
-                      <span className="inline-block ml-1">Forgot Password</span>
+                      <NavLink to="/resetpassword"><span className="inline-block ml-1">Forgot Password</span></NavLink>
                     </button>
                   </div>
                   <div className="text-center sm:text-right whitespace-nowrap">

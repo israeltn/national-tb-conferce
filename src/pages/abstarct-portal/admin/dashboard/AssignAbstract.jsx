@@ -122,7 +122,7 @@ if(loading)
       
         <div className='justify-center items-center text-gray-600 text-2xl text-center w-auto font-bold'>Assign Abstract</div> 
       
-      <div className="bg-white shadow w-full rounded-md">
+      <div className="bg-white shadow w-full rounded-md m-10">
         <form onSubmit={Submit}>
             <div className="px-5 py-7 justify-center item-center">              
 

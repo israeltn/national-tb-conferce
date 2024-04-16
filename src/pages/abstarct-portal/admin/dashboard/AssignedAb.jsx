@@ -65,9 +65,9 @@ export const AssignedAb = () => {
           <td className="pl-6 py-4 whitespace-nowrap text-start">
             <div className="text-sm text-gray-900">{i + 1}</div>
           </td>
-          <td className="pl-6 py-4 whitespace-nowrap text-start">
+          {/* <td className="pl-6 py-4 whitespace-nowrap text-start">
             <div className="text-sm text-gray-900">{item.id}</div>
-          </td>
+          </td> */}
 
           <td className="px-4 w-1/2 py-4   text-start">
             <p className="w-1/2 text-start text-xs  text-gray-900"></p>
@@ -93,7 +93,7 @@ export const AssignedAb = () => {
 
           <td className="px-6 py-4 whitespace-nowrap text-start">
             <span
-              className="px-2 inline-flex text-xs leading-5
+              className="px-2 uppercase inline-flex text-xs leading-5
                          font-semibold rounded-full bg-red-100 text-red-800"
             >
               {item.status}
@@ -102,7 +102,7 @@ export const AssignedAb = () => {
 
           <td className="justify-center items-center text-center px-6 py-4 whitespace-nowrap text-sm font-medium">
             <Link
-              to={`https://api.nationaltbconference.org/${item.abstractpost.image}`}
+              to={`https://api.nationaltbconference.org /${item.abstractpost.image}`}
               target="_blank"
               className="text-indigo-600 px-2 hover:text-indigo-900 "
             >
@@ -147,8 +147,8 @@ export const AssignedAb = () => {
     <div className="flex mx-3 mt-2 flex-col">
       <div className="md:flex items-center justify-between mx-4 my-2 sm:mt-2">
         <div className="flex md:justify-start md:items-start text-center">
-          <h2 className="text-gray-600 mt-2 lg:mt-8 md:text-xl text-sm font-semibold text-center">
-            Abstracts
+          <h2 className="text-red-600 mt-2 lg:mt-8 md:text-xl text-sm font-semibold text-center">
+            Assigned Abstracts
           </h2>
         </div>
         <div className="justify-end items-end pt-2 sm:pt-4 md:pt-4 lg:pt-5 ">
@@ -167,12 +167,12 @@ export const AssignedAb = () => {
                   >
                     S/N
                   </th>
-                  <th
+                  {/* <th
                     scope="col"
                     className="pl-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
                     ID
-                  </th>
+                  </th> */}
                   <th
                     scope="col"
                     className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
@@ -211,11 +211,11 @@ export const AssignedAb = () => {
                 {display_Abstractsdata}
               </tbody>
             </table>
-            <div className="flex font-medium justify-center items-center space-x-4 m-2">
-              <button onClick={prevPage} disabled={currentPage === 1} className="bg-red-700 disabled:bg-red-400 rounded-sm px-2 text-white">
+            <div className="flex text-sm font-medium justify-center items-center space-x-4 m-2">
+              <button onClick={prevPage} disabled={currentPage === 1} className="bg-red-700 cursor-pointer disabled:bg-red-400 rounded-sm px-2 text-white">
                 Previous
               </button>
-              <button onClick={nextPage} disabled={currentPage === lastPage} className="bg-red-700 disabled:bg-red-400 rounded-sm px-2 text-white">
+              <button onClick={nextPage} disabled={currentPage === lastPage} className="bg-red-700 cursor-pointer disabled:bg-red-400 rounded-sm px-2 text-white">
                 Next
               </button>
             </div>

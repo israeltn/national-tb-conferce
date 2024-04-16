@@ -18,7 +18,7 @@ export const LandingPage = () => {
   let interval;
 
   const startTimer = () => {
-    const countDownDate = new Date("May 1,2023");
+    const countDownDate = new Date("December 10,2024");
 
     interval = setInterval(() => {
       const now = new Date().getTime();
@@ -53,7 +53,7 @@ export const LandingPage = () => {
           <div class="flex  w-full lg:py-2 pt-2 ">
             <span class="flex items-center justify-start bg-green-900 lg:h-14 h-9 text-xl shadow-lg">
               <h1 class="font-bold px-2 tracking-tighter leading-tight lg:text-4xl text-xl text-white">
-                National TB Conference 2023{" "}
+                National TB Conference 2024{" "}
               </h1>
               <img src="" alt="" />
             </span>
@@ -67,12 +67,12 @@ export const LandingPage = () => {
             </span>
           </div>
           <div class="py-0">
-            <span class="lg:text-2xl">
-              SUSTAINING A RESILIENT TB RESPONSE IN NIGERIA:
+            <span class="lg:text-2xl uppercase font-semibold ">
+            Public-Private Partnership and Integrated Service Delivery: 
             </span>
           </div>
-          <span class="font-semibold lg:text-2xl text-red-600">
-            ADDRESSING THE IMPACT OF COVID-19 AND OTHER DESEASES
+          <span class="font-semibold uppercase lg:text-2xl text-red-600">
+          Panacea to end TB in Nigeria
           </span>
           <div class="flex pt-2 space-x-2 justify-start items-center">
             <span class="font-bold text-2xl uppercase text-black">Venue:</span>
@@ -80,14 +80,14 @@ export const LandingPage = () => {
           <div class="flex justify-start items-start font-semibold text-md">
             <span>
               <p class="text-start">
-                Zankli Medical Centre, No 1 Ibrahim Tahir Street, Lane 900108,
-                Abuja, Federal Capital Territory
+              International Conference Centre, Abuja
+
               </p>
             </span>
           </div>
           <div class="flex space-x-2 py-2 justify-start items-center">
-            <span class="font-bold text-xl uppercase text-black">Date:</span>
-            <span>25th November, 2023</span>
+            <span class="font-bold text-2xl uppercase text-black">Date:</span>
+            <span className="font-medium">10th - 12th December 2024</span>
           </div>
         </div>
 
@@ -101,10 +101,10 @@ export const LandingPage = () => {
       <h2 class="text-md px-4 py-2 mt-3 text-red-700 font-bold lg:text-md max-w-screen-xl mx-auto">
         Sponsors & Partners
       </h2>
-      <div class="justify-center max-w-screen-xl mx-auto items-center ml-10 md:ml-24 pt-1 ">
+      <div class="justify-center max-w-[97%] mx-auto items-center ml-10 md:ml-24 pt-1 ">
         {/* Slide  */}
         <Swiper
-          className="flex justify-between md:max-w-screen-xl mx-auto items-center cursor-pointer"
+          className="flex justify-between md:max-w-[80%] lg:w-[84%] mx-auto items-center cursor-pointer"
           spaceBetween={5}
           slidesPerView={1}
           loop={true}
@@ -169,30 +169,37 @@ function Slide2() {
   );
 }
 
+
 function Slide3() {
   return (
-    <div className="grid md:grid-cols-3 lg:grid-cols-3 grid-cols-4 gap-2 hover:cursor-pointer">
-      <div class="py-2 md:w-60 w-20">
-        <img src={require("../../assets/fhi360.png")} alt="" />
-      </div>
-
+    <div className="grid md:grid-cols-3 lg:grid-cols-3 grid-cols-3 gap-2 hover:cursor-pointer">
       <div>
         <img
           class="py-2 md:w-60 w-20"
-          src={require("../../assets/DevComs.png")}
+          
+          src={require("../../assets/NigeriaTBCaucus.png")}
+          // src={require("../../assets/TBNetwork.png")}
           alt=""
         />
       </div>
       <div>
         <img
           class="py-2 md:w-60 w-20"
-          src={require("../../assets/DFB.png")}
+          src={require("../../assets/TBPeopleNigeria.jpg")}
+          alt=""
+        />
+      </div>
+      <div>
+        <img
+          class="py-2 md:w-60 w-20"
+          src={require("../../assets/NTCF.png")}
           alt=""
         />
       </div>
     </div>
   );
 }
+
 
 function Slide4() {
   return (
@@ -252,25 +259,22 @@ function Slide5() {
 
 function Slide6() {
   return (
-    <div className="grid md:grid-cols-3 lg:grid-cols-3 grid-cols-3 gap-2 hover:cursor-pointer">
+    <div className="grid md:grid-cols-3 lg:grid-cols-3 grid-cols-4 gap-2 hover:cursor-pointer">
+      <div class="py-2 md:w-60 w-20">
+        <img src={require("../../assets/fhi360.png")} alt="" />
+      </div>
+
       <div>
         <img
           class="py-2 md:w-60 w-20"
-          src={require("../../assets/TBNetwork.png")}
+          src={require("../../assets/DevComs.png")}
           alt=""
         />
       </div>
       <div>
         <img
           class="py-2 md:w-60 w-20"
-          src={require("../../assets/TBPeopleNigeria.jpg")}
-          alt=""
-        />
-      </div>
-      <div>
-        <img
-          class="py-2 md:w-60 w-20"
-          src={require("../../assets/NTCF.png")}
+          src={require("../../assets/DFB.png")}
           alt=""
         />
       </div>

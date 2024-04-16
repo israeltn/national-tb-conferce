@@ -100,7 +100,7 @@ if(loading)
      <div className="bg-white justify-center items-center max-w-screen-xl mx-auto">
     <div className="container m-auto px-6 space-y-8 md:px-12 lg:px-56">     
         <div className="py-2 px-4 mx-auto max-w-screen-xl text-center lg:pt-12 lg:px-6">
-            <h2 className="text-2xl dark:bg-gray-900 font-bold md:text-4xl">Conference Registration</h2>
+            <h2 className="text-2xl uppercase dark:bg-gray-900 font-bold md:text-4xl">Conference Registration</h2>
         </div>
               
                <div className="container justify-center items-center max-w-screen-xl mx-auto">
