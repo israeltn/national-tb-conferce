@@ -10,7 +10,7 @@ export const AsignedAbstracts = () => {
     axios.get("/sanctum/csrf-cookie").then((response) => {
       axios.get(`/api/all-assigned-abstracts`).then((res) => {
         if (res.status === 200) {
-          console.log(res.data.abstracts);
+          // console.log(res.data.abstracts);
           setAbstracts(res.data.abstracts);
           setLoading(false);
         }

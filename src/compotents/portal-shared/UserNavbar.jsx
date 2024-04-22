@@ -10,19 +10,22 @@ export const UserNavbar = () => {
      const [navbar, setNavbar] = useState(false);
      const [userdata, setUserdata] = useState([]);
    
-   useEffect(() => {
-      axios.get('/sanctum/csrf-cookie').then(response => {
-          axios.get(`/api/user-profile`).then(res=>{
-            if(res.status === 200) 
-            {
-                     console.log(res.data.user);
-                     setUserdata(res.data.user);
-               
-            }
-          });
-      }); 
-     
-     },[]);
+     useEffect(() => {
+      axios.get("/sanctum/csrf-cookie").then(() => {
+        axios.get(`/api/user-profile`).then((res) => {
+          if (res.status === 200) {
+            setUserdata(res.data.user);
+          } else if (res.status === 401) {
+            localStorage.removeItem("auth_token");
+            localStorage.removeItem("auth_name");
+            localStorage.removeItem("auth_role");
+            navigate("/login");
+          } else {
+            // Handle other status codes if needed
+          }
+        });
+      });
+    }, [navigate]);
 
   
      const logoutSubmit = (e) => {
@@ -110,7 +113,7 @@ export const UserNavbar = () => {
                  <Link to="#" className="hidden no-underline sm:inline-flex ml-5 text-black  focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center items-center mr-3">
                      <span className="px-2">Welcome {userdata.firstname} </span>
                     <div className="flex-shrink-0 p-1 hover:bg-red-700 rounded-full">
-                           <img className="h-10 w-10 rounded-full" src={`https://api.nationaltbconference.org /${userdata.avatar}`} alt={userdata.firstname}/>
+                           <img className="h-10 w-10 rounded-full" src={`https://api.nationaltbconference.org/${userdata.avatar}`} alt={userdata.firstname}/>
                      </div>
                      
                  </Link>

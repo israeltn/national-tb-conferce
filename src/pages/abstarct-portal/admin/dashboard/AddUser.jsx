@@ -125,7 +125,7 @@ export const AddUser = () => {
                     className="border rounded-lg px-3 py-2 mt-1 text-sm w-full"
                   />
                   <span className="pb-2 mb-2 text-xs text-red-600">
-                    {registerInput.error_list.lastname}
+                    {registerInput.error_list && registerInput.error_list.lastname}
                   </span>
                 </div>
                 <div className="mb-5">
@@ -140,7 +140,7 @@ export const AddUser = () => {
                     className="border rounded-lg px-3 py-2 mt-1 text-sm w-full"
                   />
                   <span className="pb-2 mb-2 text-xs text-red-600">
-                    {registerInput.error_list.email}
+                    {registerInput.error_list && registerInput.error_list.email}
                   </span>
                 </div>
                 <div className="mb-5">
@@ -160,13 +160,14 @@ export const AddUser = () => {
                       <option>Select</option>
                       <option value="user">User</option>
                       <option value="admin">Admin</option>
+                      <option value="board">Board Member</option>
                       <option selected="selected" value="reviewer">
                         Reviewer
                       </option>
                     </select>
                   </div>
                   <span className="pb-2 mb-2 text-xs text-red-600">
-                    {registerInput.error_list.role}
+                    {registerInput.error_list && registerInput.error_list.role}
                   </span>
                 </div>
                 <div className="mt-5 mb-5">
@@ -181,7 +182,7 @@ export const AddUser = () => {
                     className="border rounded-lg px-3 py-2 mt-1 text-sm w-full"
                   />
                   <span className="pb-2 mb-2 text-xs text-red-600">
-                    {registerInput.error_list.password}
+                    {registerInput.error_list && registerInput.error_list.password}
                   </span>
                 </div>
                 <div className="item-center justify-center flex">

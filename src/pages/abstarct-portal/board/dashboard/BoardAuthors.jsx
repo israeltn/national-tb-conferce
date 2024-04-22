@@ -55,7 +55,7 @@ export const BoardAuthors = () => {
               <div className="flex-shrink-0 w-10 h-10">
                 <img
                   className="w-full h-full rounded-full"
-                  src={`https://api.nationaltbconference.org /${item.avatar}`}
+                  src={`https://api.nationaltbconference.org/${item.avatar}`}
                   alt=""
                 />
               </div>

@@ -91,7 +91,7 @@ export const Header = () => {
             </li>
             <li className="py-1.5 px-2">
               <NavLink
-                to="/about"
+                to="https://nationaltbconference.org/about/"
                 className={({ isActive }) => {
                   return (
                     "hover:text-white hover:bg-red-700 py-1.5 px-2 " +
@@ -106,7 +106,7 @@ export const Header = () => {
             </li>
             <li className="py-1.5 px-2">
               <NavLink
-                to="/speakers"
+                to="https://nationaltbconference.org/speakers/"
                 className={({ isActive }) => {
                   return (
                     "hover:text-white hover:bg-red-700 py-1.5 px-2 " +
@@ -121,7 +121,7 @@ export const Header = () => {
             </li>
             <li className="py-1.5 px-2">
               <NavLink
-                to="/planning"
+                to="https://nationaltbconference.org/planning-committee/"
                 className={({ isActive }) => {
                   return (
                     "hover:text-white hover:bg-red-700 py-1.5 px-2 " +
@@ -165,7 +165,7 @@ export const Header = () => {
                 Abstract Submission
               </NavLink>
             </li>
-            <li className="hover:text-white hover:bg-red-700 py-2 px-2 cursor-pointer  transition-transform duration-300 ease-out rounded-sm ">
+            {/* <li className="hover:text-white hover:bg-red-700 py-2 px-2 cursor-pointer  transition-transform duration-300 ease-out rounded-sm ">
               <NavLink
                 to="/sponsorship"
                 className={({ isActive }) => {
@@ -179,8 +179,8 @@ export const Header = () => {
               >
                 Sponsorship & Advert
               </NavLink>
-            </li>
-            <li
+            </li> */}
+            {/* <li
               className="relative flex cursor-pointer hover:bg-red-700 z-30 py-2 px-2"
               onClick={() => setToggle(!toggle)}
             >
@@ -196,10 +196,10 @@ export const Header = () => {
                 <li className="hover:bg-red-600">2019</li>
                 <li className="hover:bg-red-600">2016</li>
               </div>
-            </li>
+            </li> */}
             <li className="hover:text-white hover:bg-red-700 py-2 px-2 cursor-pointer transition-transform duration-400 ease-out rounded-sm">
               <NavLink
-                to="/contact"
+                to="https://nationaltbconference.org/contact-us/"
                 className={({ isActive }) => {
                   return (
                     "hover:text-white hover:bg-red-700 py-1.5 px-2 " +

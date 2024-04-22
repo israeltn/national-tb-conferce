@@ -102,7 +102,7 @@ export const AssignedAb = () => {
 
           <td className="justify-center items-center text-center px-6 py-4 whitespace-nowrap text-sm font-medium">
             <Link
-              to={`https://api.nationaltbconference.org /${item.abstractpost.image}`}
+              to={`https://api.nationaltbconference.org/${item.abstractpost.image}`}
               target="_blank"
               className="text-indigo-600 px-2 hover:text-indigo-900 "
             >

@@ -85,12 +85,14 @@ export const AsignedAbstracts = () => {
           </td>
 
           <td className="px-6 py-4 whitespace-nowrap text-start">
-            <span
-              className="px-2 uppercase inline-flex text-xs leading-5
-                         font-semibold rounded-full bg-red-100 text-red-800"
-            >
-              {item.status}
+            <span className={`px-2 uppercase inline-flex text-xs leading-5 font-semibold rounded-full ${
+                item.status === "approved" ? "bg-green-100 text-green-800" : 
+                item.status === "not approved" ? "bg-yellow-100 text-yellow-800" :
+                "bg-red-100 text-red-800"
+              }`}>
+                {item.status}
             </span>
+
           </td>
 
           <td className="flex justify-center items-center text-center px-6 py-4 whitespace-nowrap text-sm font-medium">

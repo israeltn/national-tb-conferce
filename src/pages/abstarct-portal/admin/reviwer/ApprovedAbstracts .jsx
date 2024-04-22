@@ -87,7 +87,7 @@ export const ApprovedAbstracts  = () => {
           <td className="px-6 py-4 whitespace-nowrap text-start">
             <span
               className="px-2 uppercase inline-flex text-xs leading-5
-                         font-semibold rounded-full bg-red-100 text-red-800"
+                         font-semibold rounded-full bg-green-200 text-green-800"
             >
               {item.status}
             </span>
@@ -154,7 +154,7 @@ export const ApprovedAbstracts  = () => {
       <div className="md:flex items-center justify-between mx-4 my-2 sm:mt-2">
         <div className="flex md:justify-start md:items-start text-center">
           <h2 className="text-gray-600 mt-2 lg:mt-8 md:text-xl text-sm font-semibold text-center">
-            Asigned Abstracts
+            Approved Abstracts
           </h2>
         </div>
         <div className="justify-end items-end pt-2 sm:pt-4 md:pt-4 lg:pt-5 ">

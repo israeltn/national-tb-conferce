@@ -16,7 +16,7 @@ export const UserDashboard = () => {
             axios.get(`/api/user-profile`).then(res=>{
               if(res.status === 200) 
               {
-                      //  console.log(res.data.user);
+                      //  // console.log(res.data.user);
                        setUserdata(res.data.user);
                        setLoading(false);
                  
@@ -32,7 +32,7 @@ export const UserDashboard = () => {
               axios.get(`/api/author_abstracts`).then(res=>{
                 if(res.status === 200) 
                 {
-                     console.log(res.data.abstracts);
+                    //  console.log(res.data.abstracts);
                     setAbstracts(res.data.abstracts);
                    
                     setLoading(false);
@@ -76,7 +76,7 @@ export const UserDashboard = () => {
                         <img src= {require('../../../../assets/dashboard.png')} className="mr-2  w-full" alt="Windster Logo"/>
                         </div>
                         <div class="flex justify-center px-5  -mt-12">
-                            <img class="h-32 w-32 bg-white p-2 rounded-full" src={`https://api.nationaltbconference.org /${userdata.avatar}`} alt="" />
+                            <img class="h-32 w-32 bg-white p-2 rounded-full" src={`https://api.nationaltbconference.org/${userdata.avatar}`} alt="" />
 
                         </div>
                         <div class=" ">

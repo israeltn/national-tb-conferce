@@ -11,15 +11,24 @@ export const NavBar = () => {
   const [userdata, setUserdata] = useState([]);
 
   useEffect(() => {
-    axios.get("/sanctum/csrf-cookie").then((response) => {
+    axios.get("/sanctum/csrf-cookie").then(() => {
       axios.get(`/api/user-profile`).then((res) => {
         if (res.status === 200) {
-          console.log(res.data.user);
+          // console.log("Profile data: ")
           setUserdata(res.data.user);
+        } else if (res.status === 401) {
+      
+          localStorage.removeItem("auth_token");
+          localStorage.removeItem("auth_name");
+          localStorage.removeItem("auth_role");
+          navigate("/login");
+        } else {
+          // Handle other status codes if needed
         }
       });
     });
-  }, []);
+  }, [navigate]);
+  
 
   const logoutSubmit = (e) => {
     e.preventDefault();
@@ -78,7 +87,7 @@ export const NavBar = () => {
                 )}
               </button>
               <Link
-                to="/"
+                to="https://portal.nationaltbconference.org/"
                 className="text-xl no-underline font-bold flex items-center lg:ml-2.5"
               >
                 {/* logo */}
@@ -157,7 +166,7 @@ export const NavBar = () => {
                 <div className="flex-shrink-0 p-1 hover:bg-red-700 rounded-full">
                   <img
                     className="h-10 w-10 rounded-full"
-                    src={`https://api.nationaltbconference.org /${userdata.avatar}`}
+                    src={`https://api.nationaltbconference.org/${userdata.avatar}`}
                     alt={userdata.firstname}
                   />
                 </div>

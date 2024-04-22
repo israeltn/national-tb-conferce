@@ -160,6 +160,7 @@ export const AddUser = () => {
                       <option>Select</option>
                       <option value="user">User</option>
                       <option value="admin">Admin</option>
+                      <option value="board">Board Member</option>                      
                       <option selected="selected" value="reviewer">
                         Reviewer
                       </option>

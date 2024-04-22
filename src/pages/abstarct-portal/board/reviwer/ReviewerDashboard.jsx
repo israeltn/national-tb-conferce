@@ -27,7 +27,7 @@ export const ReviewerDashboard = () => {
     axios.get("/sanctum/csrf-cookie").then((response) => {
       axios.get(`/api/user-profile`).then((res) => {
         if (res.status === 200) {
-          // console.log(res.data.user);
+          // // console.log(res.data.user);
           setUserdata(res.data.user);
         }
       });
@@ -65,7 +65,7 @@ export const ReviewerDashboard = () => {
                 <div class="flex justify-center px-5  -mt-12">
                   <img
                     class="h-32 w-32 bg-white p-2 rounded-full"
-                    src={`https://api.nationaltbconference.org /${userdata.avatar}`}
+                    src={`https://api.nationaltbconference.org/${userdata.avatar}`}
                     alt=""
                   />
                 </div>

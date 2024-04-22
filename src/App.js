@@ -36,6 +36,9 @@ import { AssignedAb } from './pages/abstarct-portal/admin/dashboard/AssignedAb'
 import { AllApprovedAbstracts } from './pages/abstarct-portal/admin/dashboard/AllApprovedAbstracts'
 import { ViewAssignedAbstract } from './pages/abstarct-portal/admin/dashboard/ViewAssignedAbstract'
 import { AbstractReviewers } from './pages/abstarct-portal/admin/dashboard/AbstractReviewers'
+import { UpdateUser } from './pages/abstarct-portal/admin/dashboard/UpdateUser'
+
+
 
 // Board Abstarct-Portal
 import { BoardDashboard } from './pages/abstarct-portal/board/dashboard/BoardDashboard'
@@ -73,7 +76,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 
 // import axios from 'axios';
-// axios.defaults.baseURL = "https://api.nationaltbconference.org /";
+// axios.defaults.baseURL = "https://api.nationaltbconference.org/";
 // axios.defaults.headers.post['Content-Type'] = 'application/json';
 // axios.defaults.headers.post['Accept'] = 'application/json';
 
@@ -139,8 +142,9 @@ function App() {
                         <Route path="assignabstract" element={<AssignAbstract/>}/>
                         <Route path="approvedabstract" element={< AllApprovedAbstracts/>}/>
                         <Route path='view-approved-abstract/:id' element={<ViewAssignedAbstract />}/> 
+                        <Route path='update-user/:id' element={<UpdateUser />}/> 
                         
-                       
+                        
                         <Route path="assignedabstracts" element={<AssignedAb/>}/>
                         
                        

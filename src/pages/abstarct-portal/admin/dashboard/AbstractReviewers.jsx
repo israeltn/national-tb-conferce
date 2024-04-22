@@ -56,7 +56,7 @@ export const AbstractReviewers = () => {
               <div className="flex-shrink-0 w-10 h-10">
                 <img
                   className="w-full h-full rounded-full"
-                  src={`https://api.nationaltbconference.org /${item.avatar}`}
+                  src={`https://api.nationaltbconference.org/${item.avatar}`}
                   alt=""
                 />
               </div>
@@ -81,11 +81,14 @@ export const AbstractReviewers = () => {
           <td className="px-6 py-4 whitespace-nowrap text-sm uppercase text-gray-500">
             {item.role}
           </td>
-          <td className="px-6 py-4 whitespace-nowrap  text-sm font-medium">
-            <Link to="#" className="text-indigo-600 hover:text-indigo-900">
-              Edit
-            </Link>
-          </td>
+          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+  <Link
+    to={`/dashboard/update-user/${item.id}`} // Assuming item.id represents the ID of the reviewer
+    className="text-indigo-600 hover:text-indigo-900"
+  >
+    Edit
+  </Link>
+</td>
         </tr>
       );
     });

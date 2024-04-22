@@ -76,7 +76,7 @@ const handleInput = (e) => {
     setLoading(true);
      // Login...
      axios.post(`/api/store-abstract`, formData, config).then(res =>{ 
-        console.log(res.data);
+        // console.log(res.data);
         if(res.data.status === 201) {
             setLoading(false); 
             setIsSubmitting(false);

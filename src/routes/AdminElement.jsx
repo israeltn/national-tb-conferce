@@ -8,6 +8,7 @@ export const AdminElement = ({children}) => {
      const navigate  = useNavigate();
    useEffect(() => {
          if(!localStorage.getItem('auth_token')){
+          
             navigate("/login");
          }
    });
@@ -37,7 +38,7 @@ export const AdminElement = ({children}) => {
                 <footer className="bg-white md:flex md:items-center md:justify-between shadow rounded-lg p-4 md:p-6 xl:p-8 my-6 mx-4">
             <ul className="flex items-center flex-wrap mb-6 md:mb-0">
               
-               <li><NavLink to="#" className="text-sm no-underline font-normal text-gray-500 hover:underline">Contact</NavLink></li>
+               <li><NavLink to="#" className="text-sm no-underline font-normal text-gray-500 hover:underline">Contact: info@nationaltbconference.org</NavLink></li>
             </ul>
             <div className="flex sm:justify-center space-x-6">
                <NavLink to="#" className="text-gray-500 hover:text-gray-900">

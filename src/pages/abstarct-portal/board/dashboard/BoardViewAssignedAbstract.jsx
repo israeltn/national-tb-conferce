@@ -17,7 +17,7 @@ export const BoardViewAssignedAbstract = (props) => {
   useEffect(() => {
     axios.get(`/api/view-single-approved-abstract/${id}`).then((res) => {
       if (res.data.status === 200) {
-            console.log(res.data.abstract);
+            // console.log(res.data.abstract);
         setAbstract(res.data.abstract);
       }
       else if(res.data.status === 404)                 

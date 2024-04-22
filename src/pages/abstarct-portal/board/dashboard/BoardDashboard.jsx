@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 export const BoardDashboard = () => {
-  const [viewParticipants, setParticipants] = useState(null);
-  const [totalabstracts, setTotalabstracts] = useState(null);
-  const [totalauthors, setTotalauthors] = useState(null);
-  const [totalparticipant, setTotalparticipant] = useState(null);
+  const [viewParticipants, setParticipants] = useState([]);
+  const [totalabstracts, setTotalabstracts] = useState([]);
+  const [totalauthors, setTotalauthors] = useState([]);
+  const [totalparticipant, setTotalparticipant] = useState([]);
 
   const [loading, setLoading] = useState(true);
 
@@ -15,7 +15,7 @@ export const BoardDashboard = () => {
     axios.get("/sanctum/csrf-cookie").then((response) => {
       axios.get(`/api/total-count`).then((res) => {
         if (res.status === 200) {
-          console.log(res.data.totals);
+          // console.log(res.data.totals);
           // 'users' => User::count(),
           setTotalabstracts(res.data.abstracts);
           setTotalauthors(res.data.authors);
@@ -29,8 +29,8 @@ export const BoardDashboard = () => {
     axios.get("/sanctum/csrf-cookie").then((response) => {
       axios.get(`/api/view-participants`).then((res) => {
         if (res.status === 200) {
-          //  console.log(res.data.participants);
-          setParticipants(res.data.participants.data);
+           console.log(res.data.participants.participants);
+          setParticipants(res.data.participants);
           setLoading(false);
         }
       });
@@ -63,48 +63,51 @@ export const BoardDashboard = () => {
       </div>
     );
   } else {
-    display_Participantsdata = viewParticipants.map((item, i) => {
-      return (
-        <tr key={i}>
-          <td className="px-6 py-4 whitespace-nowrap">
-            <div className="text-sm font-medium text-gray-900">{i + 1}</div>
-          </td>
-          <td className="px-6 py-4 whitespace-nowrap">
-                                     <div className="text-sm font-medium text-gray-900">00{item.id}</div>
-                                </td>
-          <td className="px-6 py-4 whitespace-nowrap">
-            <div className="flex items-center">
-              <div className="items-center">
-                <div className="text-sm font-medium text-gray-900">
-                  {item.firstname} {item.surname}
+    display_Participantsdata = Array.isArray(viewParticipants) && viewParticipants.length > 0 ? (
+      viewParticipants.map((item, i) => {
+        return (
+          <tr key={i}>
+            <td className="px-6 py-4 whitespace-nowrap">
+              <div className="text-[12px] font-medium text-gray-900">{i + 1}</div>
+            </td>
+            <td className="px-6 py-4 whitespace-nowrap">
+              <div className="text-[12px] font-medium text-gray-900">NTBC-{item.registration_number}</div>
+            </td>
+            <td className="px-6 py-4 whitespace-nowrap">
+              <div className="flex items-center">
+                <div className="items-center">
+                  <div className="text-[12px] font-medium text-gray-900">
+                    {item.firstname} {item.surname}
+                  </div>
+                  <div className="text-[12px] text-gray-500">{item.email}</div>
                 </div>
-                <div className="text-sm text-gray-500">{item.email}</div>
               </div>
-            </div>
-          </td>
-
-          <td className="px-6 py-4 whitespace-nowrap">
-            <span
-              className="px-2 inline-flex text-xs leading-5
-                                    font-semibold rounded-sm bg-red-100 text-red-800"
-            >
-              {item.city}
-            </span>
-          </td>
-          <td className="px-6 py-4 whitespace-nowrap">
-            <div className="text-sm text-gray-900">{item.jobtitle}</div>
-            <div className="text-sm text-gray-500">{item.orgnization}</div>
-          </td>
-
-          <td className="pr-6 py-4 whitespace-nowrap  text-sm font-medium">
-            <Link to="#" className="text-indigo-600  hover:text-indigo-900">
-              {item.phone}
-            </Link>
-          </td>
-        </tr>
-      );
-    });
+            </td>
+  
+            <td className="px-6 py-4 whitespace-nowrap">
+              <span
+                className="px-2 inline-flex text-xs leading-5
+                                      font-semibold rounded-sm bg-red-100 text-red-800"
+              >
+                {item.city}
+              </span>
+            </td>
+            <td className="px-6 py-4 whitespace-nowrap">
+              <div className="text-[12px] text-gray-900">{item.jobtitle}</div>
+              <div className="text-[12px] text-gray-500">{item.organization}</div>
+            </td>
+  
+            <td className="pr-6 py-4 whitespace-nowrap  text-[12px] font-medium">
+              <Link to="#" className="text-indigo-600  hover:text-indigo-900">
+                {item.phone}
+              </Link>
+            </td>
+          </tr>
+        );
+      })
+    ) : null;
   }
+  
 
   return (
     <div>
@@ -167,7 +170,7 @@ export const BoardDashboard = () => {
                 </div>
               </div>
             </div>
-            <div className="h-[90px] shadow bg-white rounded-lg p-4 sm:p-6 xl:p-8 ">
+            <div className="h-[90px] shadow bg-white rounded-lg p-4 sm:p-6 xl:p-4 ">
               <div className="flex items-center justify-between space-x-4">
                 <svg
                   class="w-14 h-14 stroke-yellow-400 text-gray-500 flex-shrink-0 group-hover:text-red-600 transition duration-75"
@@ -306,9 +309,9 @@ export const BoardDashboard = () => {
                             </th>
                             <th
                               scope="col"
-                              className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                              className="px-6 py-3 text-left text-xs font-medium text-gray-500  tracking-wider"
                             >
-                              ID
+                              REG No:
                             </th>
                             <th
                               scope="col"
