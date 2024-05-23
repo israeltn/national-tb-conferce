@@ -194,7 +194,7 @@ const filteredAbstracts = viewAbstract.filter(item =>
 
         <div className="flex  text-center">
           <h2 className="text-gray-600 mt-2 lg:mt-8 md:text-xl text-xs  font-semibold text-center">
-          Approved Abstracts
+          Approved Abstracts
           </h2>
         </div>
         <div className=" flex  items-end pt-2 sm:pt-4 md:pt-4 lg:pt-5 ">
