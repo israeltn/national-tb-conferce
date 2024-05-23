@@ -189,7 +189,7 @@ export const AddUser = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="transition w-full duration-200 bg-red-700 hover:bg-red-600  focus:ring-opacity-50 text-white py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block"
+                    className="transition w-full duration-200 bg-custom-green bg-custom-dark-green  focus:ring-opacity-50 text-white py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block"
                   >
                     <span className="inline-block mr-2">
                       {" "}

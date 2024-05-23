@@ -1,37 +1,49 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 
-
-
 export const BoardAbstracts = () => {
-  const [viewAbstract, setAbstracts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [lastPage, setLastPage] = useState(1);
+ const [viewAbstract, setAbstracts] = useState([]);
+ const [loading, setLoading] = useState(true);
+ const [currentPage, setCurrentPage] = useState(1);
+ const [lastPage, setLastPage] = useState(1);
+ const [searchInput, setSearchInput] = useState(''); // Step 1: Add state for search input
 
-  useEffect(() => {
+ useEffect(() => {
     axios.get("/sanctum/csrf-cookie").then((res) => {
       axios.get(`/api/view-abstracts?page=${currentPage}`).then((res) => {
         if (res.status === 200) {
-          console.log(res.data.abstracts.data);
-          setAbstracts(res.data.abstracts.data);
-          setLastPage(res.data.abstracts.last_page);          
-          setCurrentPage(res.data.abstracts.current_page);
+          // console.log(res.data.abstracts)
+          setAbstracts(res.data.abstracts);
+          setLastPage(res.data.pagination.last_page);          
+          setCurrentPage(res.data.pagination.current_page);
           setLoading(false);
         }
       });
     });
-  }, [currentPage]);
+ }, [currentPage]);
+ const nextPage = () => {
+  setCurrentPage(currentPage + 1);
+};
 
-  const nextPage = () => {
-    setCurrentPage(currentPage + 1);
-  };
+const prevPage = () => {
+  setCurrentPage(currentPage - 1);
+};
 
-  const prevPage = () => {
-    setCurrentPage(currentPage - 1);
-  };
+// Step 2: Create a search function
+// const filteredAbstracts = viewAbstract.filter(item =>
+//   item.abstract_title.toLowerCase().includes(searchInput.toLowerCase()),
 
+// );
+// Step 2: Create a search function
+const filteredAbstracts = viewAbstract.filter(item =>
+  Object.values(item).some(field =>
+    typeof field === "string" && field.toLowerCase().includes(searchInput.toLowerCase())
+  )
+);
+
+
+// Step 3: Update the display logic to use filtered results
 
 
   let display_Abstractsdata = "";
@@ -61,7 +73,7 @@ export const BoardAbstracts = () => {
     );
   } else {
     
-    display_Abstractsdata = viewAbstract.map((item, i) => {
+   display_Abstractsdata = filteredAbstracts.map((item, i) => {
       return (
         <>
         <tr key={i}>
@@ -69,7 +81,7 @@ export const BoardAbstracts = () => {
             <div className="text-sm text-gray-900">{i + 1}</div>
           </td>
           <td className="pl-6 py-4 whitespace-nowrap text-start text-sm">
-            <div className="text-sm text-gray-900">NTBC-0{item.id}</div>
+            <div className="text-sm text-gray-900">NTBCAB-0{item.id}</div>
           </td>
 
           <td className="px-4 w-1/2 py-4   text-start text-sm">            
@@ -102,12 +114,16 @@ export const BoardAbstracts = () => {
           </td>
 
           <td className="px-6 py-4 whitespace-nowrap text-start text-xs">
-            <span
-              className="px-2 uppercase inline-flex text-xs leading-5
-                         font-semibold rounded-full bg-red-100 text-red-800"
+          <span
+              className={`px-2 uppercase inline-flex text-xs leading-5 font-semibold rounded-full ${
+                item.status === "approved" ? "bg-green-100 text-green-800" : 
+                item.status === "approved-with-revision" ? "bg-yellow-300 text-yellow-900" :
+                item.status === "assigned" ? "bg-yellow-100 text-yellow-800" : "bg-red-100 text-red-800"
+              }`}
             >
               {item.status}
-            </span>
+        </span>
+
           </td>
 
           <td className="justify-center items-center text-center px-6 py-4 whitespace-nowrap text-sm font-medium">
@@ -137,7 +153,7 @@ export const BoardAbstracts = () => {
               </svg>
             </Link> */}
             <Link
-              to={`/dashboard/view-abstract/${item.id}`}
+              to={`/boarddashboard/view-abstract/${item.id}`}
               className="text-indigo-600 px-2 hover:text-indigo-900 "
             >
              <svg
@@ -175,16 +191,23 @@ export const BoardAbstracts = () => {
     
     <div className="flex mx-3 mt-2 flex-col">
      
-      <div className="md:flex items-center justify-between mx-4 my-2 sm:mt-2">
+      <div className="md:flex items-center justify-between mx-4 my-2 mt-4">
 
-        <div className="flex md:justify-start md:items-start text-center">
+        <div className="flex  text-center">
           <h2 className="text-gray-600 mt-2 lg:mt-8 md:text-xl text-sm font-semibold text-center">
             All Abstracts
           </h2>
         </div>
-        <div className="justify-end items-end pt-2 sm:pt-4 md:pt-4 lg:pt-5 ">
-          {/* <button className="justify-center items-center text-center bg-red-700 hover:bg-red-600 px-2 py-1 md:text-md text-sm rounded-md text-white md:font-semibold tracking-wide cursor-pointer">Add Abstarct</button> */}
+        <div className=" flex  items-end pt-2 sm:pt-4 md:pt-4 lg:pt-5 ">
+          <input
+            type="text"
+            placeholder="Search Abstracts..."
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
+            className="border-2 border-gray-300 bg-white h-8 px-5 pr-16 rounded-lg text-sm focus:outline-none"
+          />
         </div>
+       
       </div>
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -251,10 +274,10 @@ export const BoardAbstracts = () => {
             </table>
            
             <div className="flex font-medium text-xs justify-center items-center space-x-4 m-2">
-              <button onClick={prevPage} disabled={currentPage === 1} className="bg-red-700 disabled:hidden hover:bg-red-600 rounded-sm px-2 text-white" >
+              <button onClick={prevPage} disabled={currentPage === 1} className="bg-custom-green disabled:hidden bg-custom-dark-green rounded-sm p-1 text-white" >
                 Previous
               </button>
-              <button onClick={nextPage} disabled={currentPage === lastPage} className="bg-red-700 disabled:hidden hover:bg-red-600 rounded-sm px-2 text-white">
+              <button onClick={nextPage} disabled={currentPage === lastPage} className="bg-custom-green disabled:hidden bg-custom-dark-green rounded-sm p-1 text-white">
                 Next
               </button>
             </div>

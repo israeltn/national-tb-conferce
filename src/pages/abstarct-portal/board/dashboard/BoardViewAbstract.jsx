@@ -62,29 +62,29 @@ export const BoardViewAbstract = (props) => {
     <div className="bg-white justify-center items-center mx-3 mt-12 ">
       <div className="container m-auto px-6 py-6   space-y-4 md:px-12 lg:px-32">
         <div className="py-2 px-4 mx-auto max-w-screen-xl text-center lg:pt-4 lg:px-6">
-          <h2 className="text-2xl dark:bg-gray-900 font-bold md:text-xl">
+          <h2 className="text-2xl  font-bold md:text-xl">
             Abstract Details
           </h2>
         </div>
 
         <div className="flex w-full justify-end">
           
-          <div className="items-end  ">
+          <div className="items-end flex ">
             <label
-              className="flex space-x-2 tracking-wide text-red-700 text-md font-bold"
+              className="flex space-x-2 tracking-wide text-red-700 text-md hover:text-green-700 font-bold"
               for="grid-first-name"
             >
               <Link
                 to={`${url}/${abstractInput.image}`}
                 target="_blank"
-                className="text-indigo-500 hover:text-green-700 "
+                 className=" stroke-red-700 w-full h-6 hover:stroke-green-700"
               >
-                <span>View Submited Abstract</span>
+                <span className="flex">View Uploaded File</span>
               </Link>
               <Link
                 to={`${url}/${abstractInput.image}`}
                 target="_blank"
-                className="text-indigo-600 "
+                className="text-indigo-600 flex "
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -134,7 +134,7 @@ export const BoardViewAbstract = (props) => {
                     Prefix
                   </label>
                   <div className="">
-                    <p className=" w-full text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <p className=" w-full text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500     dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   
                       {abstractInput.prefex}
                     </p>
@@ -148,7 +148,7 @@ export const BoardViewAbstract = (props) => {
                 >
                   Surname
                 </label>
-                <p className=" w-full  text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <p className=" w-full  text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500     dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   
                   {abstractInput.surname}
                 </p>
@@ -160,7 +160,7 @@ export const BoardViewAbstract = (props) => {
                 >
                   First Name
                 </label>
-                <p className=" w-full text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <p className=" w-full text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500     dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   {" "}
                   {abstractInput.firstname}{" "}
                 </p>
@@ -177,7 +177,7 @@ export const BoardViewAbstract = (props) => {
                 >
                   Sex
                 </label>
-                <p className=" w-full text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <p className=" w-full text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500     dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   {" "}
                   {abstractInput.gender}{" "}
                 </p>
@@ -191,7 +191,7 @@ export const BoardViewAbstract = (props) => {
                 >
                   Phone
                 </label>
-                <p className=" w-full text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <p className=" w-full text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500     dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   {" "}
                   {abstractInput.phone}{" "}
                 </p>
@@ -203,7 +203,7 @@ export const BoardViewAbstract = (props) => {
                 >
                   Email
                 </label>
-                <p className=" w-full text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <p className=" w-full text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500     dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   {" "}
                   {abstractInput.email}{" "}
                 </p>
@@ -220,7 +220,7 @@ export const BoardViewAbstract = (props) => {
                 >
                   Job Title
                 </label>
-                <p className=" w-full text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <p className=" w-full text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500     dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   {" "}
                   {abstractInput.jobtitle}{" "}
                 </p>
@@ -232,7 +232,7 @@ export const BoardViewAbstract = (props) => {
                 >
                   Organization/Institution/Company
                 </label>
-                <p className=" w-full text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <p className=" w-full text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500     dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   {" "}
                   {abstractInput.orgnization}{" "}
                 </p>
@@ -244,7 +244,7 @@ export const BoardViewAbstract = (props) => {
                 >
                   Work Address
                 </label>
-                <p className=" w-full text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <p className=" w-full text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500     dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   {" "}
                   {abstractInput.address}{" "}
                 </p>
@@ -261,7 +261,7 @@ export const BoardViewAbstract = (props) => {
                 >
                   City
                 </label>
-                <p className=" w-full text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <p className=" w-full text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500     dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   {" "}
                   {abstractInput.city}{" "}
                 </p>
@@ -273,7 +273,7 @@ export const BoardViewAbstract = (props) => {
                 >
                   State
                 </label>
-                <p className=" w-full text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <p className=" w-full text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500     dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   {" "}
                   {abstractInput.state}{" "}
                 </p>
@@ -285,7 +285,7 @@ export const BoardViewAbstract = (props) => {
                 >
                   Country
                 </label>
-                <p className=" w-full text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <p className=" w-full text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500     dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   {" "}
                   {abstractInput.country}{" "}
                 </p>
@@ -312,7 +312,7 @@ export const BoardViewAbstract = (props) => {
                 >
                   Abstract Title
                 </label>
-                <p className=" w-full text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <p className=" w-full text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500     dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   {" "}
                   {abstractInput.abstract_title}{" "}
                 </p>
@@ -325,7 +325,7 @@ export const BoardViewAbstract = (props) => {
                 >
                   Abstract Thematic Area
                 </label>
-                <p className=" w-full text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <p className=" w-full text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500     dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   {" "}
                   {abstractInput.abstract_thematic}{" "}
                 </p>
@@ -341,7 +341,7 @@ export const BoardViewAbstract = (props) => {
                 >
                   Co-Author
                 </label>
-                <p className=" w-full text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <p className=" w-full text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500     dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   {" "}
                   {abstractInput.co_author}{" "}
                 </p>
@@ -354,13 +354,52 @@ export const BoardViewAbstract = (props) => {
                 >
                   Other Information
                 </label>
-                <p className=" w-full text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <p className=" w-full text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500     dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   {" "}
                   {abstractInput.information}{" "}
                 </p>
               </div>
+
+              
             </div>           
-             
+            <div className="full bg-slate-300 h-[0.1rem]"></div>
+
+<div className="mt-12 mb-4  justify-center items-center">
+  <label
+    className="uppercase tracking-wide text-red-700 text-sm font-bold mb-2"
+    for="grid-first-name"
+  >
+    Reviewed  Information
+  </label>
+</div>
+<div className="full bg-slate-300 h-[0.1rem]"></div>
+<div className="flex flex-wrap -mx-3 mt-2 mb-4">
+  <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+    <label
+      className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+      for="grid-last-name"
+    >
+      Abstract Reviewed Status
+    </label>
+    <p className=" w-full uppercase text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500     dark:focus:ring-blue-500 dark:focus:border-blue-500">
+      {" "}
+      {abstractInput.status}{" "}
+    </p>
+  </div>
+
+  <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+    <label
+      className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+      for="grid-first-name"
+    >
+      Abstract Reviewed Comment
+    </label>
+    <p className=" w-full text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500     dark:focus:ring-blue-500 dark:focus:border-blue-500">
+      {" "}
+      {abstractInput.remark}{" "}
+    </p>
+  </div>
+</div>
           </form>
         </div>
       </div>

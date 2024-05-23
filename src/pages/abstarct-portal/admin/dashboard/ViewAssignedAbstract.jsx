@@ -77,7 +77,7 @@ export const ViewAssignedAbstract = (props) => {
               <Link
                 to={`${url}/${abstractInput.abstractpost.image}`}
                 target="_blank"
-                className="text-indigo-500 hover:text-green-700 "
+                 className=" stroke-red-700 w-6 h-6 hover:stroke-green-700"
               >
                 <span>View Uploaded File</span>
               </Link>

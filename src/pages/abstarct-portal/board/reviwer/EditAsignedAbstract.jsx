@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import axios from "axios";
 import swal from "sweetalert";
+import { baseURL } from "../../../../baseulr";
 
 export const EditAsignedAbstract = (props) => {
+  const url= baseURL;
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -116,14 +118,14 @@ export const EditAsignedAbstract = (props) => {
               for="grid-first-name"
             >
               <Link
-                to={`api.nationaltbconference.org ${abstractInput.abstractpost.image}`}
+                to={`${url}/${abstractInput.abstractpost.image}`}
                 target="_blank"
-                className="text-indigo-500 hover:text-green-700 "
+                 className=" stroke-red-700 w-6 h-6 hover:stroke-green-700"
               >
                 <span>View Uploaded File</span>
               </Link>
               <Link
-                to={`api.nationaltbconference.org ${abstractInput.abstractpost.image}`}
+                to={`${url}/${abstractInput.abstractpost.image}`}
                 target="_blank"
                 className="text-indigo-600 "
               >
@@ -446,7 +448,7 @@ export const EditAsignedAbstract = (props) => {
               </div>
             </div>
 
-            {/* <div disabled={loading} className="max-w-screen-xl mb-2 mx-auto text-center w-44 justify-center py-2 px-2 items-center bg-red-800 text-white border-gray-800 rounded-md ">
+            {/* <div disabled={loading} className="max-w-screen-xl mb-2 mx-auto text-center w-44 justify-center py-2 px-2 items-center bg-custom-green text-white border-gray-800 rounded-md ">
                         <button type="submit" className="flex justify-center items-center text-center max-w-screen-xl mx-auto">
                         {loading ? "Submitting Data..." : "Submit"}</button>
                     </div> */}
@@ -455,7 +457,7 @@ export const EditAsignedAbstract = (props) => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="max-w-screen-xl mb-2 mx-auto text-center w-44 justify-center py-2 px-2 items-center bg-red-800 text-white border-gray-800 rounded-md"
+                className="max-w-screen-xl mb-2 mx-auto text-center w-44 justify-center py-2 px-2 items-center bg-custom-green text-white border-gray-800 rounded-md"
               >
                 <span className="inline-block mr-2">
                   {" "}

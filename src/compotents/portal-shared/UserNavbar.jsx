@@ -81,43 +81,20 @@ export const UserNavbar = () => {
                  </button>
                  <Link to="/" className="text-xl no-underline font-bold flex items-center lg:ml-2.5">
                       {/* logo */}
-                 <img src= {require('../../assets/logo.jpg')} className="mr-2 h-10 w-52" alt="Windster Logo"/>               
+                 <img src= {require('../../assets/ntbc-logo-4.png')} className="mr-2 h-10 w-40" alt="Windster Logo"/>               
                  </Link>
-                 <form action="#" method="GET" className="hidden lg:block lg:pl-32">
-                    <label for="topbar-search" className="sr-only">Search</label>
-                    <div className="mt-1 relative lg:w-64">
-                       <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                          <svg className="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                             <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
-                          </svg>
-                       </div>
-                       <input type="text" name="email" id="topbar-search" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full pl-10 p-2.5" placeholder="Search"/>
-                    </div>
-                 </form>
+                 
               </div>
               <div className="flex items-center">
-                 <button id="toggleSidebarMobileSearch" type="button" className="lg:hidden text-gray-500 hover:text-gray-900 hover:bg-gray-100 p-2 rounded-lg">
-                    <span className="sr-only">Search</span>
-                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                       <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
-                    </svg>
-                 </button>
-                 {/* <div className="hidden lg:flex items-center">
-                    <span className="text-base font-normal text-gray-500 mr-5">Open source ❤️</span>
-                    <div className="-mb-1">
-                       <Link className="github-button no-underline" to="#" data-color-scheme="no-preference: dark; light: light; dark: light;" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star themesberg/windster-tailwind-css-dashboard on GitHub">
-                           Star
-                      </Link>
-                    </div>
-                 </div> */}
+              
                  <Link to="#" className="hidden no-underline sm:inline-flex ml-5 text-black  focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center items-center mr-3">
                      <span className="px-2">Welcome {userdata.firstname} </span>
-                    <div className="flex-shrink-0 p-1 hover:bg-red-700 rounded-full">
+                    <div className="flex-shrink-0 p-1 hover:bg-custom-green rounded-full">
                            <img className="h-10 w-10 rounded-full" src={`https://api.nationaltbconference.org/${userdata.avatar}`} alt={userdata.firstname}/>
                      </div>
                      
                  </Link>
-                 <div className="bg-red-700 rounded-sm hover:bg-red-600 cursor-pointer">
+                 <div className="bg-custom-green rounded-sm bg-custom-dark-green cursor-pointer">
                     <button type="button" onClick={logoutSubmit} className=" py-0.5 px-2 text-white text-center font-medium text-sm">Logout</button>
                  </div>
               </div>
@@ -135,27 +112,10 @@ export const UserNavbar = () => {
            {/* Admin Side bar */}         
             <div className="flex-1 h-full px-3 bg-white">
                <ul className="space-y-2 space-x-2  pb-1">
-                  <li>
-                     <form action="#" method="GET" className="lg:hidden">
-                        <label for="mobile-search" className="sr-only">Search</label>
-                        <div className="relative">
-                           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                           
-                              <svg className="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                 <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
-                              </svg>
-                            
-                               
-                          
-                           </div> 
-  
-                           <input type="text" name="email" id="mobile-search" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-600 block w-full pl-10 p-2.5" placeholder="Search"/>
-                        </div>
-                     </form>
-                  </li>
+               
                   <li>
                      <NavLink to="/userdashboard" className="text-base no-underline text-gray-900 font-normal rounded-lg flex items-center  hover:bg-gray-100 group">
-                        <svg className="w-6 h-6 text-gray-500 group-hover:text-red-600 transition duration-75" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <svg className="w-6 h-6 ml-2  text-gray-500 group-hover:text-red-600 transition duration-75" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                            <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
                            <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
                         </svg>

@@ -45,7 +45,7 @@ export const ReviewerDashboard = () => {
               </h2>
             </div>
             <div class="justify-end items-end pt-2 sm:pt-4 md:pt-4 lg:pt-5 ">
-              <button class="justify-center items-center text-center bg-red-700 hover:bg-red-600 px-2 py-1 md:text-md text-sm rounded-md text-white md:font-semibold tracking-wide cursor-pointer">
+              <button class="justify-center items-center text-center bg-custom-green bg-custom-dark-green px-2 py-1 md:text-md text-sm rounded-md text-white md:font-semibold tracking-wide cursor-pointer">
                 <NavLink to="/userdashboard/submitabstract">
                   Edit Profile
                 </NavLink>
@@ -57,7 +57,7 @@ export const ReviewerDashboard = () => {
               <div class="container lg:w-full sm:w-full md:w-2/3 bg-white  shadow-lg    transform   duration-200 easy-in-out">
                 <div class=" h-32 overflow-hidden">
                   <img
-                    src={require("../../../../assets/logo.jpg")}
+                    src={require("../../../../assets/ntbc-logo-4.png")}
                     className="mr-2  w-full"
                     alt="Windster Logo"
                   />

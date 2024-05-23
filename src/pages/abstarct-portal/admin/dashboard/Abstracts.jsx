@@ -81,7 +81,7 @@ const filteredAbstracts = viewAbstract.filter(item =>
             <div className="text-sm text-gray-900">{i + 1}</div>
           </td>
           <td className="pl-6 py-4 whitespace-nowrap text-start text-sm">
-            <div className="text-sm text-gray-900">NTBC-0{item.id}</div>
+            <div className="text-sm text-gray-900">NTBCAB-0{item.id}</div>
           </td>
 
           <td className="px-4 w-1/2 py-4   text-start text-sm">            
@@ -117,8 +117,8 @@ const filteredAbstracts = viewAbstract.filter(item =>
             <span
               className={`px-2 uppercase inline-flex text-xs leading-5 font-semibold rounded-full ${
                 item.status === "approved" ? "bg-green-100 text-green-800" : 
-                          item.status === "assigned" ? "bg-yellow-100 text-yellow-800" :
-                          "bg-red-100 text-red-800"
+                item.status === "approved-with-revision" ? "bg-yellow-500 text-yellow-900" :
+                item.status === "assigned" ? "bg-yellow-100 text-yellow-800" : "bg-red-100 text-red-800"
               }`}
             >
               {item.status}
@@ -273,10 +273,10 @@ const filteredAbstracts = viewAbstract.filter(item =>
             </table>
            
             <div className="flex font-medium text-xs justify-center items-center space-x-4 m-2">
-              <button onClick={prevPage} disabled={currentPage === 1} className="bg-red-700 disabled:hidden hover:bg-red-600 rounded-sm p-1 text-white" >
+              <button onClick={prevPage} disabled={currentPage === 1} className="bg-custom-green disabled:hidden bg-custom-dark-green rounded-sm p-1 text-white" >
                 Previous
               </button>
-              <button onClick={nextPage} disabled={currentPage === lastPage} className="bg-red-700 disabled:hidden hover:bg-red-600 rounded-sm p-1 text-white">
+              <button onClick={nextPage} disabled={currentPage === lastPage} className="bg-custom-green disabled:hidden bg-custom-dark-green rounded-sm p-1 text-white">
                 Next
               </button>
             </div>

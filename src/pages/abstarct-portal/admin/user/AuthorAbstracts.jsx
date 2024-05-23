@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import swal from "sweetalert";
+import { FaRegEdit } from "react-icons/fa";
+import { FiEye } from "react-icons/fi";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 export const AuthorAbstracts = () => {
  const [viewAbstract, setAbstracts] = useState([]);
@@ -40,6 +44,27 @@ const filteredAbstracts = viewAbstract.filter(item =>
     typeof field === "string" && field.toLowerCase().includes(searchInput.toLowerCase())
   )
 );
+
+const handleDelete = (id) => {
+  if (window.confirm("Are you sure you want to delete this abstract?")) {
+    // Perform deletion logic, for example, send a DELETE request to the server
+    axios.delete(`/api/delete-abstract/${id}`)
+      .then((res) => {
+        // Handle successful deletion, for example, update state or show a success message
+        console.log("Abstract deleted successfully");
+        setLoading(false);       
+        swal("Success", res.data.message, "success");
+        
+        setAbstracts(prevState => prevState.filter(item => item.id !== id));
+        // You may want to refresh the abstract list after deletion
+        // You can do this by fetching the updated list from the server or updating state directly
+      })
+      .catch((error) => {
+        // Handle error, for example, show an error message
+        console.error("Error deleting abstract:", error);
+      });
+  }
+};
 
 // Step 3: Update the display logic to use filtered results
 
@@ -124,56 +149,29 @@ const filteredAbstracts = viewAbstract.filter(item =>
             </span>
           </td>
 
-          <td className="justify-center items-center text-center px-6 py-4 whitespace-nowrap text-sm font-medium">
-            {/* <Link
-              to={`https://api.nationaltbconference.org/${item.image}`}
-              target="_blank"
-              className="text-indigo-600 px-2 hover:text-indigo-900 "
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="currentColor"
-                className=" stroke-red-700 w-6 h-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"
-                />
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                />
-              </svg>
-            </Link> */}
+          <td className="flex justify-center space-x-0 items-center text-center px-1 py-4 whitespace-nowrap text-sm font-medium">
+                      
             <Link
-              to={`/dashboard/view-abstract/${item.id}`}
-              className="text-indigo-600 px-2 hover:text-indigo-900 "
-            >
-             <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="2.5"
-                stroke="currentColor"
-                className=" stroke-green-600 w-6 h-6 hover:stroke-green-800"
+                to={`/userdashboard/view-abstract/${item.id}`}
+                className="text-green-600 px-1 hover:text-green-900 ml-2"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"
-                />
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                />
-              </svg>
+                 <FiEye className="w-5 h-5"  />
+              
             </Link>
+            <Link
+                to={`/userdashboard/edit-abstract/${item.id}`}
+                className="text-yellow-600 px-2 hover:text-yellow-900 ml-2"
+              >
+                  <FaRegEdit className="w-5 h-5" />
+              
+            </Link>
+
+            <button
+              onClick={() => handleDelete(item.id)}
+              className="text-red-600 px-2 hover:text-red-900 ml-2"
+            >
+              <RiDeleteBin6Line className="w-5 h-5"  />
+            </button>
             
           </td>
         </tr>
@@ -272,10 +270,10 @@ const filteredAbstracts = viewAbstract.filter(item =>
             </table>
            
             <div className="flex font-medium text-xs justify-center items-center space-x-4 m-2">
-              <button onClick={prevPage} disabled={currentPage === 1} className="bg-red-700 disabled:hidden hover:bg-red-600 rounded-sm p-1 text-white" >
+              <button onClick={prevPage} disabled={currentPage === 1} className="bg-custom-green disabled:hidden bg-custom-dark-green rounded-sm p-1 text-white" >
                 Previous
               </button>
-              <button onClick={nextPage} disabled={currentPage === lastPage} className="bg-red-700 disabled:hidden hover:bg-red-600 rounded-sm p-1 text-white">
+              <button onClick={nextPage} disabled={currentPage === lastPage} className="bg-custom-green disabled:hidden bg-custom-dark-green rounded-sm p-1 text-white">
                 Next
               </button>
             </div>

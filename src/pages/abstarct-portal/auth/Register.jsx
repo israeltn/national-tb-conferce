@@ -9,16 +9,38 @@ export const Register = () => {
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  useEffect(() => {
-    if (localStorage.getItem("auth_token")) {
-      navigate("/userdashboard");
-    }
-  });
+
+
+  // useEffect(() => {
+  //   if (localStorage.getItem("auth_token")) {
+  //     navigate("/userdashboard");
+  //   }
+  // });
+useEffect(() => {
+        // Retrieve the role from localStorage
+        const storedRole = localStorage.getItem('auth_role');
+
+        // Navigate based on the role
+        if (storedRole === 'admin') {
+            navigate('/dashboard');
+        } else if (storedRole === 'reviewer') {
+            navigate('/reviewerdashboard');
+        } else if (storedRole === 'user') {
+            navigate('/userdashboard');
+        } else if (storedRole === 'board') {
+          navigate('/boarddashboard');
+      }else {
+            // Optionally handle the case where no valid role is stored
+            navigate('/register'); // Redirect to a generic page if the role is not recognized
+        }
+    }, [navigate]);
+  
 
   const [loading, setLoading] = useState(false);
   const [registerInput, setRegister] = useState({
     firstname: "",
     lastname: "",
+    middlename:"",
     email: "",
     password: "",
     error_list: [],
@@ -34,6 +56,7 @@ export const Register = () => {
     setIsSubmitting(true);
     const data = {
       firstname: registerInput.firstname,
+      middlename: registerInput.middlename,
       lastname: registerInput.lastname,
       email: registerInput.email,
       password: registerInput.password,
@@ -106,7 +129,7 @@ export const Register = () => {
         >
           {/* <!-- logo --> */}
           <img
-            src={require("../../../assets/NationalTBLogo.jpg")}
+            src={require("../../../assets/ntbc-logo-4.png")}
             className="justify-center flex items-center mb-2"
             alt="Windster Logo"
           />
@@ -134,6 +157,21 @@ export const Register = () => {
                 />
                 <span className="pb-2 mb-2 text-xs text-red-600">
                   {registerInput.error_list.firstname}
+                </span>
+              </div>
+              <div className="mb-5">
+                <label className="font-semibold text-sm text-gray-600 block">
+                  Middle Name
+                </label>
+                <input
+                  type="text"
+                  name="middlename"
+                  onChange={handleInput}
+                  value={registerInput.middlename}
+                  className="border rounded-lg px-3 py-2 mt-1 text-sm w-full"
+                />
+                <span className="pb-2 mb-2 text-xs text-red-600">
+                  {registerInput.error_list.middlename}
                 </span>
               </div>
               <div className="mb-5">
@@ -183,7 +221,7 @@ export const Register = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="transition w-full duration-200 bg-red-700 hover:bg-red-600  focus:ring-opacity-50 text-white py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block"
+                  className="transition w-full duration-200 bg-custom-green bg-custom-dark-green  focus:ring-opacity-50 text-white py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block"
                 >
                   <span className="inline-block mr-2">
                     {" "}
@@ -208,7 +246,7 @@ export const Register = () => {
             </div>
           </form>
           <div className="text-center hover:text-red-700">
-            <NavLink to="/login">Have an account sign in</NavLink>
+            <NavLink to="/login">Already have an account sign in</NavLink>
           </div>
 
           <div className="py-5">

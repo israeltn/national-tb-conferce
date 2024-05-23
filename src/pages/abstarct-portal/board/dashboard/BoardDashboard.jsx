@@ -71,7 +71,7 @@ export const BoardDashboard = () => {
               <div className="text-[12px] font-medium text-gray-900">{i + 1}</div>
             </td>
             <td className="px-6 py-4 whitespace-nowrap">
-              <div className="text-[12px] font-medium text-gray-900">NTBC-{item.registration_number}</div>
+              <div className="text-[12px] font-medium text-gray-900">{item.registration_number}</div>
             </td>
             <td className="px-6 py-4 whitespace-nowrap">
               <div className="flex items-center">
@@ -249,7 +249,7 @@ export const BoardDashboard = () => {
                     {totalparticipant}
                   </span>
                   <h3 className="text-sm font-normal text-gray-400">
-                    Total Conference Delegates
+                    Total Conference Participants
                   </h3>
                 </div>
                 <div className="ml-5 w-0 flex items-center justify-end flex-1 text-green-600 text-sm font-bold">
@@ -291,7 +291,7 @@ export const BoardDashboard = () => {
                 <div class="md:flex items-center justify-between mx-4 mt-2">
                   <div className="flex md:justify-start md:items-start text-center">
                     <h2 class="text-gray-600 mt-2 my-4 md:text-xl text-sm font-semibold text-center">
-                      Latest Delegates
+                      Latest  Participants
                     </h2>
                   </div>
                 </div>

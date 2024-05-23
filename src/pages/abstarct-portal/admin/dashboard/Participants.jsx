@@ -1,27 +1,73 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import swal from "sweetalert";
+import { RiDeleteBin6Line } from "react-icons/ri";
+import { saveAs } from 'file-saver';
+import { SiMicrosoftexcel } from "react-icons/si";
 
 export const Participants = () => {
   const [viewParticipants, setParticipants] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchInput, setSearchInput] = useState("");
+
+  const getCsrfToken = async () => {
+    await axios.get("/sanctum/csrf-cookie");
+  };
 
   useEffect(() => {
-    axios.get("/sanctum/csrf-cookie").then((response) => {
-      axios.get(`/api/view-participants`).then((res) => {
+    const fetchParticipants = async () => {
+      try {
+        await getCsrfToken();
+        const res = await axios.get(`/api/view-participants`);
         if (res.status === 200) {
-          // console.log(res.data.participants);
           setParticipants(res.data.participants);
           setLoading(false);
         }
-      });
-    });
+      } catch (error) {
+        console.error('Error fetching participants:', error);
+      }
+    };
+    fetchParticipants();
   }, []);
 
-  var display_Participantsdata = "";
+  const handleDownload = async () => {
+    try {
+      await getCsrfToken();
+      const res = await axios.get(`/api/export-participants`, {
+        responseType: 'blob',
+        withCredentials: true
+      });
+      const blob = new Blob([res.data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+      saveAs(blob, 'participants.xlsx');
+    } catch (error) {
+      console.error('Error downloading participants:', error);
+    }
+  };
+
+  const filteredParticipants = viewParticipants.filter((item) =>
+    Object.values(item).some(
+      (field) =>
+        typeof field === "string" &&
+        field.toLowerCase().includes(searchInput.toLowerCase())
+    )
+  );
+
+  const handleDelete = async (id) => {
+    if (window.confirm("Are you sure you want to delete this participant?")) {
+      try {
+        await axios.delete(`/api/delete-participant/${id}`);
+        swal("Success", "Participant deleted successfully", "success");
+        setParticipants((prevState) => prevState.filter((item) => item.id !== id));
+      } catch (error) {
+        console.error("Error deleting participant:", error);
+      }
+    }
+  };
+
   if (loading) {
     return (
-      <div className="text-center max-w-screen-xl max-h-screen-[72] mx-auto justify-center items-center ">
+      <div className="text-center max-w-screen-xl max-h-screen-[72] mx-auto justify-center items-center">
         <div role="status" className="mt-[20rem]">
           <svg
             aria-hidden="true"
@@ -43,78 +89,30 @@ export const Participants = () => {
         </div>
       </div>
     );
-  } else {
-    display_Participantsdata = viewParticipants.map((item, i) => {
-      return (
-        <tr key={i}>
-          <td className="pl-6 py-4 whitespace-nowrap text-start">
-            <div className="text-[12px] text-gray-900">{i + 1}</div>
-          </td>
-          <td className="px-6 py-4 whitespace-nowrap">
-                                     <div className="text-[12px] font-medium text-gray-900">NTBC-{item.registration_number}</div>
-                                </td>
-          <td className="px-6 py-4 whitespace-nowrap">
-            <div className="flex items-center">
-              <div className="">
-                <div className="text-[12px]  text-gray-500">
-                  {item.firstname} {item.surname}
-                </div>
-              </div>
-            </div>
-          </td>
-          <td className="px-6 py-4 whitespace-nowrap">
-            <div
-              className="px-2 inline-flex text-center text-[12px] leading-5
-                                      text-gray-500 rounded-sm  "
-            >
-              {item.email}
-            </div>
-          </td>
-          <td className="px-6 py-4 whitespace-nowrap">
-            <div className="px-2 inline-flex text-center text-[12px]    text-gray-500 rounded-sm  ">
-              {item.city}
-            </div>
-          </td>
-          {/* <td className="px-6 py-4 whitespace-nowrap">
-            <div className="px-2 inline-flex text-center text-[12px]    text-gray-500 rounded-sm  ">
-              {item.country}
-            </div>
-          </td> */}
-
-          <td className="px-6 py-4 whitespace-nowrap">
-            <span className="px-2 inline-flex text-center text-[12px] leading-5   text-gray-500 rounded-sm  ">
-              {item.jobtitle}
-            </span>
-          </td>
-          <td className="px-6 py-4 whitespace-nowrap">
-            <span
-              className="px-2 inline-flex text-center text-[12px] leading-5
-                                      text-gray-500 rounded-sm  "
-            >
-              {item.orgnization}
-            </span>
-          </td>
-
-          <td className="pr-6 py-4 whitespace-nowrap  text-[12px] ">
-            <Link to="#" className="text-indigo-600  hover:text-indigo-900">
-              {item.phone}
-            </Link>
-          </td>
-        </tr>
-      );
-    });
   }
 
   return (
     <div className="flex mx-3 mt-2 flex-col">
       <div className="md:flex items-center justify-between mx-4 my-2 sm:mt-2">
         <div className="flex md:justify-start md:items-start text-center">
-          <h2 className="text-gray-600 mt-2 lg:mt-8 md:text-xl text-sm font-bold  text-center">
-            Delegates
+          <h2 className="text-gray-600 mt-2 lg:mt-8 md:text-xl text-sm font-bold text-center">
+            Participants
           </h2>
         </div>
-        <div className="justify-end items-end pt-2 sm:pt-4 md:pt-4 lg:pt-5 ">
-          {/* <button className="justify-center items-center text-center bg-red-700 hover:bg-red-600 px-2 py-1 md:text-md text-sm rounded-md text-white md:font-semibold tracking-wide cursor-pointer">Add Abstarct</button> */}
+        <div className=" flex space-x-8 justify-end items-end pt-2 sm:pt-4 md:pt-4 lg:pt-5 pr-3">
+          <input
+            type="text"
+            placeholder="Search..."
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
+            className="border px-2 py-1 rounded"
+          />
+          <div
+            className="flex bg-green-500 text-sm   hover:bg-green-700 text-white font-bold py-1 px-2  rounded cursor-pointer"
+            onClick={handleDownload}
+          >
+            < SiMicrosoftexcel  className="w-6 h-6"/>
+          </div>
         </div>
       </div>
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -123,18 +121,18 @@ export const Participants = () => {
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>
-                <th
+                  <th
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
                     S/N
                   </th>
                   <th
-                              scope="col"
-                              className="px-6 py-3 text-left text-xs font-medium text-gray-500  tracking-wider"
-                            >
-                              REG No:
-                            </th>
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider"
+                  >
+                    REG No:
+                  </th>
                   <th
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
@@ -153,16 +151,9 @@ export const Participants = () => {
                   >
                     City
                   </th>
-                  {/* <th
-                    scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                  >
-                    Country
-                  </th> */}
-
                   <th
                     scope="col"
-                    className=" px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
                     Job Title
                   </th>
@@ -172,17 +163,71 @@ export const Participants = () => {
                   >
                     Organization
                   </th>
-
                   <th
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
                     Phone
                   </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    Actions
+                  </th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
-                {display_Participantsdata}
+                {filteredParticipants.map((item, i) => (
+                  <tr key={i}>
+                    <td className="pl-6 py-4 whitespace-nowrap text-start">
+                      <div className="text-[12px] text-gray-900">{i + 1}</div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="text-[12px] font-medium text-gray-900">
+                        {item.registration_number}
+                      </div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="text-[12px] text-gray-500">
+                        {item.firstname} {item.surname}
+                      </div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="text-[12px] text-gray-500">
+                        {item.email}
+                      </div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="text-[12px] text-gray-500">
+                        {item.city}
+                      </div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="text-[12px] text-gray-500">
+                        {item.jobtitle}
+                      </div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="text-[12px] text-gray-500">
+                        {item.orgnization}
+                      </div>
+                    </td>
+                    <td className="pr-6 py-4 whitespace-nowrap text-[12px]">
+                      <Link to="#" className="text-indigo-600 hover:text-indigo-900">
+                        {item.phone}
+                      </Link>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-right text-[12px]">
+                      <button
+                        onClick={() => handleDelete(item.id)}
+                        className="text-red-600 hover:text-red-900"
+                      >
+                        <RiDeleteBin6Line className="w-5 h-5" />
+                      </button>
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>

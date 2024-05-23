@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { NavLink } from "react-router-dom";
 // import { toast } from "react-toastify";
 import swal from 'sweetalert';
 
@@ -16,6 +17,7 @@ const [participantInput, setRegister] = useState({
 prefex: '',
   firstname: '',
   surname: '',
+  middlename: '',
   email: '',
   gender:'',
   phone: '',
@@ -38,6 +40,7 @@ const handleInput = (e) => {
     const data = {
       prefex: participantInput.prefex,
       surname: participantInput.surname,
+      middlename: participantInput.middlename,
       firstname: participantInput.firstname,
       gender: participantInput.gender,
       email: participantInput.email,
@@ -55,9 +58,24 @@ const handleInput = (e) => {
       axios.get('/sanctum/csrf-cookie').then(response => {
         axios.post(`/api/participant`, data).then(res =>{ 
             if(res.data.status === 200) {
-                swal("Success", "Registration Successful! Copy Reg No: NTBC- " + res.data.message, "success");
+                swal("Registration Successful!", "Registration Number: " + res.data.message + " Kindly copy and save your Registration Number and bring it with a valid Identity Card to the Conference. Thank you!", "success");
                 setLoading(false);
-                navigate("/");
+                setRegister({
+                    prefex: '',
+                    firstname: '',
+                    middlename:'',
+                    surname: '',
+                    email: '',
+                    gender:'',
+                    phone: '',
+                    jobtitle:'',
+                    orgnization:'',
+                    address: '',
+                    city: '',
+                    state: '',
+                    country: '',
+                    error_list: []
+                });
           
             }
             else if(res.data.status === 401)                 
@@ -81,6 +99,9 @@ const handleInput = (e) => {
         
         });
 
+    
+        
+
 }
 
 if(loading)
@@ -97,15 +118,15 @@ if(loading)
 }
 
   return (
-     <div className="bg-white justify-center items-center max-w-screen-xl mx-auto">
-    <div className="container m-auto px-6 space-y-8 md:px-12 lg:px-56">     
-        <div className="py-2 px-4 mx-auto max-w-screen-xl text-center lg:pt-12 lg:px-6">
-            <h2 className="text-2xl uppercase text-black font-bold md:text-4xl">Conference Registration</h2>
+     <div className="bg-white justify-center items-center max-w-screen-xl mx-auto border-spacing-2 border-b-gray-50 ">
+    <div className="container m-auto px-6 space-y-4 md:px-12 lg:px-56">     
+        <div className="py-1 px-4 mx-auto max-w-screen-xl text-center pt-8 lg:px-6">
+            <h2 className="text-gray-600 text-2xl uppercase font-bold ">Conference Registration</h2>
         </div>
               
-               <div className="container justify-center items-center max-w-screen-xl mx-auto">
+               <div className="container w-auto justify-center items-center max-w-screen-xl mx-auto rounded-md shadow max-h-[50%] ">
                
-                <form onSubmit={participantSubmit}  className="w-full  justify-center items-center max-w-screen-xl mx-auto ">
+                <form onSubmit={participantSubmit}  className="w-full  p-4 justify-center items-center max-w-screen-xl mx-auto ">
                     <div className="flex flex-wrap w-[10rem] -mx-3 mb-6 justify-center items-center">
                         <div className="px-3 w-full justify-center items-center ">
                             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-prefex">
@@ -116,10 +137,10 @@ if(loading)
                             <option>Select</option>
                                 <option value="Mr">Mr.</option>
                                 <option value="Mrs">Mrs.</option>
-                                <option value="Ms">Ms.</option>
-                                <option value="Miss">Miss.</option>
+                                <option value="Ms">Ms.</option>                                
                                 <option value="Dr">Dr.</option>
-                                <option value="Prof">Prof.</option>                            
+                                <option value="Prof">Prof.</option>    
+                                <option value="Prof">Pharm.</option>                        
                             </select>
                             <span className="pb-2 mb-2 text-sm text-red-600">
                                  {participantInput.error_list && participantInput.error_list.prefex}
@@ -132,14 +153,22 @@ if(loading)
                         </div>
                     </div>
                     <div className="flex flex-wrap -mx-3 mb-6">
-                        <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                        <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                             Surname
                         </label>
                         <input type="text" name="surname"  onChange={handleInput} value={participantInput.surname} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" required/>
                         <span className="pb-2 mb-2 text-sm text-red-600">{participantInput.error_list && participantInput.error_list.surname}</span>
                         </div>
-                        <div className="w-full md:w-1/2 px-3">
+                        <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                        <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+                            Middle Name
+                        </label>
+                        <input type="text" name="middlename"  onChange={handleInput} value={participantInput.middlename} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name"/>
+                        <span className="pb-2 mb-2 text-sm text-red-600">{participantInput.error_list && participantInput.error_list.middlename}</span>
+                        </div>
+                        
+                        <div className="w-full md:w-1/3 px-3">
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                             First Name
                         </label>
@@ -191,7 +220,7 @@ if(loading)
                         </div>
                         <div className="w-full md:w-1/2 px-3">
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-orgnization">
-                            Organization/Institution/Company
+                            Organization | Institution | Company
                         </label>
                         <input type="text" name="orgnization" onChange={handleInput} value={participantInput.orgnization} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-orgnization" required  />
                         <span className="pb-2 mb-2 text-sm text-red-600">{participantInput.error_list && participantInput.error_list.orgnization}</span>
@@ -216,7 +245,7 @@ if(loading)
                         </div>
                         <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
-                            State
+                            State | Province | District
                         </label>
                         <input type="text" name="state" onChange={handleInput} value={participantInput.state} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city"required  />
                         <span className="pb-2 mb-2 text-sm text-red-600">{participantInput.error_list && participantInput.error_list.state}</span>
@@ -229,12 +258,12 @@ if(loading)
                         <span className="pb-2 mb-2 text-sm text-red-600">{participantInput.error_list && participantInput.error_list.country}</span>
                         </div>
                     </div>
-                    {/* <div disabled={loading} className="max-w-screen-xl mb-2 mx-auto text-center w-44 justify-center py-2 px-2 items-center bg-red-800 text-white border-gray-800 rounded-md ">
+                    {/* <div disabled={loading} className="max-w-screen-xl mb-2 mx-auto text-center w-44 justify-center py-2 px-2 items-center bg-custom-green text-white border-gray-800 rounded-md ">
                         <button type="submit" className="flex justify-center items-center text-center max-w-screen-xl mx-auto">
                         {loading ? "Submitting Data..." : "Submit"}</button>
                     </div> */}
                     <div className="item-center justify-center flex">
-                <button  type="submit" disabled={isSubmitting} className="max-w-screen-xl mb-2 mx-auto text-center w-44 justify-center py-2 px-2 items-center bg-red-800 text-white border-gray-800 rounded-md">
+                <button  type="submit" disabled={isSubmitting} className="max-w-screen-xl mb-2 mx-auto text-center w-44 justify-center py-2 px-2 items-center bg-custom-green text-white border-gray-800 rounded-md">
                   <span className="inline-block mr-2"> {isSubmitting ? "Submitting Data..." : "Submit"} </span>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4 inline-block">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -243,6 +272,35 @@ if(loading)
               </div>
                 </form>
                </div>
+
+               <div className="py-5 w-full justify-center items-center text-center">
+              <div className="grid grid-cols-2 gap-1 w-full justify-center items-center text-center">
+                <div className="text-center  whitespace-nowrap w-full justify-center items-center">
+                  <button className="transition duration-200 mx-5 px-5 py-2 cursor-pointer font-normal text-sm rounded-lg text-gray-500 hover:bg-gray-200 focus:outline-none focus:bg-gray-300 focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50 ring-inset">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      className="w-4 h-4 inline-block align-text-top"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                      />
+                    </svg>
+                    <NavLink
+                      to="https://nationaltbconference.org/"
+                      className="inline-block text-red-700 font-medium ml-1 w-full justify-center items-center text-center"
+                    >
+                      Back to www.nationaltbconference.org
+                    </NavLink>
+                  </button>
+                </div>
+              </div>
+            </div>
                
     </div>
     </div>

@@ -11,7 +11,7 @@ export const BoardParticipants = () => {
       axios.get(`/api/view-participants`).then((res) => {
         if (res.status === 200) {
           // console.log(res.data.participants);
-          setParticipants(res.data.participants.data);
+          setParticipants(res.data.participants);
           setLoading(false);
         }
       });
@@ -48,15 +48,15 @@ export const BoardParticipants = () => {
       return (
         <tr key={i}>
           <td className="pl-6 py-4 whitespace-nowrap text-start">
-            <div className="text-sm text-gray-900">{i + 1}</div>
+            <div className="text-[12px] text-gray-900">{i + 1}</div>
           </td>
           <td className="px-6 py-4 whitespace-nowrap">
-                                     <div className="text-sm font-medium text-gray-900">00{item.id}</div>
+                                     <div className="text-[12px] font-medium text-gray-900">{item.registration_number}</div>
                                 </td>
           <td className="px-6 py-4 whitespace-nowrap">
             <div className="flex items-center">
               <div className="">
-                <div className="text-sm   text-gray-500">
+                <div className="text-[12px]  text-gray-500">
                   {item.firstname} {item.surname}
                 </div>
               </div>
@@ -64,38 +64,38 @@ export const BoardParticipants = () => {
           </td>
           <td className="px-6 py-4 whitespace-nowrap">
             <div
-              className="px-2 inline-flex text-center text-sm leading-5
+              className="px-2 inline-flex text-center text-[12px] leading-5
                                       text-gray-500 rounded-sm  "
             >
               {item.email}
             </div>
           </td>
           <td className="px-6 py-4 whitespace-nowrap">
-            <div className="px-2 inline-flex text-center text-sm    text-gray-500 rounded-sm  ">
+            <div className="px-2 inline-flex text-center text-[12px]    text-gray-500 rounded-sm  ">
               {item.city}
             </div>
           </td>
-          <td className="px-6 py-4 whitespace-nowrap">
-            <div className="px-2 inline-flex text-center text-sm    text-gray-500 rounded-sm  ">
+          {/* <td className="px-6 py-4 whitespace-nowrap">
+            <div className="px-2 inline-flex text-center text-[12px]    text-gray-500 rounded-sm  ">
               {item.country}
             </div>
-          </td>
+          </td> */}
 
           <td className="px-6 py-4 whitespace-nowrap">
-            <span className="px-2 inline-flex text-center text-sm leading-5   text-gray-500 rounded-sm  ">
+            <span className="px-2 inline-flex text-center text-[12px] leading-5   text-gray-500 rounded-sm  ">
               {item.jobtitle}
             </span>
           </td>
           <td className="px-6 py-4 whitespace-nowrap">
             <span
-              className="px-2 inline-flex text-center text-sm leading-5
+              className="px-2 inline-flex text-center text-[12px] leading-5
                                       text-gray-500 rounded-sm  "
             >
               {item.orgnization}
             </span>
           </td>
 
-          <td className="pr-6 py-4 whitespace-nowrap  text-sm ">
+          <td className="pr-6 py-4 whitespace-nowrap  text-[12px] ">
             <Link to="#" className="text-indigo-600  hover:text-indigo-900">
               {item.phone}
             </Link>
@@ -110,11 +110,11 @@ export const BoardParticipants = () => {
       <div className="md:flex items-center justify-between mx-4 my-2 sm:mt-2">
         <div className="flex md:justify-start md:items-start text-center">
           <h2 className="text-gray-600 mt-2 lg:mt-8 md:text-xl text-sm font-bold  text-center">
-            Delegates
+            Participants
           </h2>
         </div>
         <div className="justify-end items-end pt-2 sm:pt-4 md:pt-4 lg:pt-5 ">
-          {/* <button className="justify-center items-center text-center bg-red-700 hover:bg-red-600 px-2 py-1 md:text-md text-sm rounded-md text-white md:font-semibold tracking-wide cursor-pointer">Add Abstarct</button> */}
+          {/* <button className="justify-center items-center text-center bg-custom-green bg-custom-dark-green px-2 py-1 md:text-md text-sm rounded-md text-white md:font-semibold tracking-wide cursor-pointer">Add Abstarct</button> */}
         </div>
       </div>
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -130,11 +130,11 @@ export const BoardParticipants = () => {
                     S/N
                   </th>
                   <th
-                    scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                  >
-                    ID
-                  </th>
+                              scope="col"
+                              className="px-6 py-3 text-left text-xs font-medium text-gray-500  tracking-wider"
+                            >
+                              REG No:
+                            </th>
                   <th
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
@@ -153,12 +153,12 @@ export const BoardParticipants = () => {
                   >
                     City
                   </th>
-                  <th
+                  {/* <th
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
                     Country
-                  </th>
+                  </th> */}
 
                   <th
                     scope="col"

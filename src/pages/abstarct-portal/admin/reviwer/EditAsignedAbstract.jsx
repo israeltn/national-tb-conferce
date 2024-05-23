@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import axios from "axios";
 import swal from "sweetalert";
+import { baseURL } from "../../../../baseulr";
 
 export const EditAsignedAbstract = (props) => {
+  const url= baseURL;
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -28,6 +30,7 @@ export const EditAsignedAbstract = (props) => {
 
   const [abstractInput, setAbstract] = useState({   
     status:"",
+    remark: "",
     error_list: [],
   });
 
@@ -42,6 +45,7 @@ export const EditAsignedAbstract = (props) => {
     setLoading(true);
      const data = {
           status: abstractInput.status,
+          remark: abstractInput.remark,
      } 
        
      axios.get('/sanctum/csrf-cookie').then(response => {
@@ -103,7 +107,7 @@ export const EditAsignedAbstract = (props) => {
     <div className="bg-white justify-center items-center mx-3 mt-12 ">
       <div className="container m-auto px-6 space-y-4 md:px-12 lg:px-32">
         <div className="py-2 px-4 mx-auto max-w-screen-xl text-center lg:pt-4 lg:px-6">
-          <h2 className="text-2xl dark:bg-gray-900 font-bold md:text-xl">
+          <h2 className="text-2xl  font-bold md:text-xl">
             Abstract Assigned Details
           </h2>
         </div>
@@ -112,18 +116,19 @@ export const EditAsignedAbstract = (props) => {
           
           <div className="items-end  ">
             <label
-              className="flex space-x-2 tracking-wide text-red-700 text-md font-bold"
+              className="flex space-x-2 tracking-wide text-red-700 text-md hover:text-green-700 font-bold"
               for="grid-first-name"
             >
               <Link
-                to={`api.nationaltbconference.org ${abstractInput.abstractpost.image}`}
+                to={`${url}/${abstractInput.abstractpost.image}`}
                 target="_blank"
-                className="text-indigo-500 hover:text-green-700 "
+             
+                className=" stroke-red-700 w-full h-6 hover:stroke-green-700"
               >
                 <span>View Uploaded File</span>
               </Link>
               <Link
-                to={`api.nationaltbconference.org ${abstractInput.abstractpost.image}`}
+                to={`${url}/${abstractInput.abstractpost.image}`}
                 target="_blank"
                 className="text-indigo-600 "
               >
@@ -176,9 +181,9 @@ export const EditAsignedAbstract = (props) => {
                     Prefix
                   </label>
                   <div className="">
-                    <p className=" w-full font-medium text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <p className=" w-full font-medium text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500     dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   
-                      {abstractInput.abstractpost.prefex}
+                      {/* {abstractInput.abstractpost.prefex} */}
                     </p>
                   </div>
                 </div>
@@ -190,7 +195,7 @@ export const EditAsignedAbstract = (props) => {
                 >
                   Surname
                 </label>
-                <p className=" w-full font-medium text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <p className=" w-full font-medium text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500     dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   
                   {abstractInput.abstractpost.surname}
                 </p>
@@ -202,7 +207,7 @@ export const EditAsignedAbstract = (props) => {
                 >
                   First Name
                 </label>
-                <p className=" w-full font-medium text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <p className=" w-full font-medium text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500     dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   {" "}
                   {abstractInput.abstractpost.firstname}{" "}
                 </p>
@@ -219,7 +224,7 @@ export const EditAsignedAbstract = (props) => {
                 >
                   Sex
                 </label>
-                <p className=" w-full font-medium text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <p className=" w-full font-medium text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500     dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   {" "}
                   {abstractInput.abstractpost.gender}{" "}
                 </p>
@@ -233,7 +238,7 @@ export const EditAsignedAbstract = (props) => {
                 >
                   Phone
                 </label>
-                <p className=" w-full font-medium text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <p className=" w-full font-medium text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500     dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   {" "}
                   {abstractInput.abstractpost.phone}{" "}
                 </p>
@@ -245,7 +250,7 @@ export const EditAsignedAbstract = (props) => {
                 >
                   Email
                 </label>
-                <p className=" w-full font-medium text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <p className=" w-full font-medium text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500     dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   {" "}
                   {abstractInput.abstractpost.email}{" "}
                 </p>
@@ -262,7 +267,7 @@ export const EditAsignedAbstract = (props) => {
                 >
                   Job Title
                 </label>
-                <p className=" w-full font-medium text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <p className=" w-full font-medium text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500     dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   {" "}
                   {abstractInput.abstractpost.jobtitle}{" "}
                 </p>
@@ -274,7 +279,7 @@ export const EditAsignedAbstract = (props) => {
                 >
                   Organization/Institution/Company
                 </label>
-                <p className=" w-full font-medium text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <p className=" w-full font-medium text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500     dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   {" "}
                   {abstractInput.abstractpost.orgnization}{" "}
                 </p>
@@ -286,7 +291,7 @@ export const EditAsignedAbstract = (props) => {
                 >
                   Work Address
                 </label>
-                <p className=" w-full font-medium text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <p className=" w-full font-medium text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500     dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   {" "}
                   {abstractInput.abstractpost.address}{" "}
                 </p>
@@ -303,7 +308,7 @@ export const EditAsignedAbstract = (props) => {
                 >
                   City
                 </label>
-                <p className=" w-full font-medium text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <p className=" w-full font-medium text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500     dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   {" "}
                   {abstractInput.abstractpost.city}{" "}
                 </p>
@@ -315,7 +320,7 @@ export const EditAsignedAbstract = (props) => {
                 >
                   State
                 </label>
-                <p className=" w-full font-medium text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <p className=" w-full font-medium text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500     dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   {" "}
                   {abstractInput.abstractpost.state}{" "}
                 </p>
@@ -327,7 +332,7 @@ export const EditAsignedAbstract = (props) => {
                 >
                   Country
                 </label>
-                <p className=" w-full font-medium text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <p className=" w-full font-medium text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500     dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   {" "}
                   {abstractInput.abstractpost.country}{" "}
                 </p>
@@ -354,7 +359,7 @@ export const EditAsignedAbstract = (props) => {
                 >
                   Abstract Title
                 </label>
-                <p className=" w-full font-medium text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <p className=" w-full font-medium text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500     dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   {" "}
                   {abstractInput.abstractpost.abstract_title}{" "}
                 </p>
@@ -367,7 +372,7 @@ export const EditAsignedAbstract = (props) => {
                 >
                   Abstract Thematic Area
                 </label>
-                <p className=" w-full font-medium text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <p className=" w-full font-medium text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500     dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   {" "}
                   {abstractInput.abstractpost.abstract_thematic}{" "}
                 </p>
@@ -383,7 +388,7 @@ export const EditAsignedAbstract = (props) => {
                 >
                   Co-Author
                 </label>
-                <p className=" w-full font-medium text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <p className=" w-full font-medium text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500     dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   {" "}
                   {abstractInput.abstractpost.co_author}{" "}
                 </p>
@@ -396,57 +401,73 @@ export const EditAsignedAbstract = (props) => {
                 >
                   Other Information
                 </label>
-                <p className=" w-full font-medium text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500    dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <p className=" w-full font-medium text-sm text-gray-900  focus:ring-blue-500 focus:border-blue-500     dark:focus:ring-blue-500 dark:focus:border-blue-500">
                   {" "}
                   {abstractInput.abstractpost.information}{" "}
                 </p>
               </div>
             </div>
 
-            <div className="flex items-center justify-center mt-10 mb-4 ">
-              <div className="items-center justify-center md:w-1/4 px-3 mb-6 md:mb-0">
-                <label
-                  className="block items-center justify-center text-center  tracking-wide text-gray-700 text-sm font-bold mb-2"
-                  for="grid-gender"
-                >
-                  Take Action
-                </label>
-                <div className="relative">
-                  <select
-                    type="text"
-                    name="status"
-                    onChange={handleInput}
-                    value={abstractInput.status}
-                    className="block uppercase items-center justify-center font-bold text-xs appearance-none md:w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                    id="grid-gender"
-                  >
-                    <option className="font-bold ">{abstractInput.status}</option>
-                    <option
-                      className="text-red-700 font-bold"
-                      value="assigned"
-                    >
-                      Not Approved
-                    </option>
-                    <option
-                      className="text-green-800 font-bold"
-                      selected="selected"
-                      value="approved"
-                    >
-                      Approved
-                    </option>
-                  
-                  </select>
-                  <span className="pb-2 mb-2 text-sm text-red-600">
-                    {/* {abstractInput.error_list.status}  */}
-                  </span>
+            <div className="flex items-center full justify-center mt-10 mb-4">
+    <div className="items-center w-full justify-center  px-3 mb-6 md:mb-0">
+        <label
+            className="block items-center justify-center text-center tracking-wide text-gray-700 text-sm font-bold mb-2"
+            htmlFor="grid-gender"
+        >
+            Suggested/Action
+        </label>
+        <div className=" flex justify-center items-center text-center ">
+        <div className="w-1/2 flex justify-center items-center text-center ">
+            <select
+                type="text"
+                name="status"
+                onChange={handleInput}
+                value={abstractInput.status}
+                className="block uppercase items-center justify-center font-bold text-xs appearance-none md:w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                id="grid-gender"
+            >
+                {/* <option className="font-bold">{abstractInput.status}</option> */}
+                <option className="font-bold">Select</option>
+                <option className="text-green-800 font-bold" value="recommended">
+                Recommended 
+                </option>
+                <option className="text-yellow-500 font-bold" value="recommended-with-revision">
+                Recommended After revision 
+                </option>
+                <option className="text-red-700 font-bold" value="not-recommended">
+                    Not Recommended
+                </option>
                 
-                </div>
-
-                {/* <p className="text-red-500 text-xs italic">Please fill out this field.</p> */}
-              </div>
+            </select>
+            <span className="pb-2 mb-2 text-sm text-red-600">
+                {abstractInput.error_list && abstractInput.error_list.status}
+            </span>
+        </div>
+        </div>
+        <div className="mt-4 w-full">
+            <label
+                className="block  items-center justify-center text-center tracking-wide text-gray-700 text-sm font-bold mb-2"
+                htmlFor="grid-remarks"
+            >
+                Comment
+            </label>
+            <textarea
+                className="block  items-center justify-center font-bold text-xs appearance-none md:w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                id="grid-remarks"
+                name="remark"
+                onChange={handleInput}
+                value={abstractInput.remark}
+                placeholder="Enter Comments here..."
+            ></textarea>
+            <span className="pb-2 mb-2 text-sm text-red-600">
+                {abstractInput.error_list && abstractInput.error_list.remark}
+            </span>
+        </div>
+    </div>
             </div>
 
-            {/* <div disabled={loading} className="max-w-screen-xl mb-2 mx-auto text-center w-44 justify-center py-2 px-2 items-center bg-red-800 text-white border-gray-800 rounded-md ">
+
+            {/* <div disabled={loading} className="max-w-screen-xl mb-2 mx-auto text-center w-44 justify-center py-2 px-2 items-center bg-custom-green text-white border-gray-800 rounded-md ">
                         <button type="submit" className="flex justify-center items-center text-center max-w-screen-xl mx-auto">
                         {loading ? "Submitting Data..." : "Submit"}</button>
                     </div> */}
@@ -455,7 +476,7 @@ export const EditAsignedAbstract = (props) => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="max-w-screen-xl mb-2 mx-auto text-center w-44 justify-center py-2 px-2 items-center bg-red-800 text-white border-gray-800 rounded-md"
+                className="max-w-screen-xl mb-2 mx-auto text-center w-44 justify-center py-2 px-2 items-center bg-custom-green text-white border-gray-800 rounded-md"
               >
                 <span className="inline-block mr-2">
                   {" "}

@@ -88,13 +88,13 @@ export const BoardNavBar = () => {
                 className="text-xl no-underline font-bold flex items-center lg:ml-2.5"
               >
                 {/* logo */}
-                <img
-                  src={require("../../assets/logo.jpg")}
-                  className="mr-2 h-10 w-52"
+                 <img
+                  src={require("../../assets/ntbc-logo-4.png")}
+                  className="mr-2 h-10 w-40"
                   alt="Windster Logo"
                 />
               </Link>
-              <form
+              {/* <form
                 action="#"
                 method="GET"
                 className="hidden lg:block lg:pl-32"
@@ -125,7 +125,7 @@ export const BoardNavBar = () => {
                     placeholder="Search"
                   />
                 </div>
-              </form>
+              </form> */}
             </div>
             <div className="flex items-center">
               <button
@@ -159,8 +159,8 @@ export const BoardNavBar = () => {
                 to="#"
                 className="hidden no-underline sm:inline-flex ml-5 text-black  focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center items-center mr-3"
               >
-                <span className="px-2">Board Welcome {userdata.firstname} </span>
-                <div className="flex-shrink-0 p-1 hover:bg-red-700 rounded-full">
+                <span className="px-2">Welcome {userdata.firstname} as Scientific Committee </span>
+                <div className="flex-shrink-0 p-1 hover:bg-custom-green rounded-full">
                   <img
                     className="h-10 w-10 rounded-full"
                     src={`https://api.nationaltbconference.org/${userdata.avatar}`}
@@ -168,7 +168,7 @@ export const BoardNavBar = () => {
                   />
                 </div>
               </Link>
-              <div className="bg-red-700 rounded-sm hover:bg-red-600 cursor-pointer">
+              <div className="bg-custom-green rounded-sm bg-custom-dark-green cursor-pointer">
                 <button
                   type="button"
                   onClick={logoutSubmit}
@@ -192,7 +192,7 @@ export const BoardNavBar = () => {
               {/* Admin Side bar */}
               <div className="flex-1 h-full px-3 bg-white">
                 <ul className="space-y-2 pb-2">
-                  <li>
+                  {/* <li>
                     <form action="#" method="GET" className="lg:hidden">
                       <label for="mobile-search" className="sr-only">
                         Board Search
@@ -218,14 +218,14 @@ export const BoardNavBar = () => {
                         />
                       </div>
                     </form>
-                  </li>
+                  </li> */}
                   <li>
                     <NavLink
                       to="#"
                       className="text-base no-underline text-gray-900 font-normal rounded-lg flex items-center p-2 hover:bg-gray-100 group"
                     >
                      
-                      <span className="ml-1 font-medium">Board Member</span>
+                      <span className="ml-1 font-medium">Scientific Committee</span>
                     </NavLink>
                   </li>
                   <li>
@@ -276,7 +276,7 @@ export const BoardNavBar = () => {
                       </svg>
 
                       <span className="ml-3 flex-1 whitespace-nowrap">
-                        Delegates
+                      Participants
                       </span>
                     </NavLink>
                   </li>
@@ -330,7 +330,7 @@ export const BoardNavBar = () => {
                       </span>
                     </NavLink>
                   </li>
-                  <li>
+                  {/* <li>
                     <Link
                       to="abstractreviewers"
                       className="text-base no-underline text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group "
@@ -351,7 +351,7 @@ export const BoardNavBar = () => {
                         Abstract Reviewers
                       </span>
                     </Link>
-                  </li>
+                  </li> */}
                   {/* <li>
                     <Link
                       to="/boarddashboard/assignabstract"

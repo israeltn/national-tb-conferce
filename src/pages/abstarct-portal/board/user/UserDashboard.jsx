@@ -60,10 +60,10 @@ export const UserDashboard = () => {
             <div className="pt-6 px-4 bg-gray-100">
                 <div class="md:flex items-center justify-between mx-4 my-2 sm:mt-2">
                     <div className='flex md:justify-start md:items-start text-center'>
-                         <h2 class="text-gray-600 mt-2 lg:mt-8 md:text-xl text-sm font-semibold text-center">Delegate Profile</h2>
+                         <h2 class="text-gray-600 mt-2 lg:mt-8 md:text-xl text-sm font-semibold text-center">Participant Profile</h2>
                     </div>
                               <div class="justify-end items-end pt-2 sm:pt-4 md:pt-4 lg:pt-5 ">
-                                   <button class="justify-center items-center text-center bg-red-700 hover:bg-red-600 px-2 py-1 md:text-md text-sm rounded-md text-white md:font-semibold tracking-wide cursor-pointer">
+                                   <button class="justify-center items-center text-center bg-custom-green bg-custom-dark-green px-2 py-1 md:text-md text-sm rounded-md text-white md:font-semibold tracking-wide cursor-pointer">
                                     <NavLink to="/userdashboard/submitabstract">Submit Abstarct</NavLink> 
                                     </button>
                                    

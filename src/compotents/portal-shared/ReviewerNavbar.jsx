@@ -88,9 +88,9 @@ export const ReviewerNavbar = () => {
                 className="text-xl no-underline font-bold flex items-center lg:ml-2.5"
               >
                 {/* logo */}
-                <img
-                  src={require("../../assets/logo.jpg")}
-                  className="mr-2 h-10 w-52"
+                 <img
+                  src={require("../../assets/ntbc-logo-4.png")}
+                  className="mr-2 h-10 w-40"
                   alt="Windster Logo"
                 />
               </Link>
@@ -160,7 +160,7 @@ export const ReviewerNavbar = () => {
                 className="hidden no-underline sm:inline-flex ml-5 text-black  focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center items-center mr-3"
               >
                 <span className="px-2">Welcome {userdata.firstname} </span>
-                <div className="flex-shrink-0 p-1 hover:bg-red-700 rounded-full">
+                <div className="flex-shrink-0 p-1 hover:bg-custom-green rounded-full">
                   <img
                     className="h-10 w-10 rounded-full"
                     src={`https://api.nationaltbconference.org/${userdata.avatar}`}
@@ -168,7 +168,7 @@ export const ReviewerNavbar = () => {
                   />
                 </div>
               </Link>
-              <div className="bg-red-700 rounded-sm hover:bg-red-600 cursor-pointer">
+              <div className="bg-custom-green rounded-sm bg-custom-dark-green cursor-pointer">
                 <button
                   type="button"
                   onClick={logoutSubmit}
@@ -252,7 +252,7 @@ export const ReviewerNavbar = () => {
                         <path d="M3 5a2 2 0 012-2h1a1 1 0 010 2H5v7h2l1 2h4l1-2h2V5h-1a1 1 0 110-2h1a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5z"></path>
                       </svg>
                       <span className="ml-3 flex-1 whitespace-nowrap">
-                        Asigned Abstracts
+                        Assigned Abstracts
                       </span>
                       <span className="bg-gray-200 text-gray-800 ml-3 text-sm font-medium inline-flex items-center justify-center px-2 rounded-full"></span>
                     </Link>
@@ -279,7 +279,7 @@ export const ReviewerNavbar = () => {
                       </svg>
 
                       <span className="ml-3 flex-1 whitespace-nowrap">
-                        Abstract Approved
+                        Abstract Suggested
                       </span>
                     </Link>
                   </li>

@@ -29,8 +29,13 @@ import { Dashboard } from './pages/abstarct-portal/admin/dashboard/Dashboard'
 import { Authors } from './pages/abstarct-portal/admin/dashboard/Authors'
 import { AssignAbstract } from './pages/abstarct-portal/admin/dashboard/AssignAbstract'
 import { AddUser } from './pages/abstarct-portal/admin/dashboard/AddUser'
+import { AddThematicArea } from './pages/abstarct-portal/admin/dashboard/AddThematicArea'
+
 import { Abstracts } from './pages/abstarct-portal/admin/dashboard/Abstracts'
 import { ViewAbstract } from './pages/abstarct-portal/admin/dashboard/ViewAbstract'
+import { EditStatusViewAbstract } from './pages/abstarct-portal/admin/dashboard/EditStatusViewAbstract'
+
+
 import { Participants } from './pages/abstarct-portal/admin/dashboard/Participants'
 import { AssignedAb } from './pages/abstarct-portal/admin/dashboard/AssignedAb'
 import { AllApprovedAbstracts } from './pages/abstarct-portal/admin/dashboard/AllApprovedAbstracts'
@@ -46,15 +51,23 @@ import { BoardAuthors } from './pages/abstarct-portal/board/dashboard/BoardAutho
 // import { BoardAssignAbstract } from './pages/abstarct-portal/board/dashboard/BoardAssignAbstract'
 import { BoardAbstracts } from './pages/abstarct-portal/board/dashboard/BoardAbstracts'
 import { BoardViewAbstract } from './pages/abstarct-portal/board/dashboard/BoardViewAbstract'
+import { BoardApproveViewAbstract } from './pages/abstarct-portal/board/dashboard/BoardApproveViewAbstract'
+
+
 import { BoardParticipants } from './pages/abstarct-portal/board/dashboard/BoardParticipants'
 import { BoardAllApprovedAbstracts } from './pages/abstarct-portal/board/dashboard/BoardAllApprovedAbstracts'
 import { BoardViewAssignedAbstract } from './pages/abstarct-portal/board/dashboard/BoardViewAssignedAbstract'
 import { BoardAbstractReviewers } from './pages/abstarct-portal/board/dashboard/BoardAbstractReviewers'
+import {BoardAssignedAb} from './pages/abstarct-portal/board/dashboard/BoardAssignedAb'
 
 
 import { UserDashboard } from './pages/abstarct-portal/admin/user/UserDashboard'
 import { SubmitAbstract } from './pages/abstarct-portal/admin/user/SubmitAbstract'
 import { AuthorAbstracts } from './pages/abstarct-portal/admin/user/AuthorAbstracts'
+import { EditAbstract } from './pages/abstarct-portal/admin/user/EditAbstract'
+import { UserViewAbstract } from './pages/abstarct-portal/admin/user/UserViewAbstract'
+
+
 
 
 
@@ -70,7 +83,7 @@ import { ApprovedAbstracts  } from './pages/abstarct-portal/admin/reviwer/Approv
 import { NotFound } from './pages/abstarct-portal/NotFound'
 
 // End Abstarct-Portal
-import { LandingPage } from './pages/conference-pages/LandingPage';
+// import { LandingPage } from './pages/conference-pages/LandingPage';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -115,7 +128,7 @@ function App() {
 
                       {/* National TB Conference landing page Routes */}
                     <Route path="/" element={<Home />}>  
-                          <Route index element={<LandingPage />}/>                
+                          <Route index element={<Registration />}/>                
                           <Route path="about" element={<About/>}/>
                           <Route path="speakers" element={<Speakers/>}/>
                           <Route path="planning" element={<Planning/>}/>
@@ -136,9 +149,12 @@ function App() {
                         <Route path="authors" element={<Authors/>}/>
                         <Route path="abstracts" element={<Abstracts/>}/>
                         <Route path='view-abstract/:id' element={<ViewAbstract />}/> 
+                        <Route path='approve-abstract/:id' element={<EditStatusViewAbstract/>}/> 
                         <Route path="delegates" element={<Participants/>}/>
                         <Route path="abstractreviewers" element={<AbstractReviewers/>}/>
                         <Route path="adduser" element={<AddUser/>}/>
+                        <Route path="addthematic" element={<AddThematicArea/>}/>
+                        
                         <Route path="assignabstract" element={<AssignAbstract/>}/>
                         <Route path="approvedabstract" element={< AllApprovedAbstracts/>}/>
                         <Route path='view-approved-abstract/:id' element={<ViewAssignedAbstract />}/> 
@@ -164,6 +180,7 @@ function App() {
                         <Route path="authors" element={<BoardAuthors/>}/>
                         <Route path="abstracts" element={<BoardAbstracts/>}/>
                         <Route path='view-abstract/:id' element={<BoardViewAbstract />}/> 
+                        <Route path='approve-abstract/:id' element={<BoardApproveViewAbstract />}/> 
                         <Route path="delegates" element={<BoardParticipants/>}/>
                         <Route path="abstractreviewers" element={<BoardAbstractReviewers/>}/>                        
                         {/* <Route path="assignabstract" element={<BoardAssignAbstract/>}/> */}
@@ -171,7 +188,7 @@ function App() {
                         <Route path='view-approved-abstract/:id' element={<BoardViewAssignedAbstract />}/> 
                         
                        
-                        <Route path="assignedabstracts" element={<AssignedAb/>}/>
+                        <Route path="assignedabstracts" element={<BoardAssignedAb/>}/>
                         
                        
                     </Route>
@@ -185,6 +202,9 @@ function App() {
                         <Route index element={<UserDashboard/>}/>
                         <Route path="authorAbstracts" element={<AuthorAbstracts />}/>
                         <Route path="submitabstract" element={<SubmitAbstract />}/>
+                        <Route path="edit-abstract/:id" element={<EditAbstract />}/>
+                        <Route path="view-abstract/:id" element={<UserViewAbstract />}/>
+                        
                     </Route> 
                     
                             {/* Abstract Portal Routes reviwer */}

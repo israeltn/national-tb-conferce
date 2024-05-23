@@ -81,7 +81,7 @@ const filteredAbstracts = viewAbstract.filter(item =>
             <div className="text-xs  text-gray-900">{i + 1}</div>
           </td>
           <td className="pl-6 py-4 whitespace-nowrap text-start text-xs ">
-            <div className="text-xs  text-gray-900">NTBC-0{item.id}</div>
+            <div className="text-xs  text-gray-900">NTBCAB-0{item.id}</div>
           </td>
 
           <td className="px-4 w-1/2 py-4   text-start text-xs ">            
@@ -194,7 +194,7 @@ const filteredAbstracts = viewAbstract.filter(item =>
 
         <div className="flex  text-center">
           <h2 className="text-gray-600 mt-2 lg:mt-8 md:text-xl text-xs  font-semibold text-center">
-            All Abstracts
+          Approved Abstracts
           </h2>
         </div>
         <div className=" flex  items-end pt-2 sm:pt-4 md:pt-4 lg:pt-5 ">
@@ -273,10 +273,10 @@ const filteredAbstracts = viewAbstract.filter(item =>
             </table>
            
             <div className="flex font-medium text-xs justify-center items-center space-x-4 m-2">
-              <button onClick={prevPage} disabled={currentPage === 1} className="bg-red-700 disabled:hidden hover:bg-red-600 rounded-sm p-1 text-white" >
+              <button onClick={prevPage} disabled={currentPage === 1} className="bg-custom-green disabled:hidden bg-custom-dark-green rounded-sm p-1 text-white" >
                 Previous
               </button>
-              <button onClick={nextPage} disabled={currentPage === lastPage} className="bg-red-700 disabled:hidden hover:bg-red-600 rounded-sm p-1 text-white">
+              <button onClick={nextPage} disabled={currentPage === lastPage} className="bg-custom-green disabled:hidden bg-custom-dark-green rounded-sm p-1 text-white">
                 Next
               </button>
             </div>

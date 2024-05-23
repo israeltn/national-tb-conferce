@@ -331,13 +331,13 @@ if(loading)
                          </textarea>
                          <span className="pb-2 mb-2 text-sm text-red-600">{errorlist.information}</span>
                     </div>
-                    {/* <div disabled={loading} className="max-w-screen-xl mb-2 mx-auto text-center w-44 justify-center py-2 px-2 items-center bg-red-800 text-white border-gray-800 rounded-md ">
+                    {/* <div disabled={loading} className="max-w-screen-xl mb-2 mx-auto text-center w-44 justify-center py-2 px-2 items-center bg-custom-green text-white border-gray-800 rounded-md ">
                         <button type="submit" className="flex justify-center items-center text-center max-w-screen-xl mx-auto">
                         {loading ? "Submitting Data..." : "Submit"}</button>
                     </div> */}
                     <div className="item-center justify-center flex">
                     {/* disabled={loading} */}
-                <button  type="submit"   disabled={isSubmitting} className="max-w-screen-xl mb-2 mx-auto text-center w-44 justify-center py-2 px-2 items-center bg-red-800 text-white border-gray-800 rounded-md">
+                <button  type="submit"   disabled={isSubmitting} className="max-w-screen-xl mb-2 mx-auto text-center w-44 justify-center py-2 px-2 items-center bg-custom-green text-white border-gray-800 rounded-md">
                   <span className="inline-block mr-2"> {isSubmitting ? "Submitting Data..." : "Submit"}</span>
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4 inline-block">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />

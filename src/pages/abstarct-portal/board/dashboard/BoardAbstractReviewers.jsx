@@ -99,7 +99,7 @@ export const BoardAbstractReviewers = () => {
           </h2>
         </div>
         <div class="justify-end items-end pt-2 sm:pt-4 md:pt-4 lg:pt-5 ">
-          <button class="justify-center items-center text-center bg-red-700 hover:bg-red-600 px-2 py-1 md:text-md text-sm rounded-md text-white md:font-semibold tracking-wide cursor-pointer">
+          <button class="justify-center items-center text-center bg-custom-green bg-custom-dark-green px-2 py-1 md:text-md text-sm rounded-md text-white md:font-semibold tracking-wide cursor-pointer">
             <Link to="/dashboard/adduser">Add Reviewer</Link>
           </button>
         </div>

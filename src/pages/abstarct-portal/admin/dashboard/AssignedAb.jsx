@@ -81,7 +81,7 @@ const filteredAbstracts = viewAbstract.filter(item =>
             <div className="text-xs  text-gray-900">{i + 1}</div>
           </td>
           <td className="pl-6 py-4 whitespace-nowrap text-start text-xs ">
-            <div className="text-xs  text-gray-900">NTBC-0{item.id}</div>
+            <div className="text-xs  text-gray-900">NTBCAB-0{item.id}</div>
           </td>
 
           <td className="px-4 w-1/2 py-4   text-start text-xs ">            
@@ -126,8 +126,8 @@ const filteredAbstracts = viewAbstract.filter(item =>
           <td className="px-6 py-4 whitespace-nowrap text-start text-xs">
             <span
               className={`px-2 uppercase inline-flex text-xs leading-5 font-semibold rounded-full ${
-                item.status === "approved" ? "bg-green-100 text-green-800" : 
-                          item.status === "assigned" ? "bg-yellow-100 text-yellow-800" :
+                item.status === "recommended" ? "bg-green-100 text-green-800" : 
+                item.status === "recommended-with-revision" ? "bg-yellow-100 text-yellow-800" :
                           "bg-red-100 text-red-800"
               }`}
             >
@@ -136,33 +136,9 @@ const filteredAbstracts = viewAbstract.filter(item =>
           </td>
 
           <td className="justify-center items-center text-center px-6 py-4 whitespace-nowrap text-xs  font-medium">
-            {/* <Link
-              to={`https://api.nationaltbconference.org/${item.image}`}
-              target="_blank"
-              className="text-indigo-600 px-2 hover:text-indigo-900 "
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="currentColor"
-                className=" stroke-red-700 w-6 h-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"
-                />
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                />
-              </svg>
-            </Link> */}
+           
             <Link
-              to={`/dashboard/view-abstract/${item.id}`}
+              to={`/dashboard/approve-abstract/${item.id}`}
               className="text-indigo-600 px-2 hover:text-indigo-900 "
             >
              <svg
@@ -204,7 +180,8 @@ const filteredAbstracts = viewAbstract.filter(item =>
 
         <div className="flex  text-center">
           <h2 className="text-gray-600 mt-2 lg:mt-8 md:text-xl text-xs  font-semibold text-center">
-            All Abstracts
+          Assigned Abstracts
+
           </h2>
         </div>
         <div className=" flex  items-end pt-2 sm:pt-4 md:pt-4 lg:pt-5 ">
@@ -290,10 +267,10 @@ const filteredAbstracts = viewAbstract.filter(item =>
             </table>
            
             <div className="flex font-medium text-xs justify-center items-center space-x-4 m-2">
-              <button onClick={prevPage} disabled={currentPage === 1} className="bg-red-700 disabled:hidden hover:bg-red-600 rounded-sm p-1 text-white" >
+              <button onClick={prevPage} disabled={currentPage === 1} className="bg-custom-green disabled:hidden bg-custom-dark-green rounded-sm p-1 text-white" >
                 Previous
               </button>
-              <button onClick={nextPage} disabled={currentPage === lastPage} className="bg-red-700 disabled:hidden hover:bg-red-600 rounded-sm p-1 text-white">
+              <button onClick={nextPage} disabled={currentPage === lastPage} className="bg-custom-green disabled:hidden bg-custom-dark-green rounded-sm p-1 text-white">
                 Next
               </button>
             </div>

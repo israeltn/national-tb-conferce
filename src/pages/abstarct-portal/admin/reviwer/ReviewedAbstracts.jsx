@@ -51,7 +51,7 @@ export const ReviewedAbstracts = () => {
             <div className="text-sm text-gray-900">{i + 1}</div>
           </td>
           <td className="pl-6 py-4 whitespace-nowrap text-start">
-            <div className="text-sm text-gray-900">NTBC-0{item.id}</div>
+            <div className="text-sm text-gray-900">NTBCAB-0{item.id}</div>
           </td>
 
           <td className="px-4 w-1/2 py-4   text-start">
@@ -141,7 +141,7 @@ export const ReviewedAbstracts = () => {
           </h2>
         </div>
         <div className="justify-end items-end pt-2 sm:pt-4 md:pt-4 lg:pt-5 ">
-          {/* <button className="justify-center items-center text-center bg-red-700 hover:bg-red-600 px-2 py-1 md:text-md text-sm rounded-md text-white md:font-semibold tracking-wide cursor-pointer">Add Abstarct</button> */}
+          {/* <button className="justify-center items-center text-center bg-custom-green bg-custom-dark-green px-2 py-1 md:text-md text-sm rounded-md text-white md:font-semibold tracking-wide cursor-pointer">Add Abstarct</button> */}
         </div>
       </div>
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">

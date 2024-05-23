@@ -124,7 +124,7 @@ import { Link } from 'react-router-dom';
                          <h2 className="text-gray-600 mt-2 lg:mt-8 md:text-xl text-sm font-semibold text-center">Author Abstracts</h2>
                     </div>
                               <div className="justify-end items-end pt-2 sm:pt-4 md:pt-4 lg:pt-5 ">
-                                   {/* <button className="justify-center items-center text-center bg-red-700 hover:bg-red-600 px-2 py-1 md:text-md text-sm rounded-md text-white md:font-semibold tracking-wide cursor-pointer">Add Abstarct</button> */}
+                                   {/* <button className="justify-center items-center text-center bg-custom-green bg-custom-dark-green px-2 py-1 md:text-md text-sm rounded-md text-white md:font-semibold tracking-wide cursor-pointer">Add Abstarct</button> */}
                                    
                               </div>
                </div>

@@ -172,12 +172,13 @@ export const UpdateUser = () => {
                       id="grid-gender"
                     >
                       <option>Select</option>
-                      <option value="user">User</option>
-                      <option value="admin">Admin</option>
-                      <option value="board">Board Member</option>    
+                      <option value="user">Abstract Author</option>
                       <option selected="selected" value="reviewer">
                         Reviewer
                       </option>
+                      <option value="admin">Abstract Supper Admin</option>
+                      <option value="board">Abstract Committee </option>    
+                    
                     </select>
                   </div>
                   <span className="pb-2 mb-2 text-xs text-red-600">
@@ -203,7 +204,7 @@ export const UpdateUser = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="transition w-full duration-200 bg-red-700 hover:bg-red-600  focus:ring-opacity-50 text-white py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block"
+                    className="transition w-full duration-200 bg-custom-green bg-custom-dark-green  focus:ring-opacity-50 text-white py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block"
                   >
                     <span className="inline-block mr-2">
                       {" "}
