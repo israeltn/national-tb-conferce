@@ -52,19 +52,13 @@ export const BoardAbstractReviewers = () => {
             {i + 1}
           </td>
           <td className="px-6 py-4 whitespace-nowrap">
-            <div className="flex items-center">
-              <div className="flex-shrink-0 w-10 h-10">
-                <img
-                  className="w-full h-full rounded-full"
-                  src={`https://api.nationaltbconference.org/${item.avatar}`}
-                  alt=""
-                />
-              </div>
+            <div className="text-sm  text-gray-500">
+              {item.firstname} 
             </div>
           </td>
           <td className="px-6 py-4 whitespace-nowrap">
             <div className="text-sm  text-gray-500">
-              {item.firstname} {item.lastname}
+               {item.lastname}
             </div>
           </td>
           <td className="px-6 py-4 whitespace-nowrap">
@@ -120,13 +114,13 @@ export const BoardAbstractReviewers = () => {
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                    Image
+                    Firstname
                   </th>
                   <th
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                    Name
+                    lastname
                   </th>
                   <th
                     scope="col"

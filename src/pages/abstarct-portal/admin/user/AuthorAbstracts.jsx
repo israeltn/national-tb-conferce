@@ -105,7 +105,7 @@ const handleDelete = (id) => {
             <div className="text-sm text-gray-900">{i + 1}</div>
           </td>
           <td className="pl-6 py-4 whitespace-nowrap text-start text-sm">
-            <div className="text-sm text-gray-900">NTBC-0{item.id}</div>
+            <div className="text-sm text-gray-900">NTBC2024-0{item.id}</div>
           </td>
 
           <td className="px-4 w-1/2 py-4   text-start text-sm">            

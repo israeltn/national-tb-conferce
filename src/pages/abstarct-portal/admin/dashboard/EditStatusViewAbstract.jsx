@@ -8,7 +8,7 @@ import { baseURL } from "../../../../baseulr";
 export const EditStatusViewAbstract = (props) => {
   const url= baseURL;
   const navigate = useNavigate();
-  const [abstractInput, setAbstract] = useState();
+  const [abstractInput, setAbstract] = useState([]);
   const [Singleabstract,  setSingleAbstract] = useState([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
  
@@ -18,16 +18,16 @@ export const EditStatusViewAbstract = (props) => {
   const { id } = useParams();
 
   useEffect(() => {
-    axios.get(`/api/view-single-abstract/${id}`).then((res) => {
+    axios.get(`/api/single_abstract/${id}`).then((res) => {
       if (res.data.status === 200) {
-            // console.log(res.data.assingabstract);
-        setAbstract(res.data.assingabstract);
+            // console.log(res.data.abstract.abstractpost);
+        setAbstract(res.data.abstract.abstractpost);
       }
       else if(res.data.status === 404)                 
       {
       swal("Error",res.data.message, "error"); 
       // toast.error(res.data.message);
-      navigate("/dashboard/abstracts"); 
+      // navigate("/dashboard/abstracts"); 
       }
       setLoading(false);
     });
@@ -37,14 +37,14 @@ export const EditStatusViewAbstract = (props) => {
     
     axios.get(`/api/single_abstract/${id}`).then((res) => {
       if (res.data.status === 200) {
-            console.log(res.data.abstract.data);
+            // console.log(res.data.abstract);
         setSingleAbstract(res.data.abstract);
       }
       else if(res.data.status === 404)                 
       {
       swal("Error",res.data.message, "error"); 
       // toast.error(res.data.message);
-      navigate("/dashboard/abstracts"); 
+      // navigate("/dashboard/abstracts"); 
       }
       setLoading(false);
     });
@@ -142,14 +142,14 @@ export const EditStatusViewAbstract = (props) => {
               for="grid-first-name"
             >
               <Link
-                to={`${url}/${abstractInput.image}`}
+                to={`${url}/${abstractInput.file}`}
                 target="_blank"
                  className=" stroke-red-700 w-full h-6 hover:stroke-green-700"
               >
                 <span className="flex">View Uploaded File</span>
               </Link>
               <Link
-                to={`${url}/${abstractInput.image}`}
+                to={`${url}/${abstractInput.file}`}
                 target="_blank"
                 className="text-indigo-600 flex "
               >

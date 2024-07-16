@@ -48,7 +48,7 @@ const handleInput = (e) => {
     setIsSubmitting(true);  
     const formData = new FormData();
    
-    formData.append('image', file);
+    formData.append('file', file);
     formData.append('fileName', file.name);
     const config = {
       headers: {
@@ -110,9 +110,7 @@ const handleInput = (e) => {
 
     }
 
-     
-  
-
+    
 
 
 if(loading)
@@ -151,7 +149,7 @@ if(loading)
                         <div className="px-3 w-full justify-center items-center ">
                       
                             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-prefex">
-                            Prefix
+                            Prefixee * <span className=' '>*</span>
                         </label>
                         <div className="">
                             <select name="prefex" onChange={handleInput} value={abstractInput.prefex} className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-prefex">
@@ -308,9 +306,9 @@ if(loading)
                         </div>
                         <div className="w-full md:w-1/2 px-3">
                              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload file</label>
-                            <input type="file" name="image" onChange={handleFile}  className="block w-full text-sm text-gray-900 border border-gray-500 rounded-lg cursor-pointer bg-gray-200 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-500" aria-describedby="file_input_help" id="file_input"/>
+                            <input type="file" name="file" onChange={handleFile}  className="block w-full text-sm text-gray-900 border border-gray-500 rounded-lg cursor-pointer bg-gray-200 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-500" aria-describedby="file_input_help" id="file_input"/>
                             <p className="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">PDF, Word DOC (MAX. 800x400px).</p>
-                            <span className="pb-2 mb-2 text-sm text-red-600">{errorlist.image}</span>
+                            <span className="pb-2 mb-2 text-sm text-red-600">{errorlist.file}</span>
                         </div>
                     </div>
                     <div className="flex flex-wrap mx-3 mb-6">

@@ -95,7 +95,7 @@ export const ReviewedAbstracts = () => {
 
           <td className="justify-center items-center text-center px-6 py-4 whitespace-nowrap text-sm font-medium">
             <Link
-              to={`api.nationaltbconference.org ${item.image}`}
+              to={`api.nationaltbconference.org ${item.file}`}
               target="_blank"
               className="text-indigo-600 px-2 hover:text-indigo-900 "
             >

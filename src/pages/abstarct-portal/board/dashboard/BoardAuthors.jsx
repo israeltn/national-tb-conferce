@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import swal from "sweetalert";
+import { RiDeleteBin6Line } from "react-icons/ri";
+import { FaRegEdit } from "react-icons/fa";
 
 export const BoardAuthors = () => {
   const [authors, setAuthors] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [searchInput, setSearchInput] = useState(''); // Step 1: Add state for search input
 
   useEffect(() => {
     axios.get("/sanctum/csrf-cookie").then((response) => {
@@ -17,6 +21,27 @@ export const BoardAuthors = () => {
       });
     });
   }, []);
+  const handleDelete = (id) => {
+    if (window.confirm("Are you sure you want to delete this abstract?")) {
+      axios.delete(`/api/delete-user/${id}`)
+        .then((res) => {
+          console.log("Abstract deleted successfully");
+          setLoading(false);
+          swal("Success", res.data.message, "success");
+          setAuthors((prevState) =>
+            prevState.filter((item) => item.id !== id)
+          );
+        })
+        .catch((error) => {
+          console.error("Error deleting abstract:", error);
+        });
+    }
+  };
+  const filteredAuthors= authors.filter(item =>
+    Object.values(item).some(field =>
+      typeof field === "string" && field.toLowerCase().includes(searchInput.toLowerCase())
+    )
+  );
 
   var display_Authorsdata = "";
   if (loading) {
@@ -44,26 +69,20 @@ export const BoardAuthors = () => {
       </div>
     );
   } else {
-    display_Authorsdata = authors.map((item, i) => {
+    display_Authorsdata = filteredAuthors.map((item, i) => {
       return (
         <tr key={i}>
           <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
             {i + 1}
           </td>
           <td className="px-6 py-4 whitespace-nowrap">
-            <div className="flex items-center">
-              <div className="flex-shrink-0 w-10 h-10">
-                <img
-                  className="w-full h-full rounded-full"
-                  src={`https://api.nationaltbconference.org/${item.avatar}`}
-                  alt=""
-                />
-              </div>
+            <div className="text-sm  text-gray-500">
+              {item.firstname} 
             </div>
           </td>
           <td className="px-6 py-4 whitespace-nowrap">
             <div className="text-sm  text-gray-500">
-              {item.firstname} {item.lastname}
+               {item.lastname}
             </div>
           </td>
           <td className="px-6 py-4 whitespace-nowrap">
@@ -80,10 +99,26 @@ export const BoardAuthors = () => {
           <td className="px-6 py-4 whitespace-nowrap uppercase text-sm text-gray-500">
             {/* {item.role} */} AUTHOR
           </td>
-          <td className="px-6 py-4 whitespace-nowrap  text-sm font-medium">
-            <Link to="#" className="text-indigo-600 hover:text-indigo-900">
-              Edit
-            </Link>
+          <td className="flex justify-center space-x-0 items-center text-center px-1 py-4 whitespace-nowrap text-sm font-medium">
+                    {/* <Link
+                       to={`/dashboard/update-user/${item.id}`}
+                        className="text-yellow-600 px-2 hover:text-yellow-900 ml-2"
+                      >
+                          <FaRegEdit className="w-5 h-5" />
+                      
+                    </Link> */}
+                      {/* <Link
+                        to={`/dashboard/update-user/${item.id}`}
+                        className="text-indigo-600 hover:text-indigo-900"
+                      >
+                        Edit
+                      </Link> */}
+                      {/* <button
+                        onClick={() => handleDelete(item.id)}
+                        className="text-red-600 px-2 hover:text-red-900 ml-2"
+                      >
+                        <RiDeleteBin6Line className="w-5 h-5" />
+                      </button> */}
           </td>
         </tr>
       );
@@ -97,10 +132,16 @@ export const BoardAuthors = () => {
             Authors
           </h2>
         </div>
-        {/* <div class="justify-end items-end pt-2 sm:pt-4 md:pt-4 lg:pt-5 ">
-                                         <button class="justify-center items-center text-center bg-custom-green bg-custom-dark-green px-2 py-1 md:text-md text-sm rounded-md text-white md:font-semibold tracking-wide cursor-pointer">Add User</button>
-                                         
-                                    </div> */}
+        <div className=" flex  items-end pt-2 sm:pt-4 md:pt-4 lg:pt-5 ">
+          <input
+            type="text"
+            placeholder="Search Authors..."
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
+            className="border-2 border-gray-300 bg-white h-8 px-5 pr-16 rounded-lg text-sm focus:outline-none"
+          />
+        </div>
+       
       </div>
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -118,13 +159,13 @@ export const BoardAuthors = () => {
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                    Image
+                    Firstname 
                   </th>
                   <th
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                    Name
+                    Lastname
                   </th>
                   <th
                     scope="col"
@@ -144,12 +185,12 @@ export const BoardAuthors = () => {
                   >
                     Role
                   </th>
-                  <th
+                  {/* <th
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
                     edit
-                  </th>
+                  </th> */}
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">

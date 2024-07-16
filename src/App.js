@@ -149,7 +149,7 @@ function App() {
                         <Route path="authors" element={<Authors/>}/>
                         <Route path="abstracts" element={<Abstracts/>}/>
                         <Route path='view-abstract/:id' element={<ViewAbstract />}/> 
-                        <Route path='approve-abstract/:id' element={<EditStatusViewAbstract/>}/> 
+                        <Route path='edit_status_ad/:id' element={<EditStatusViewAbstract/>}/> 
                         <Route path="delegates" element={<Participants/>}/>
                         <Route path="abstractreviewers" element={<AbstractReviewers/>}/>
                         <Route path="adduser" element={<AddUser/>}/>
@@ -180,6 +180,7 @@ function App() {
                         <Route path="authors" element={<BoardAuthors/>}/>
                         <Route path="abstracts" element={<BoardAbstracts/>}/>
                         <Route path='view-abstract/:id' element={<BoardViewAbstract />}/> 
+                        
                         <Route path='approve-abstract/:id' element={<BoardApproveViewAbstract />}/> 
                         <Route path="delegates" element={<BoardParticipants/>}/>
                         <Route path="abstractreviewers" element={<BoardAbstractReviewers/>}/>                        

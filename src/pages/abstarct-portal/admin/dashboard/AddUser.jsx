@@ -12,6 +12,7 @@ export const AddUser = () => {
   const [registerInput, setRegister] = useState({
     firstname: "",
     lastname: "",
+    middlename: "",
     email: "",
     role: "",
     password: "",
@@ -28,6 +29,7 @@ export const AddUser = () => {
     setIsSubmitting(true);
     const data = {
       firstname: registerInput.firstname,
+      middlename: registerInput.middlename,
       lastname: registerInput.lastname,
       email: registerInput.email,
       role: registerInput.role,
@@ -110,7 +112,22 @@ export const AddUser = () => {
                     className="border rounded-lg px-3 py-2 mt-1 text-sm w-full"
                   />
                   <span className="pb-2 mb-2 text-xs text-red-600">
-                    {registerInput.error_list.firstname}
+                    {registerInput.error_list && registerInput.error_list.firstname}
+                  </span>
+                </div>
+                <div className="mb-5">
+                  <label className="font-semibold text-sm text-gray-600  block">
+                  Middlename Name...
+                  </label>
+                  <input
+                    type="text"
+                    name="middlename"
+                    onChange={handleInput}
+                    value={registerInput.middlename}
+                    className="border rounded-lg px-3 py-2 mt-1 text-sm w-full"
+                  />
+                  <span className="pb-2 mb-2 text-xs text-red-600">
+                    {registerInput.error_list && registerInput.error_list.middlename}
                   </span>
                 </div>
                 <div className="mb-5">

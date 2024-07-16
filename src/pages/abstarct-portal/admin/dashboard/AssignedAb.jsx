@@ -81,7 +81,7 @@ const filteredAbstracts = viewAbstract.filter(item =>
             <div className="text-xs  text-gray-900">{i + 1}</div>
           </td>
           <td className="pl-6 py-4 whitespace-nowrap text-start text-xs ">
-            <div className="text-xs  text-gray-900">NTBCAB-0{item.id}</div>
+            <div className="text-xs  text-gray-900">NTBC2024-0{item.id}</div>
           </td>
 
           <td className="px-4 w-1/2 py-4   text-start text-xs ">            
@@ -138,7 +138,7 @@ const filteredAbstracts = viewAbstract.filter(item =>
           <td className="justify-center items-center text-center px-6 py-4 whitespace-nowrap text-xs  font-medium">
            
             <Link
-              to={`/dashboard/approve-abstract/${item.id}`}
+              to={`/dashboard/edit_status_ad/${item.id}`}
               className="text-indigo-600 px-2 hover:text-indigo-900 "
             >
              <svg

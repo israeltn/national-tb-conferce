@@ -75,12 +75,14 @@ export const UserDashboard = () => {
                         <div class="overflow-hidden h-44" >
                         <img src= {require('../../../../assets/dashboard.png')} className="mr-2  w-full" alt="Windster Logo"/>
                         </div>
-                        <div class="flex justify-center px-5  -mt-12">
+                        {/* <div class="flex justify-center px-5  -mt-12">
                             <img class="h-32 w-32 bg-white p-2 rounded-full" src={`https://api.nationaltbconference.org/${userdata.avatar}`} alt="" />
 
-                        </div>
-                        <div class=" ">
-                            <div class="text-center px-14">
+                        </div> */}
+
+                        
+                        <div className="">
+                            <div class="text-center px-14 mt-10">
                                 <h2 class="text-gray-800 text-3xl font-bold">{userdata.firstname} {userdata.lastname}</h2>
                                 {/* <p class="text-gray-400 mt-2 hover:text-blue-500">@Abstract Author</p>
                                 <p class="mt-2 text-gray-500 text-sm">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p> */}

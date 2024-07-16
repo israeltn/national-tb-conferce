@@ -41,7 +41,10 @@ export const UserNavbar = () => {
              navigate("/login");
            }         
         });
-     }
+     };
+     const getInitials = (firstname, lastname) => {
+      return firstname && lastname ? `${firstname[0]}${lastname[0]}`.toUpperCase() : '';
+  };
     return (
       <div>
             <nav className="bg-white  border-b-4 border-gray-200 fixed z-30 w-full">
@@ -89,8 +92,11 @@ export const UserNavbar = () => {
               
                  <Link to="#" className="hidden no-underline sm:inline-flex ml-5 text-black  focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center items-center mr-3">
                      <span className="px-2">Welcome {userdata.firstname} </span>
-                    <div className="flex-shrink-0 p-1 hover:bg-custom-green rounded-full">
+                    {/* <div className="flex-shrink-0 p-1 hover:bg-custom-green rounded-full">
                            <img className="h-10 w-10 rounded-full" src={`https://api.nationaltbconference.org/${userdata.avatar}`} alt={userdata.firstname}/>
+                     </div> */}
+                     <div className="h-10 w-10 bg-gray-300 p-2  rounded-full hover:bg-custom-green flex items-center justify-center text-lg font-bold text-white">
+                                            {getInitials(userdata.firstname, userdata.lastname)}
                      </div>
                      
                  </Link>

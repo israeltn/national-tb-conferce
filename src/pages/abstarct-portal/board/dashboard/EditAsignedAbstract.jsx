@@ -15,7 +15,7 @@ export const EditAsignedAbstract = (props) => {
   useEffect(() => {
     axios.get(`/api/edit-asigned-abstract/${id}`).then((res) => {
       if (res.data.status === 200) {
-            console.log(res.data.assingabstract);
+            // console.log(res.data.assingabstract);
         setAbstract(res.data.assingabstract);
       }
       else if(res.data.status === 404)                 

@@ -120,7 +120,7 @@ export const EditAsignedAbstract = (props) => {
               for="grid-first-name"
             >
               <Link
-                to={`${url}/${abstractInput.abstractpost.image}`}
+                to={`${url}/${abstractInput.abstractpost.file}`}
                 target="_blank"
              
                 className=" stroke-red-700 w-full h-6 hover:stroke-green-700"
@@ -128,7 +128,7 @@ export const EditAsignedAbstract = (props) => {
                 <span>View Uploaded File</span>
               </Link>
               <Link
-                to={`${url}/${abstractInput.abstractpost.image}`}
+                to={`${url}/${abstractInput.abstractpost.file}`}
                 target="_blank"
                 className="text-indigo-600 "
               >

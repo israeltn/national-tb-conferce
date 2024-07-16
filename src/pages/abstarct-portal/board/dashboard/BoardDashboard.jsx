@@ -15,7 +15,7 @@ export const BoardDashboard = () => {
     axios.get("/sanctum/csrf-cookie").then((response) => {
       axios.get(`/api/total-count`).then((res) => {
         if (res.status === 200) {
-          // console.log(res.data.totals);
+          console.log(res.data.totals);
           // 'users' => User::count(),
           setTotalabstracts(res.data.abstracts);
           setTotalauthors(res.data.authors);

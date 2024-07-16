@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import swal from "sweetalert";
+import { RiDeleteBin6Line } from "react-icons/ri";
+import { FaRegEdit } from "react-icons/fa";
 
 export const Authors = () => {
   const [authors, setAuthors] = useState([]);
@@ -18,7 +21,22 @@ export const Authors = () => {
       });
     });
   }, []);
-
+  const handleDelete = (id) => {
+    if (window.confirm("Are you sure you want to delete this abstract?")) {
+      axios.delete(`/api/delete-user/${id}`)
+        .then((res) => {
+          console.log("Abstract deleted successfully");
+          setLoading(false);
+          swal("Success", res.data.message, "success");
+          setAuthors((prevState) =>
+            prevState.filter((item) => item.id !== id)
+          );
+        })
+        .catch((error) => {
+          console.error("Error deleting abstract:", error);
+        });
+    }
+  };
   const filteredAuthors= authors.filter(item =>
     Object.values(item).some(field =>
       typeof field === "string" && field.toLowerCase().includes(searchInput.toLowerCase())
@@ -58,19 +76,13 @@ export const Authors = () => {
             {i + 1}
           </td>
           <td className="px-6 py-4 whitespace-nowrap">
-            <div className="flex items-center">
-              <div className="flex-shrink-0 w-10 h-10">
-                <img
-                  className="w-full h-full rounded-full"
-                  src={`https://api.nationaltbconference.org/${item.avatar}`}
-                  alt=""
-                />
-              </div>
+            <div className="text-sm  text-gray-500">
+              {item.firstname} 
             </div>
           </td>
           <td className="px-6 py-4 whitespace-nowrap">
             <div className="text-sm  text-gray-500">
-              {item.firstname} {item.lastname}
+               {item.lastname}
             </div>
           </td>
           <td className="px-6 py-4 whitespace-nowrap">
@@ -87,11 +99,27 @@ export const Authors = () => {
           <td className="px-6 py-4 whitespace-nowrap uppercase text-sm text-gray-500">
             {/* {item.role} */} AUTHOR
           </td>
-          <td className="px-6 py-4 whitespace-nowrap  text-sm font-medium">
-            <Link to="#" className="text-indigo-600 hover:text-indigo-900">
-              Edit
-            </Link>
-          </td>
+          <td className="flex justify-center space-x-0 items-center text-center px-1 py-4 whitespace-nowrap text-sm font-medium">
+                    <Link
+                       to={`/dashboard/update-user/${item.id}`}
+                        className="text-yellow-600 px-2 hover:text-yellow-900 ml-2"
+                      >
+                          <FaRegEdit className="w-5 h-5" />
+                      
+                    </Link>
+                      {/* <Link
+                        to={`/dashboard/update-user/${item.id}`}
+                        className="text-indigo-600 hover:text-indigo-900"
+                      >
+                        Edit
+                      </Link> */}
+                      <button
+                        onClick={() => handleDelete(item.id)}
+                        className="text-red-600 px-2 hover:text-red-900 ml-2"
+                      >
+                        <RiDeleteBin6Line className="w-5 h-5" />
+                      </button>
+                    </td>
         </tr>
       );
     });
@@ -131,13 +159,13 @@ export const Authors = () => {
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                    Image
+                    Firstname 
                   </th>
                   <th
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                    Name
+                    Lastname
                   </th>
                   <th
                     scope="col"

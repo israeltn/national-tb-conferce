@@ -130,7 +130,7 @@ if(loading)
                     <div className="flex flex-wrap w-[10rem] -mx-3 mb-6 justify-center items-center">
                         <div className="px-3 w-full justify-center items-center ">
                             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-prefex">
-                            Prefix
+                            Prefix <span className='text-red-600  font-bold'>*</span>
                         </label>
                         <div className="">
                             <select name="prefex" onChange={handleInput} value={participantInput.prefex} className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-prefex">
@@ -155,7 +155,7 @@ if(loading)
                     <div className="flex flex-wrap -mx-3 mb-6">
                         <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-                            Surname
+                            Surname <span className='text-red-600  font-bold'>*</span>
                         </label>
                         <input type="text" name="surname"  onChange={handleInput} value={participantInput.surname} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" required/>
                         <span className="pb-2 mb-2 text-sm text-red-600">{participantInput.error_list && participantInput.error_list.surname}</span>
@@ -170,7 +170,7 @@ if(loading)
                         
                         <div className="w-full md:w-1/3 px-3">
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                            First Name
+                            First Name <span className='text-red-600  font-bold'>*</span>
                         </label>
                         <input type="text" name="firstname" onChange={handleInput} value={participantInput.firstname} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" required />
                         <span className="pb-2 mb-2 text-sm text-red-600">{participantInput.error_list && participantInput.error_list.firstname}</span>
@@ -179,7 +179,7 @@ if(loading)
                     <div className="flex flex-wrap -mx-3 mb-6">
                         <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-gender">
-                            Sex
+                            Sex <span className='text-red-600  font-bold'>*</span>
                         </label>
                         <div className="relative">
                             <select type="text" name="gender" onChange={handleInput} value={participantInput.gender} className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" required id="grid-gender">
@@ -194,7 +194,7 @@ if(loading)
                         </div>
                         <div className="w-full md:w-1/2 px-3">
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-phone">
-                            Phone
+                            Phone <span className='text-red-600  font-bold'>*</span>
                         </label>
                         <input type="tel" name="phone" onChange={handleInput} value={participantInput.phone} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-phone" required />
                         <span className="pb-2 mb-2 text-sm text-red-600">{participantInput.error_list && participantInput.error_list.phone}</span>
@@ -203,7 +203,7 @@ if(loading)
                     <div className="flex flex-wrap -mx-3 mb-6">
                         <div className="w-full px-3">
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
-                            Email
+                            Email <span className='text-red-600  font-bold'>*</span>
                         </label>
                         <input type="email" name="email" onChange={handleInput} value={participantInput.email} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" required  />
                         <p className="text-gray-600 text-xs italic">Organization email or Personal email</p>
@@ -213,14 +213,14 @@ if(loading)
                     <div className="flex flex-wrap -mx-3 mb-6">
                         <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-                            Job Title
+                            Job Title <span className='text-red-600  font-bold'>*</span>
                         </label>
                         <input type="text" name="jobtitle" onChange={handleInput} value={participantInput.jobtitle} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" required  />
                          {/* <p className="text-red-500 text-xs italic">Please fill out this field.</p> */}
                         </div>
                         <div className="w-full md:w-1/2 px-3">
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-orgnization">
-                            Organization | Institution | Company
+                            Organization | Institution | Company <span className='text-red-600  font-bold'>*</span>
                         </label>
                         <input type="text" name="orgnization" onChange={handleInput} value={participantInput.orgnization} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-orgnization" required  />
                         <span className="pb-2 mb-2 text-sm text-red-600">{participantInput.error_list && participantInput.error_list.orgnization}</span>
@@ -229,7 +229,7 @@ if(loading)
                     <div className="flex flex-wrap -mx-3 mb-6">
                         <div className="w-full px-3">
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
-                            Work Address
+                            Work Address <span className='text-red-600  font-bold'>*</span>
                         </label>
                         <input type="text" name="address" onChange={handleInput} value={participantInput.address} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" required  />
                         <span className="pb-2 mb-2 text-sm text-red-600">{participantInput.error_list && participantInput.error_list.address}</span>
@@ -238,21 +238,21 @@ if(loading)
                     <div className="flex flex-wrap -mx-3 mb-8">
                         <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
-                            City
+                            City <span className='text-red-600  font-bold'>*</span>
                         </label>
                         <input type="text" name="city" onChange={handleInput} value={participantInput.city} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city" required  />
                         <span className="pb-2 mb-2 text-sm text-red-600">{participantInput.error_list && participantInput.error_list.city}</span>
                         </div>
                         <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
-                            State | Province | District
+                            State | Province | District <span className='text-red-600  font-bold'>*</span>
                         </label>
                         <input type="text" name="state" onChange={handleInput} value={participantInput.state} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city"required  />
                         <span className="pb-2 mb-2 text-sm text-red-600">{participantInput.error_list && participantInput.error_list.state}</span>
                         </div>
                         <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-zip">
-                            Country
+                            Country <span className='text-red-600  font-bold'>*</span>
                         </label>
                         <input type="text" name="country" onChange={handleInput} value={participantInput.country} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-zip" required  />
                         <span className="pb-2 mb-2 text-sm text-red-600">{participantInput.error_list && participantInput.error_list.country}</span>

@@ -124,7 +124,7 @@ useEffect(() => {
     <div className="flex justify-between items-center">
       <div className="pt-12 justify-center items-center mx-auto w-auto md:w-full lg:max-w-md  md:max-w-md">
         <Link
-          to="#"
+          to="https://nationaltbconference.org/"
           className="text-xl font-bold justify-center flex items-center px-3"
         >
           {/* <!-- logo --> */}
@@ -246,7 +246,7 @@ useEffect(() => {
             </div>
           </form>
           <div className="text-center hover:text-red-700">
-            <NavLink to="/login">Already have an account sign in</NavLink>
+            <NavLink to="/login">Already have an account Login</NavLink>
           </div>
 
           <div className="py-5">

@@ -98,7 +98,7 @@ const handleInput = (e) => {
         }        
         else if(res.data.status === 422)
         {
-            swal("All Fields are mandetory", "", "error");
+            swal("Some Fields are mandetory | file most be PDF", "", "error");
             setError(res.data.errors);
         }
         else{
@@ -153,7 +153,7 @@ if(loading)
                         <div className="px-3  w-full justify-center items-center ">
                       
                             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-prefex">
-                            Prefix
+                            Prefix <span className='text-red-600  font-bold'>*</span>
                         </label>
                         <div className="">
                             <select name="prefex" onChange={handleInput} value={abstractInput.prefex} className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-prefex">
@@ -176,7 +176,7 @@ if(loading)
                     </div>
                         <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-                            Surname
+                            Surname <span className='text-red-600 font-bold'>*</span>
                         </label>
                         <input type="text" name="surname"  onChange={handleInput} value={abstractInput.surname} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name"  />
                         <span className="pb-2 mb-2 text-sm text-red-600">{errorlist.surname}</span>
@@ -190,7 +190,7 @@ if(loading)
                         </div>
                         <div className="w-full md:w-1/4 px-3">
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                            First Name
+                            First Name <span className='text-red-600 font-bold'>*</span>
                         </label>
                         <input type="text" name="firstname" onChange={handleInput} value={abstractInput.firstname} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name"  />
                         <span className="pb-2 mb-2 text-sm text-red-600">{errorlist.firstname}</span>
@@ -200,7 +200,7 @@ if(loading)
                     <div className="flex flex-wrap -mx-3 mb-6">
                         <div className="w-full md:w-1/6 px-3 mb-6 md:mb-0">
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-gender">
-                            Sex
+                            Sex <span className='text-red-600  font-bold'>*</span>
                         </label>
                         <div className="relative">
                             <select type="text" name="gender" onChange={handleInput} value={abstractInput.gender} className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"  id="grid-gender">
@@ -215,7 +215,7 @@ if(loading)
                         </div>
                         <div className="w-full md:w-1/3 px-3">
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-phone">
-                            Phone
+                            Phone <span className='text-red-600  font-bold'>*</span>
                         </label>
                         <input type="tel" name="phone" onChange={handleInput} value={abstractInput.phone} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-phone"  />
                         <span className="pb-2 mb-2 text-sm text-red-600">{errorlist.phone}</span>
@@ -223,7 +223,7 @@ if(loading)
                         <div className="md:w-1/2 flex flex-wrap -mx-3 mb-6">
                         <div className="w-full px-3">
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
-                            Email
+                            Email <span className='text-red-600  font-bold'>*</span>
                         </label>
                         <input type="email" name="email" onChange={handleInput} value={abstractInput.email} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" />
                         {/* <p className="text-gray-600 text-xs italic">Organization email or Personal email</p> */}
@@ -235,14 +235,14 @@ if(loading)
                     <div className="flex flex-wrap -mx-3 mb-6">
                         <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-                            Job Title
+                            Job Title <span className='text-red-600  font-bold'>*</span>
                         </label>
                         <input type="text" name="jobtitle" onChange={handleInput} value={abstractInput.jobtitle} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name"  />
                          <span className="pb-2 mb-2 text-sm text-red-600">{errorlist.jobtitle}</span>
                         </div>
                         <div className="w-full md:w-1/2 px-3">
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-orgnization">
-                            Organization/Institution/Company
+                            Organization/Institution/Company <span className='text-red-600  font-bold'>*</span>
                         </label>
                         <input type="text" name="orgnization" onChange={handleInput} value={abstractInput.orgnization} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-orgnization" />
                             <span className="pb-2 mb-2 text-sm text-red-600">{errorlist.orgnization}</span>
@@ -251,7 +251,7 @@ if(loading)
                     <div className="flex flex-wrap -mx-3 mb-6">
                         <div className="w-full px-3">
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
-                            Work Address
+                            Work Address <span className='text-red-600  font-bold'>*</span>
                         </label>
                         <input type="text" name="address" onChange={handleInput} value={abstractInput.address} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password"   />
                         <span className="pb-2 mb-2 text-sm text-red-600">{errorlist.address}</span>
@@ -260,21 +260,21 @@ if(loading)
                     <div className="flex flex-wrap -mx-3 mb-8">
                         <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
-                            City
+                            City <span className='text-red-600  font-bold'>*</span>
                         </label>
                         <input type="text" name="city" onChange={handleInput} value={abstractInput.city} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city"   />
                             <span className="pb-2 mb-2 text-sm text-red-600">{errorlist.city}</span>
                         </div>
                         <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
-                            State
+                            State <span className='text-red-600  font-bold'>*</span>
                         </label>
                         <input type="text" name="state" onChange={handleInput} value={abstractInput.state} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-city"  />
                         <span className="pb-2 mb-2 text-sm text-red-600">{errorlist.state}</span>
                         </div>
                         <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-zip">
-                            Country
+                            Country <span className='text-red-600  font-bold'>*</span>
                         </label>
                         <input type="text" name="country" onChange={handleInput} value={abstractInput.country} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-zip"   />
                         <span className="pb-2 mb-2 text-sm text-red-600">{errorlist.country}</span>
@@ -287,7 +287,7 @@ if(loading)
 
                     <div className="mt-12 mb-4  justify-center items-center">
                         <label className="uppercase tracking-wide text-red-700 text-md font-bold mb-2" for="grid-first-name">
-                           Abstract Information
+                           Abstract Information 
                         </label>
                         </div> 
 
@@ -295,7 +295,7 @@ if(loading)
                        
                         <div className="w-full  px-3">
                             <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                                Abstract Title
+                                Abstract Title <span className='text-red-600  font-bold'>*</span>
                             </label>
                             <input type="text" name="abstract_title" onChange={handleInput} value={abstractInput.abstract_title} className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name"   />
                             <span className="pb-2 mb-2 text-sm text-red-600">{errorlist.abstract_title}</span>
@@ -304,14 +304,19 @@ if(loading)
                     <div className="flex flex-wrap -mx-3 mb-6">
                         <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-                            Abstract Thematic Area
+                            Abstract Thematic Area <span className='text-red-600  font-bold'>*</span>
                         </label>
                         <div className="relative">
                             <select name="abstract_thematic" onChange={handleInput} value={abstractInput.abstract_thematic} className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
                             <option value="Not selected">Select</option>
-                            <option  value="Track_A">Track A</option>
-                            <option value="Track_B">Track B</option>
-                            <option value="Track_C">Track C</option>
+                            
+                            <option  value="Track_A">Track A: Stakeholders Engagement in TB control</option>
+                            <option value="Track B Childhood Tuberculosis">Track B: Childhood Tuberculosis</option>
+                            <option value="Track C TB/HIV Co-Infection">Track C: TB/HIV Co-Infection</option>
+                            <option value="Track D Drug Resistant Tuberculosis">Track D: Drug Resistant Tuberculosis</option>
+                            <option value="Track E Tuberculosis in Prisons and Internally Displaced People’s (IDP) Camps">Track E: Tuberculosis in Prisons and Internally Displaced People’s (IDP) Camps</option>
+                            <option value="Track F Tuberculosis Prevention (TPT) and Infection control">Track F: Tuberculosis Prevention (TPT) and Infection control</option>
+                            <option value="Track G: Innovation in TB Diagnostics and Treatment">Track G: Innovation in TB Diagnostics and Treatment</option>
                             </select>
                             <span className="pb-2 mb-2 text-sm text-red-600">{errorlist.abstract_thematic}</span>
                         </div>
@@ -319,27 +324,29 @@ if(loading)
                         
                         </div>
                         <div className="w-full md:w-1/2 px-3">
-                             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload file</label>
+                             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">
+                                Upload file <span className='text-red-600  font-bold'>*</span>
+                            </label>
                             <input type="file" name="image" onChange={handleFile}  className="block w-full text-sm text-gray-900 border border-gray-500 rounded-lg cursor-pointer bg-gray-200 dark:text-gray-400 focus:outline-none  dark:border-gray-600 dark:placeholder-gray-500" aria-describedby="file_input_help" id="file_input"/>
-                            <p className="mt-1 text-sm text-gray-600 dark:text-gray-400" id="file_input_help">PDF, Word DOC (MAX Size:1M).</p>
+                            <p className="mt-1 text-sm text-gray-600 dark:text-gray-400" id="file_input_help">PDF(MAX Size:1M).</p>
                             <span className="pb-2 mb-2 text-sm text-red-600">{errorlist.image}</span>
                         </div>
                     </div>
                     <div className="flex flex-wrap mx-3 mb-6">
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-                            Co-Author: Prefix | Surname| Middle name | First name | Job Title Organization | Company | Institution 
+                            Co-Author:<span className='text-red-600  font-bold'>*</span>  Prefix | First name | Middle name | Surname | Job Title | Organization/Company | Institution Email ...
                         </label>
                         <textarea name="co_author" onChange={handleInput} value={abstractInput.co_author} id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                         placeholder="Prefix Surname Firstname Job Title Organization/Company/Institution Email and Phone...">
+                    >
                          </textarea>
                          <span className="pb-2 mb-2 text-sm text-red-600">{errorlist.co_author}</span>
                     </div>
                     <div className="flex flex-wrap mx-3 mb-6">
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-                            Other Information
+                            Other Information <span className='text-red-600  font-bold'>*</span>
                         </label>
                         <textarea name="information" onChange={handleInput} value={abstractInput.information} id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                         placeholder="Please provide any other relevant information...">
+                        >
                          </textarea>
                          <span className="pb-2 mb-2 text-sm text-red-600">{errorlist.information}</span>
                     </div>

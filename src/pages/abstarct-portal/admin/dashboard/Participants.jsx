@@ -9,6 +9,8 @@ import { SiMicrosoftexcel } from "react-icons/si";
 export const Participants = () => {
   const [viewParticipants, setParticipants] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+ const [lastPage, setLastPage] = useState(1);
   const [searchInput, setSearchInput] = useState("");
 
   const getCsrfToken = async () => {
@@ -19,9 +21,12 @@ export const Participants = () => {
     const fetchParticipants = async () => {
       try {
         await getCsrfToken();
-        const res = await axios.get(`/api/view-participants`);
+       
+        const res = await  axios.get(`api/all-participants?page=${currentPage}`);
         if (res.status === 200) {
           setParticipants(res.data.participants);
+          setLastPage(res.data.pagination.last_page);          
+          setCurrentPage(res.data.pagination.current_page);
           setLoading(false);
         }
       } catch (error) {
@@ -29,7 +34,14 @@ export const Participants = () => {
       }
     };
     fetchParticipants();
-  }, []);
+  },  [currentPage]);
+  const nextPage = () => {
+   setCurrentPage(currentPage + 1);
+ };
+ 
+ const prevPage = () => {
+   setCurrentPage(currentPage - 1);
+ };
 
   const handleDownload = async () => {
     try {
@@ -64,6 +76,8 @@ export const Participants = () => {
       }
     }
   };
+
+  
 
   if (loading) {
     return (
@@ -231,6 +245,15 @@ export const Participants = () => {
               </tbody>
             </table>
           </div>
+          <div className="flex font-medium text-xs justify-center items-center space-x-4 m-2">
+              <button onClick={prevPage} disabled={currentPage === 1} className="bg-custom-green disabled:hidden bg-custom-dark-green rounded-sm p-1 text-white" >
+                Previous
+              </button>
+              <button onClick={nextPage} disabled={currentPage === lastPage} className="bg-custom-green disabled:hidden bg-custom-dark-green rounded-sm p-1 text-white">
+                Next
+              </button>
+            </div>
+            
         </div>
       </div>
     </div>

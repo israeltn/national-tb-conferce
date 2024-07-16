@@ -21,13 +21,14 @@ export const AbstractReviewers = () => {
     });
   }, []);
 
-  const filteredAbstracts = reviewers.filter((item) =>
+  const filteredReviewers = reviewers.filter((item) =>
     Object.values(item).some(
       (field) =>
         typeof field === "string" &&
         field.toLowerCase().includes(searchInput.toLowerCase())
     )
   );
+
 
   const handleDelete = (id) => {
     if (window.confirm("Are you sure you want to delete this abstract?")) {
@@ -74,16 +75,26 @@ export const AbstractReviewers = () => {
 
   return (
     <div className="flex mx-3 mt-2 flex-col">
-      <div className="md:flex items-center justify-between mx-4 my-2 sm:mt-2">
-        <div className="flex md:justify-start md:items-start text-center">
+      <div className="md:flex justify-start w-[85%]   my-2 sm:mt-2">
+        <div className="flex w-1/2 md:justify-start md:items-start text-center">
           <h2 className="text-gray-600 mt-2 lg:mt-8 md:text-xl text-sm font-semibold text-center">
             Abstract Users
           </h2>
         </div>
-        <div className="justify-end items-end pt-2 sm:pt-4 md:pt-4 lg:pt-5">
-          <button className="justify-center items-center text-center bg-green-500 hover:bg-green-600 px-2 py-1 md:text-md text-sm rounded-md text-white md:font-semibold tracking-wide cursor-pointer">
+        <div className="flex justify-end w-1/2 space-x-2 items-center  pt-2 sm:pt-4 md:pt-4 lg:pt-5">
+        
+          <button className="h-8 items-center text-center bg-green-500 hover:bg-green-600 px-2 py-1 md:text-md text-sm rounded-md text-white md:font-semibold tracking-wide cursor-pointer">
             <Link to="/dashboard/adduser">Add User</Link>
           </button>
+          <div className=" flex  items-center w-[20px] ">
+          <input
+            type="text"
+            placeholder="Search User..."
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
+            className="border-2 border-gray-300 bg-white h-8 w-[150px] text-center rounded-lg text-sm focus:outline-none"
+          />
+        </div>
         </div>
       </div>
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -102,13 +113,13 @@ export const AbstractReviewers = () => {
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                    Image
+                    Firstname
                   </th>
                   <th
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                    Name
+                    Lastname
                   </th>
                   <th
                     scope="col"
@@ -137,25 +148,19 @@ export const AbstractReviewers = () => {
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
-                {filteredAbstracts.map((item, i) => (
+                {filteredReviewers.map((item, i) => (
                   <tr key={i}>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                       {i + 1}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="flex items-center">
-                        <div className="flex-shrink-0 w-10 h-10">
-                          <img
-                            className="w-full h-full rounded-full"
-                            src={`https://api.nationaltbconference.org/${item.avatar}`}
-                            alt=""
-                          />
-                        </div>
+                      <div className="text-sm text-gray-500">
+                        {item.firstname} 
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="text-sm text-gray-500">
-                        {item.firstname} {item.lastname}
+                         {item.lastname}
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">

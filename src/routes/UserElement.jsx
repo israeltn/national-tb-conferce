@@ -3,6 +3,8 @@ import { Outlet } from 'react-router-dom'
 import { UserNavbar } from '../compotents/portal-shared/UserNavbar'
 import { NavLink } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { FaLinkedin } from "react-icons/fa";
+import axios from 'axios';
 
 export const UserElement = () => {
 
@@ -12,6 +14,23 @@ export const UserElement = () => {
               navigate("/login");
            }
      });
+     useEffect(() => {
+      const axiosInterceptor = axios.interceptors.response.use(
+        response => response,
+        error => {
+          if (error.response && error.response.status === 401) {
+            localStorage.removeItem('auth_token');
+            localStorage.removeItem('auth_role');
+            navigate("/login");
+          }
+          return Promise.reject(error); // Ensure this doesn't break ErrorBoundary
+        }
+      );
+    
+      return () => {
+        axios.interceptors.response.eject(axiosInterceptor);
+      };
+    }, [navigate]);
   
      const [isUser, setIsAdmin] = useState(false);
      useEffect(() => {
@@ -57,7 +76,11 @@ export const UserElement = () => {
                      <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
                   </svg>
                </NavLink>
-              
+               <NavLink to="https://www.linkedin.com/company/100735343/admin/feed/posts/" className="text-gray-500 hover:text-gray-900">
+               <FaLinkedin className="h-5 w-5"/>
+                  
+               </NavLink>              
+               
             </div>
      </footer>
            <p className="text-center text-sm text-gray-500 my-10">

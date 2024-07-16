@@ -114,7 +114,7 @@ export const Login = () => {
   return (
     <div className="flex justify-between items-center">
       <div className="pt-12 justify-center items-center mx-auto w-auto md:w-full lg:max-w-md md:max-w-md">
-        <NavLink to="/" className="text-xl font-bold justify-center flex items-center px-3">
+        <NavLink to="https://nationaltbconference.org" className="text-xl font-bold justify-center flex items-center px-3">
           <img
             src={require("../../../assets/ntbc-logo-4.png")}
             className="justify-center flex items-center mb-2"
@@ -152,6 +152,7 @@ export const Login = () => {
                 <input
                   type="password"
                   name="password"
+                  
                   onChange={handleInput}
                   value={loginInput.password}
                   className="border rounded-lg px-3 py-2 mt-1 text-sm w-full"
